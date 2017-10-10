@@ -13,31 +13,3 @@ Link to our deployed heroku app: https://mysterious-plains-16674.herokuapp.com/
 Link to our pivotal tracker: https://www.pivotaltracker.com/n/projects/2118168
 
 Description of customer's business need: Our customer, Austin, wants to develop a platform that can be used to compute image quality metrics for the eye using a set of Zernike polynomials as input. He hopes to use this platform to teach his optometry students more about the imperfections of the eye. Here is the link to Austin's optometry lab's page: http://roorda.vision.berkeley.edu/
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
