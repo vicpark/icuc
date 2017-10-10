@@ -3,7 +3,7 @@
 {<img src="https://codeclimate.com/github/rails/rails/badges/gpa.svg" />}[https://codeclimate.com/github/rails/rails]
 {<img src="https://codeclimate.com/github/rails/rails/badges/coverage.svg" />}[https://codeclimate.com/github/rails/rails/coverage]
 
-
+Travis-CI: https://travis-ci.org/vicpark/icuc.svg?branch=master
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
