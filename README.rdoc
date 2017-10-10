@@ -4,6 +4,7 @@
 {<img src="https://codeclimate.com/github/rails/rails/badges/coverage.svg" />}[https://codeclimate.com/github/rails/rails/coverage]
 
 Travis-CI: 
+
 {<img src="https://travis-ci.org/vicpark/icuc.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/vicpark/icuc]
 
 
