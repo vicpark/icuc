@@ -1,6 +1,25 @@
 source 'https://rubygems.org'
 
 ruby '2.3.0'
+
+group :development, :test do
+  gem 'byebug'
+  gem 'cucumber', '2.0.0'
+  gem 'capybara', '2.4.4'
+
+  gem 'rspec-autotest', '1.0.0'
+
+  gem 'rack-test', '0.6.3'
+  gem 'rack_session_access', '0.1.1'
+
+  gem 'launchy', '2.4.3'
+  gem 'rerun', '0.10.0'
+
+  gem 'simplecov', '0.10.0'
+  gem 'webmock', '1.21.0'
+  gem 'ZenTest', '4.11.0'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.9'
 # Use sqlite3 as the database for Active Record
@@ -34,10 +53,6 @@ gem 'rspec'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
