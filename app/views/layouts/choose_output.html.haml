@@ -1,0 +1,11 @@
+%h1 Choose Output Format
+
+= form_tag zernikes_path do
+ 
+  = label :zernike, :output_files, 'Output files'
+  = select :zernike, :output_files, ['Wavefront','PSF (Point Spread Function)','MTF Full (Modulation Transfer Function)', 'PTF (Phase Transfer Function)', 'MTF line plots (horizontal, vertical, radial average)', 'convolution for 20/ sized letter']
+
+  = text_field :zernike, 'insert 20/ here'
+  
+  =submit_tag 'Show Me The Graphs!'
+  

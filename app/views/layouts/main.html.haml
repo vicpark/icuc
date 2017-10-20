@@ -1,0 +1,8 @@
+%h1 Create New Zernikes
+
+= form_tag zernikes_path do
+
+  = label :zernike, :input_method, 'Rating'
+  = select :zernike, :input_method, ['Upload from file','Enter manually','Generate random']
+ 
+  = submit_tag 'Load'
