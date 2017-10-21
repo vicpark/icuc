@@ -18,13 +18,16 @@ group :development, :test do
   gem 'simplecov', '0.10.0'
   gem 'webmock', '1.21.0'
   gem 'ZenTest', '4.11.0'
+  
+  gem 'sqlite3', '1.3.13'
+
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "haml"
 gem 'rails', '4.2.9'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -61,6 +64,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  
 end
 
 gem 'delayed_job_active_record'
