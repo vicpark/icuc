@@ -1,27 +1,43 @@
+require 'uri'
+require 'cgi'
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "features/support", "paths"))
 
-Given /^I am on the "(.*)" page$/ do |arg1|
-    pending  # Write code here that turns the phrase above into concrete actions
+# module WithinHelpers
+#   def with_scope(locator)
+#     locator ? within(*selector_for(locator)) { yield } : yield
+#   end
+# end
+# World(WithinHelpers)
+
+
+Given /^I go to (.+)$/ do |page_name|
+    visit path_to(page_name)
 end
 
-Then /^I click "(.*)"$/ do |arg1|
-    pending
+Then /^I click "(.*)"$/ do |link|
+    click_link(link)
 end
 
-Then /^I should see "(.*)"$/ do |arg1|
-    pending
+When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  fill_in(field, :with => value)
 end
 
-When /^I fill in "(.*)" for coefficient (.*)$/ do |arg1|
-    pending
+When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
+  fill_in(field, :with => value)
 end
 
-Then /^I should see "(.*)" for coefficient (.*)$/ do |arg1,arg2|
-pending
+
+When /^(?:|I )press "(.*)"$/ do |button|
+  click_button(button)
 end
 
-                                                                                                          
-Then(/^I fill in "([^"]*)" coefficient one$/) do |arg1|                                                   
-  pending # Write code here that turns the phrase above into concrete actions                             
-end                                                                                                       
-                                                                                                          
+Then /^I should see "(.*)"$/ do |text|
+    if page.respond_to? :should
+        page.should have_content(text)
+    else
+        assert page.has_content?(text)
+    end
+end
+
+                                                                                                         
 

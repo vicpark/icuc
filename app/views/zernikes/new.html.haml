@@ -1,29 +1,40 @@
+// %h1 Insert Coefficients
+
+// = form_tag zernikes_path() do
+
+//   = label :zernike, :z1, 'Z1: um, vertical prism'
+//   = text_field :zernike, 'z1'
+//   %br/
+//   = label :zernike, :z2, 'Z2: um, horizontal prism'
+//   = text_field :zernike, 'z2'
+//   %br/
+//   = label :zernike, :z3, 'Z3: um, astigmatism'
+//   = text_field :zernike, 'z3'
+//   %br/
+//   = label :zernike, :z4, 'Z4: um, defocus'
+//   = text_field :zernike, 'z4'
+//   %br/
+//   = label :zernike, :z5, 'Z5: um, astigmatism'
+//   = text_field :zernike, 'z5'
+//   %br/
+//   = label :zernike, :z6, 'Z6: um, trefoil'
+//   = text_field :zernike, 'z6'
+//   %br/
+//   = label :zernike, :z7, 'Z7: um, vertical coma'
+//   = text_field :zernike, 'z7'
+//   %br/
+//   = label :zernike, :z65, 'Z65: parameter'
+//   = text_field :zernike, 'z65'
+//   %br/
+//   = submit_tag "Compute!"
+  
+  
 %h1 Insert Coefficients
 
 = form_tag zernikes_path() do
-
-  = label :zernike, :z1, 'Z1: um, vertical prism'
-  = text_field :zernike, 'z1'
-  %br/
-  = label :zernike, :z2, 'Z2: um, horizontal prism'
-  = text_field :zernike, 'z2'
-  %br/
-  = label :zernike, :z3, 'Z3: um, astigmatism'
-  = text_field :zernike, 'z3'
-  %br/
-  = label :zernike, :z4, 'Z4: um, defocus'
-  = text_field :zernike, 'z4'
-  %br/
-  = label :zernike, :z5, 'Z5: um, astigmatism'
-  = text_field :zernike, 'z5'
-  %br/
-  = label :zernike, :z6, 'Z6: um, trefoil'
-  = text_field :zernike, 'z6'
-  %br/
-  = label :zernike, :z7, 'Z7: um, vertical coma'
-  = text_field :zernike, 'z7'
-  %br/
-  = label :zernike, :z65, 'Z65: parameter'
-  = text_field :zernike, 'z65'
-  %br/
+  - @fields.each do |f|
+    = label :zernike, f, "Z#{f[0]}: #{f[1]}"
+    = text_field :zernike, f
+    %br/
+    
   = submit_tag "Compute!"

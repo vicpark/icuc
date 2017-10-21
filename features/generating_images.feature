@@ -1,17 +1,14 @@
 Feature: save output from computed Zernike equation
  
   As an optometry student
-  I want to be able to save the images generated from the Zernike equation
+  I want to be able to see the images generated from the Zernike equation
   so I can study imperfections of the eye
   
 Scenario: save images as a zip file
-  Given I am on the "result" page
+  Given I go to the home page
   And I click "save as zip file"
   Then I should see "Successfully downloaded zip file"
 
-Scenario: convert an image into a pdf
-  Given I am on the "result" page
-  And I click "save as pdf"
-  Then I should see "Successfully downloaded image as a pdf"
+
 
   
