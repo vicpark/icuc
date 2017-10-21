@@ -1,20 +1,15 @@
 require 'uri'
 require 'cgi'
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "features/support", "paths"))
-
-# module WithinHelpers
-#   def with_scope(locator)
-#     locator ? within(*selector_for(locator)) { yield } : yield
-#   end
-# end
-# World(WithinHelpers)
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+#require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 
 
-Given /^I go to (.+)$/ do |page_name|
-    visit path_to(page_name)
+When /^(?:|I )go to (.+)$/  do |page_name|
+    visit('/zernikes')
+    # visit path_to(page_name)
 end
 
-Then /^I click "(.*)"$/ do |link|
+Then /^I click "(.+)"$/ do |link|
     click_link(link)
 end
 
@@ -38,6 +33,7 @@ Then /^I should see "(.*)"$/ do |text|
         assert page.has_content?(text)
     end
 end
+
 
                                                                                                          
 
