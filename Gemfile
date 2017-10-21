@@ -19,8 +19,12 @@ group :development, :test do
   gem 'webmock', '1.21.0'
   gem 'ZenTest', '4.11.0'
   
-  gem 'sqlite3', '1.3.13'
+  gem 'sqlite3'
 
+end
+
+group :production do
+  gem 'pg'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
