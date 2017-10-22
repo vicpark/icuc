@@ -5,8 +5,8 @@ Feature: inputting parameters into the Zernike equation
   So I can generate the Zernike equation
 
 Scenario: manually inputting Zernike equation parameters
-  When I go to the home page
-  And I click "input Zernike's parameters"
+  When I go to "the home page"
+  And I click "Input Zernike's parameters"
   And I press "Compute!"
   Then I should see "Zernike equation successfully computed!"
 
