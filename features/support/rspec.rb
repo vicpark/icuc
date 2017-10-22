@@ -1,6 +1,4 @@
 require 'rspec/core'
-require 'capybara/cucumber'
-require 'capybara-screenshot/cucumber'
 
 RSpec.configure do |config|
   config.mock_with :rspec do |c|

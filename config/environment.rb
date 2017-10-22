@@ -9,12 +9,12 @@ require 'capybara/cucumber'
 require 'cucumber/rails'
 require 'capybara/rails'
 require 'capybara/dsl'
+require 'capybara-screenshot'
+require 'capybara-screenshot/cucumber'
 
-require 'selenium/webdriver'
 
 
-
-# $port = <port_number>
+#$port = <port_number>
 
 # #Capybara.app_host = '<localhost>:<port>'
 # Capybara.configure do |config|

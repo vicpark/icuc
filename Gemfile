@@ -4,14 +4,15 @@ ruby '2.3.0'
 
 group :development, :test do
   gem 'byebug'
-  gem 'cucumber', '2.0.0'
+#  gem 'cucumber', '2.0.0'
   gem 'capybara', '2.4.4'
+  gem 'selenium-webdriver'
 
   gem 'rspec-autotest', '1.0.0'
 
   gem 'rack-test', '0.6.3'
   gem 'rack_session_access', '0.1.1'
-
+  gem 'capybara-screenshot'
   gem 'launchy', '2.4.3'
   gem 'rerun', '0.10.0'
 
