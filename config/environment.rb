@@ -4,13 +4,16 @@ require File.expand_path('../application', __FILE__)
 # Initialize the Rails application.
 Rails.application.initialize!
 
-require 'capybara'
-require 'capybara/cucumber'
-require 'cucumber/rails'
-require 'capybara/rails'
-require 'capybara/dsl'
-require 'capybara-screenshot'
-require 'capybara-screenshot/cucumber'
+#require 'capybara'
+
+##require 'capybara/cucumber'
+
+#require 'cucumber/rails'
+#require 'capybara/rails'
+#require 'capybara/dsl'
+#require 'capybara-screenshot'
+
+##require 'capybara-screenshot/cucumber'
 
 
 

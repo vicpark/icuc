@@ -4,7 +4,7 @@ ruby '2.3.0'
 
 group :development, :test do
   gem 'byebug'
-#  gem 'cucumber', '2.0.0'
+  gem 'cucumber'
   gem 'capybara', '2.4.4'
   gem 'selenium-webdriver'
 
