@@ -1,0 +1,4 @@
+%h1 Upload Coefficients from a File
+= form_for zernikes_path, :multipart=>true  do
+  = file_field_tag 'file[]', multiple: true
+  = submit_tag "Upload"

@@ -13,3 +13,72 @@
  *= require_tree .
  *= require_self
  */
+ 
+body {
+    /*background-image: url(glasses.jpg);*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*display: block;*/
+    /*background-opacity: 0.5;*/
+ 
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+    /*background-color: silver;*/
+}
+
+.input_coefficients .button_to{
+    display: inline;
+    padding: 3%;
+}
+
+.parameters_header, .zernikes_header {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.zernike_pyramid {
+    /*background-color: black;*/
+}
+
+.box1 h3, .box2 h3, .box3 h3 {
+    margin: 0px;
+    padding:0px;
+    /*border:1px solid blue;*/
+    /*background-color: black;*/
+    /*color: white;*/
+    /*text-align: center;*/
+}
+
+h1{
+    border:1px solid #a3a3a3;
+	position:relative;
+	background: #f9f9f9;
+	border-radius:2px;
+	padding:13px 13px 13px 20px;
+	background: (top,  #f9f9f9 0%, #f9f9f9 51%, #f9f9f9 52%, #f2f2f2 52%, #f2f2f2 100%);
+background: -webkit-linear-gradient(top,  #f9f9f9 0%,#f9f9f9 51%,#f9f9f9 52%,#f2f2f2 52%,#f2f2f2 100%);
+background: linear-gradient(to bottom,  #f9f9f9 0%,#f9f9f9 51%,#f9f9f9 52%,#f2f2f2 52%,#f2f2f2 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#f2f2f2',GradientType=0 );
+
+	&:before{
+    content:'';
+	display:inline-block;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:7px;
+    right:auto;
+	width:6px;
+	height:60%;
+	margin:auto;
+	background:#5db243;	
+	}
+}
+#input_zernikes {
+    text-align: center;
+}
+
