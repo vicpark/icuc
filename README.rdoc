@@ -2,6 +2,7 @@
 
 {<img src="https://codeclimate.com/github/rails/rails/badges/gpa.svg" />}[https://codeclimate.com/github/rails/rails]
 {<img src="https://codeclimate.com/github/rails/rails/badges/coverage.svg" />}[https://codeclimate.com/github/rails/rails/coverage]
+{<img src="https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg" />}[https://codeclimate.com/github/codeclimate/codeclimate/coverage]
 
 Travis-CI: 
 
