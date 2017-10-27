@@ -10,6 +10,10 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Given /^(?:|I )am on "(.+)"$/  do |page_name|
+    visit('/zernikes')
+    # visit path_to(page_name)
+end
 
 When /^(?:|I )go to "(.+)"$/  do |page_name|
     visit('/zernikes')
@@ -34,13 +38,21 @@ When /^(?:|I )press "(.*)"$/ do |button|
 end
 
 Then /^I should see "(.*)"$/ do |text|
-    if page.respond_to? :should
-        page.should have_content(text)
-    else
-        assert page.has_content?(text)
-    end
+  pending
+    # if page.respond_to? :should
+    #     page.should have_content(text)
+    # else
+    #     assert page.has_content?(text)
+    # end
 end
 
+Then /^(?:|I )should go to "(.+)"$/  do |page_name|
+  visit('/zernikes')
+end
 
+When /^I upload a file with valid coefficients/ do
+  attach_file(:uploaded_file, File.join('./features', 'Subject1_600.zer'), visible: 'false')
+  click_button "Upload"
+end
                                                                                                          
 
