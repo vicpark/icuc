@@ -56,3 +56,10 @@ When /^I upload a file with valid coefficients/ do
 end
                                                                                                          
 
+Then(/^I should go to input page$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I input the following "([^"]*)" for "([^"]*)"$/) do |arg1, arg2|
+  pending # Write code here that turns the phrase above into concrete actions
+end
