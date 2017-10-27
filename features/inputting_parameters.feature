@@ -5,13 +5,10 @@ Feature: inputting parameters into the Zernike equation
   So I can generate the Zernike equation
 
 Scenario: manually inputting Zernike equation parameters
-  When I go to "the home page"
-  And I click "Input Zernike's parameters"
-  And I press "Compute!"
-  Then I should see "Zernike equation successfully computed!"
-
-# Scenario: uploading Zernike equation parameters from a corrupted file
-#   # When I go to "home"
-#   When I go to "the home page"
-#   And I click "upload text file"
-#   Then I should see "Unable to upload file"
+  Given I am on "the home page"
+  And I press "enter manually"
+  And I press "Save"
+  Then I should go to "the home page" 
+  And I should see "Zernike equation successfully computed!"
+  # Victoria rewrote this because it now redirects to the homepage
+  

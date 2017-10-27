@@ -82,3 +82,7 @@ end
 
 gem 'delayed_job_active_record'
 
+# added to support file attachment
+# Q: Is the "beta1" necessary?
+gem "paperclip", "~> 5.0.0.beta1"
+

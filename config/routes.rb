@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  
+  match "/zernikes/upload" => "zernikes#upload", :as => "upload_zernike", via: [:get, :post]
+  #post "/zernikes/upload" => "zernikes#upload", :as => "upload_zernike"
   resources :zernikes
   
   
-  post "/zernikes/upload" => "zernikes#upload", :as => "upload_zernike"
+  
   get "/zernikes/image", to: "zernikes#get_image", as: "get_image"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
