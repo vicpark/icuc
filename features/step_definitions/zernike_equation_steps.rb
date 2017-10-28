@@ -51,7 +51,8 @@ Then /^(?:|I )should go to "(.+)"$/  do |page_name|
 end
 
 When /^I upload a file with valid coefficients/ do
-  attach_file(:uploaded_file, File.join('./features', 'Subject1_600.zer'), visible: 'false')
+  # pending
+  attach_file(:zernike_attachment, File.join('./features', 'Subject1_600.zer'), visible: 'false')
   click_button "Upload"
 end
                                                                                                          

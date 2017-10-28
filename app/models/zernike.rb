@@ -11,9 +11,8 @@ class Zernike < ActiveRecord::Base
     return par
   end
   
-  has_attached_file :file, styles: { }, default_url: "/images/:style/missing.png" 
-  validates_attachment :file, presence: true 
-  do_not_validate_attachment_file_type :file
+  mount_uploader :attachment, AttachmentUploader # Tells rails to use this uploader for this model.
+  validates :file_name, presence: true # Make sure the file's name is present.
 
   ### Upload
   #has_attached_file :file, styles: { }, default_url: "/images/:style/missing.png" 

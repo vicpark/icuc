@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027204254) do
+ActiveRecord::Schema.define(version: 20171028032645) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20171027204254) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "attachment"
   end
 
 end

@@ -1,4 +1,10 @@
 %h1 Upload Coefficients from a File
-= form_for zernikes_path, :multipart=>true  do
-  = file_field_tag 'uploaded_file', multiple: true, :id =>"upload_button"
-  = submit_tag "Upload"
+= form_for 'zernike', :multipart=>true  do |f|
+  = f.label :attachment
+  = f.file_field :attachment
+
+  // = file_field_tag 'uploaded_file', multiple: true, :id =>"upload_button", :accept => "text/html"
+  = f.submit "Upload", class: "btn btn-primary",:id =>"upload_button"
+  // = submit_tag "Upload"
+  
+  // significant help from "http://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm"
