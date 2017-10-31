@@ -11,7 +11,7 @@ class ZernikesController < ApplicationController
         @zernike = Zernike.new
         @fields = Zernike.parameters
         flash[:notice] = "Zernike equation successfully computed!"
-        byebug
+        #byebug
     end
     
     
@@ -33,12 +33,20 @@ class ZernikesController < ApplicationController
         if params[:zernike]
             uploaded_file = params[:zernike][:attachment]
             file_name = uploaded_file.original_filename
-            jsonified_file = uploaded_file.as_json
-            # puts jsonified_file # UNCOMMENT MEE
-            
+            jsonified_file = uploaded_file.as_json["tempfile"]
             extract_data = coefficients_extractor(jsonified_file)
-            # puts extract_data
+            @file = extract_data
+            
+            if  @file.nil? or @file.empty?
+                flash[:warning] = "Unable to upload file"
+                # made it a "warning" instead of "notice" so we can change the colors/text
+            else
+                flash[:notice] = "File successfully uploaded!"
+            end
+            
+            redirect_to zernikes_path
         end
+      
         # if not @file.nil?
         #     byebug
         # end
@@ -71,7 +79,13 @@ class ZernikesController < ApplicationController
     private
     def coefficients_extractor(jsonified_file)
         important_lines = /^[^#].*/i
-        puts jsonified_file =~ important_lines
+        for key in jsonified_file
+            # assign variable "Z#{key[0]}_#{key[1]}" value key[3]
+            puts important_lines.match(key)
+            
+            # format printed loosely is : subscript superscript actual_coefficient
+            
+        end
         
     end
 
