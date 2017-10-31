@@ -4,6 +4,8 @@ class ZernikesController < ApplicationController
         params.require(:zernike).permit(:uploaded_file)
     end
     
+    
+    
     def index
     end 
     
