@@ -7,7 +7,9 @@
      
       = label :zernike, f, "Z#{f}"
      
-      = text_field :zernikes, f, :style =>"width:20px;"
+      = text_field :zernikes, f, :style =>"width:20px;", :value => 0
+      
+      //%= f.input :user, :input_html => { :value => 0 } %
     %br
     
         
