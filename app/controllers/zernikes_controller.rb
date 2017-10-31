@@ -11,6 +11,7 @@ class ZernikesController < ApplicationController
         @zernike = Zernike.new
         @fields = Zernike.parameters
         flash[:notice] = "Zernike equation successfully computed!"
+        byebug
     end
     
     
@@ -33,9 +34,9 @@ class ZernikesController < ApplicationController
             uploaded_file = params[:zernike][:attachment]
             file_name = uploaded_file.original_filename
             jsonified_file = uploaded_file.as_json
-            #puts jsonified_file # UNCOMMENT MEE
+            # puts jsonified_file # UNCOMMENT MEE
             
-            # extract_data = coefficients_extractor(jsonified_file)
+            extract_data = coefficients_extractor(jsonified_file)
             # puts extract_data
         end
         # if not @file.nil?
@@ -67,11 +68,11 @@ class ZernikesController < ApplicationController
         params.require(:document).permit(:file)
     end
     
-    # private
-    # def coefficients_extractor(jsonified_file)
-    #     important_lines = /^(?!#).+/i
-    #     puts jsonified_file =~ important_lines
+    private
+    def coefficients_extractor(jsonified_file)
+        important_lines = /^[^#].*/i
+        puts jsonified_file =~ important_lines
         
-    # end
+    end
 
 end

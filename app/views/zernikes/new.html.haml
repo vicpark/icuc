@@ -1,15 +1,13 @@
 %h1 Optical Wavefront Analysis
 
-
+// @fields = [1,....10]
 = form_tag zernikes_path, :method => :get, :id => 'input_zernikes' do
+
   - @fields.each do |f|
     - for i in (0..f)
      
-      = label :zernike, f, "Z#{f}"
-     
-      = text_field :zernikes, f, :style =>"width:20px;", :value => 0
-      
-      //%= f.input :user, :input_html => { :value => 0 } %
+      = label :zernike, (f).to_s.concat('_').concat((i).to_s), "Z#{(f).to_s.concat('_').concat((i).to_s)}"
+
     %br
     
         
