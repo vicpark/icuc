@@ -1,7 +1,7 @@
 %h1 Upload Coefficients from a File
 = form_for 'zernike', :multipart=>true  do |f|
   = f.label :attachment
-  = f.file_field :attachment
+  = f.file_field :attachment, :accept => "text/zer"
 
   // = file_field_tag 'uploaded_file', multiple: true, :id =>"upload_button", :accept => "text/html"
   = f.submit "Upload", class: "btn btn-primary",:id =>"upload_button"
