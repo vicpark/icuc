@@ -6,6 +6,7 @@ class ZernikesController < ApplicationController
     
     def main
         @zernikes = Zernike.zernikes
+        @params = Zernike.getparams
     end 
     
     def manual
@@ -18,7 +19,9 @@ class ZernikesController < ApplicationController
         (0..65).each do |i|
             zer << params[i.to_s]
         end
+        #sets in database
         Zernike.setZernikes(zer)
+        #get it from the database
         @zernikes = Zernike.zernikes
         redirect_to root_path
     end
