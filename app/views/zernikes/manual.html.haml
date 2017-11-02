@@ -2,11 +2,20 @@
 %h2 Edit the Zernikes
 
 = form_tag update_path, :method => :post do
-
-  - (0..@zernikes.size-1).each do |i|
-    = label i, i
-    = text_field_tag i     
-    %br
+  %table{:border => 1}
+    %tbody
+      %tr
+        %td i: Index
+        %td n &emsp;
+        %td m &emsp;
+        %td Term nickname
+        %td Term
+      - (0..@zernikes.size-1).each do |i|
+        %tr
+          %td= i
+          %td= ""
+          %td= ""
+          %td= ""
+          %td= text_field_tag i, @zernikes[i]
     
   = submit_tag "Save"
-

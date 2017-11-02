@@ -11,8 +11,8 @@ class Zernike < ActiveRecord::Base
   
   def self.setZernikes(zer)
     (0..65).each do |i|
-      if zer[i] != "" and zer[i].is_a? Numeric
-        instance_variable_set('@z' + i.to_s, zer[i])
+      if zer[i] != "" #and zer[i].is_a? Numeric
+        instance_variable_set('@z' + i.to_s, zer[i].to_f)
       end
     end
   end

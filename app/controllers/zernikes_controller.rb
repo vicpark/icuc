@@ -18,7 +18,6 @@ class ZernikesController < ApplicationController
             zer << params[i.to_s]
         end
         Zernike.setZernikes(zer)
-        flash[:notice] = "Zernikes successfully updated"
         @zernikes = Zernike.zernikes
         redirect_to root_path
     end
