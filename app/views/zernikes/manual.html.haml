@@ -11,11 +11,21 @@
         %td Term nickname
         %td Term
       - (0..@zernikes.size-1).each do |i|
+<<<<<<< HEAD
+=======
+        - if i == 1 or i == 3 or i == 6 or i == 10 or i == 15 or i == 21 or i == 28 or i == 36 or i == 45 or i == 55
+          %td= ""
+        
+>>>>>>> d02f0f0ebf51376e1b2cd0c8bd31b2eb9be6ecfa
         %tr
           %td= i
           %td= ""
           %td= ""
+<<<<<<< HEAD
           %td= ""
+=======
+          %td= @nicknames[i]
+>>>>>>> d02f0f0ebf51376e1b2cd0c8bd31b2eb9be6ecfa
           %td= text_field_tag i, @zernikes[i]
     
   = submit_tag "Save"
