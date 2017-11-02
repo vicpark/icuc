@@ -14,9 +14,15 @@ Given /I am on the "(.+)" page$/  do |page|
     case page
     when "home"
       visit (root_path)
-    else
-      assert 
+    when "manual"
+      visit ('/manual')
     end
+end
+
+Given(/^I should see all zeroes for the Zernike cofficients$/) do
+  @test_vals = Zernike.zernikes
+  puts @test_vals
+  assert_equal([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], @test_vals, failure_message=nil)
 end
 
 When /^(?:|I )go to "(.+)"$/  do |page_name|
