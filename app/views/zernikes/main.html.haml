@@ -23,7 +23,7 @@
     
     .box1 
         %h3 Pupil Diameter
-        = text_field :input_pupil, 'diameter'
+        = text_field_tag 0, @params[0]
         %label mm; pupil diameter from file, OR set to a single value 
         = text_field :input_pupil, 'pupil_value'
         %label mm
@@ -40,7 +40,7 @@
     %br
     .box2 
         %h3 Defocus
-        = text_field :input_defocus, 'defocus'
+        = text_field_tag 1, @params[1]
         %label D
         %select{ :name => "question[question_status]" }
             %option{:value => 1}= "defocus from file"
@@ -55,13 +55,13 @@
     %br        
     .box3 
         %h3 Additional Inputs
-        = text_field :input_coefficients, 'wavelength'
+        = text_field_tag 2, @params[2]
         %label nm; wavelength for calculation
         %br
-        = text_field :input_coefficients, 'output image'
+        = text_field_tag 3, @params[3]
         %label pixels; output image size
         %br
-        = text_field :input_coefficients, 'pupil size'
+        = text_field_tag 4, @params[4]
         %label mm; pupil field size (make bigger to enlarge the image of the point spread function)
 
     %br

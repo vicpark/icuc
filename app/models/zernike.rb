@@ -2,6 +2,12 @@ class Zernike < ActiveRecord::Base
   ### Upload
   require 'open-uri'
   
+  def self.getparams
+    # default values for diameter, defocus, wavelength, pixels, and image size
+    default_vals = [3, 0, 550, 256, 20]
+    return default_vals
+  end 
+  
   def self.zNicknames
     n = ["Piston", "First order (prism)", "Vertical prism",
           "Horizontal prism", "second order (defocus and astigmatism)",
@@ -28,7 +34,7 @@ class Zernike < ActiveRecord::Base
     end
   end
   
-  
+  # stores to the database for the coefficients
   def self.setZernikes(zer)
     (0..65).each do |i|
       if zer[i] != "" #and zer[i].is_a? Numeric
@@ -37,6 +43,7 @@ class Zernike < ActiveRecord::Base
     end
   end
   
+  #gets from database to show in the view
   def self.zernikes
     @zernikes = []
     (0..65).each do |i|
@@ -50,7 +57,7 @@ class Zernike < ActiveRecord::Base
     return @zernikes
   end
   
-  
+  # storing to debase 
   def self.random
     (0..65).each do |i| 
          instance_variable_set('@z' + i.to_s, rand(0.0...0.99))
