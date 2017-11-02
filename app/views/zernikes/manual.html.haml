@@ -1,0 +1,11 @@
+%h1 Optical Wavefront Analysis
+
+= form_tag update_path, :method => :post do
+
+  - (0..@zernikes.size-1).each do |i|
+    = label i, i
+    = text_field_tag i     
+    %br
+    
+  = submit_tag "Save"
+

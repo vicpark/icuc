@@ -1,30 +1,41 @@
 class ZernikesController < ApplicationController
     
     def zernike_params
-        params.require(:zernike).permit(:uploaded_file)
+    #    params.require(:zernike).permit(:uploaded_file)
     end
     
-    
-    
-    def index
+    def main
+        @zernikes = Zernike.zernikes
     end 
     
-    def new
-        @zernike = Zernike.new
-        @fields = Zernike.parameters
-        flash[:notice] = "Zernike equation successfully computed!"
-        #byebug
+    def manual
+        @zernikes = Zernike.zernikes
     end
     
+    def update
+        zer = []
+        (0..65).each do |i|
+            zer << params[i.to_s]
+        end
+        Zernike.setZernikes(zer)
+        flash[:notice] = "Zernikes successfully updated"
+        @zernikes = Zernike.zernikes
+        redirect_to root_path
+    end
+    
+    def random
+        Zernike.random
+        @zernikes = Zernike.zernikes
+        redirect_to root_path 
+    end
     
     def create
         @zernike = Zernike.create!(zernike_params)
         flash[:notice] = "Zernike equation successfully computed!"
-        
         redirect_to get_image_path
     end 
     
-    def show
+    def compute
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements

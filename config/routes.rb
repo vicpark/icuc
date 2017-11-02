@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
+  
+  
+  post "/update", to: "zernikes#update", as: "update"
+  get "/manual", to: "zernikes#manual", as: "enter_manually"
+  post "/random", to: "zernikes#random", as: "random"
   match "/zernikes/upload" => "zernikes#upload", :as => "upload_zernike", via: [:get, :post]
-  #post "/zernikes/upload" => "zernikes#upload", :as => "upload_zernike"
   resources :zernikes
-  
-  
-  
+  root 'zernikes#main'
   get "/zernikes/image", to: "zernikes#get_image", as: "get_image"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'zernikes#index'
+
   # get  'new'    => 'zernike#new',   :as => 'new_zernike'
 
 

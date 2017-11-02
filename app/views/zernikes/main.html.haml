@@ -3,13 +3,18 @@
 //where the pyramid is
 .zernike_pyramid
     %h2.zernikes_header Zernikes
-    = image_tag "zernike_polynomials.png", :style => "height: 300px; width: 300px;"
+    <div class="center">
+    - (0..@zernikes.size-1).each do |i|
+        &emsp; #{"%.3g" % @zernikes[i]} &emsp;
+        - if i == 0 or i == 2 or i == 5 or i == 9 or i == 14 or i == 20 or i == 27 or i == 35 or i == 44 or i == 54 
+            </div><div class="center">
+    </div> 
     
     // buttons to choose input method
     .input_coefficients
         = button_to "read from file", upload_zernike_path, :method => :get
-        = button_to "enter manually", new_zernike_path, :method => :get
-        = button_to "randomly generate"
+        = button_to "enter manually", enter_manually_path, :method => :get
+        = button_to "randomly generate", random_path, :method => :post
 
 // the input boxes
 .parameters_div
