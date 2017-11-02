@@ -3,14 +3,8 @@ class Zernike < ActiveRecord::Base
   require 'open-uri'
   
 
-  
-  def self.new_zernike
-    (0..65).each do |i| 
-         instance_variable_set('@z' + i.to_s, 0.0)
-    end
-  end
-  
-  
+
+  # stores to the database for the coefficients
   def self.setZernikes(zer)
     (0..65).each do |i|
       if zer[i] != "" #and zer[i].is_a? Numeric
@@ -19,6 +13,7 @@ class Zernike < ActiveRecord::Base
     end
   end
   
+  #gets from database to show in the view
   def self.zernikes
     @zernikes = []
     (0..65).each do |i|
@@ -32,7 +27,6 @@ class Zernike < ActiveRecord::Base
     return @zernikes
   end
   
-
   def self.random
     (0..65).each do |i| 
          instance_variable_set('@z' + i.to_s, rand(0.0...0.99))
