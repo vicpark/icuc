@@ -17,8 +17,7 @@ Scenario: manually inputting Zernike equation parameters with zero changes
 Scenario: manually inputting Zernike equation parameters, only changing z1
 #  Given I am on "the home page"
 #  And I press "enter manually"
-#  #Then I should go to input page
-#  #And I input the following "1" for "Z1" 
+#  Then I should go to manual page
+#  And I input the following "1" for "Z1" 
 #  And I press "Save"
 #  Then I should go to "the home page" 
-#  And I should see "Zernike equation successfully computed!"
