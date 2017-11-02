@@ -11,11 +11,14 @@
         %td Term nickname
         %td Term
       - (0..@zernikes.size-1).each do |i|
+        - if i == 0 or i == 2 or i == 5 or i == 9 or i == 14 or i == 20 or i == 27 or i == 35 or i == 44 or i == 54
+          %td= ""
+        
         %tr
           %td= i
           %td= ""
           %td= ""
-          %td= ""
+          %td= @nicknames[i]
           %td= text_field_tag i, @zernikes[i]
     
   = submit_tag "Save"

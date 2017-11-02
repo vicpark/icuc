@@ -10,6 +10,7 @@ class ZernikesController < ApplicationController
     
     def manual
         @zernikes = Zernike.zernikes
+        @nicknames = Zernike.zNicknames
     end
     
     def update
