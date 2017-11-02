@@ -10,9 +10,13 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
-Given /^(?:|I )am on "(.+)"$/  do |page_name|
-    visit('/zernikes')
-    # visit path_to(page_name)
+Given /I am on the "(.+)" page$/  do |page|
+    case page
+    when "home"
+      visit (root_path)
+    else
+      assert 
+    end
 end
 
 When /^(?:|I )go to "(.+)"$/  do |page_name|
@@ -38,13 +42,21 @@ When /^(?:|I )press "(.*)"$/ do |button|
 end
 
 Then /^I should see "(.*)"$/ do |text|
-  pending
-    # if page.respond_to? :should
-    #     page.should have_content(text)
-    # else
-    #     assert page.has_content?(text)
-    # end
+  if page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
 end
+
+Then /^I should not see "(.*)"$/ do |text|
+  if page.respond_to? :should
+    page.should !have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+end
+
 
 Then /^(?:|I )should go to "(.+)"$/  do |page_name|
   visit('/zernikes')
@@ -64,3 +76,4 @@ end
 Then(/^I input the following "([^"]*)" for "([^"]*)"$/) do |arg1, arg2|
   pending # Write code here that turns the phrase above into concrete actions
 end
+
