@@ -11,11 +11,12 @@
     </div> 
     
     // buttons to choose input method
+    <div class="center">
     .input_coefficients
         = button_to "read from file", upload_zernike_path, :method => :get
         = button_to "enter manually", enter_manually_path, :method => :get
         = button_to "randomly generate", random_path, :method => :post
-
+    </div>
 // the input boxes
 .parameters_div
     %h2.parameters_header Parameters
