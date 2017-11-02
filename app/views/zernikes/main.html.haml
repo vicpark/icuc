@@ -20,8 +20,8 @@
 // the input boxes
 .parameters_div
     %h2.parameters_header Parameters
-    
-    .box1 
+    = form_tag compute_path, :method => :post do
+        .box1 
         %h3 Pupil Diameter
         = text_field_tag 0, @params[0]
         %label mm; pupil diameter from file, OR set to a single value 
@@ -36,61 +36,61 @@
         max
         = text_field :input_pupil, 'pupil_range_step'
         step
-    
-    %br
-    .box2 
-        %h3 Defocus
-        = text_field_tag 1, @params[1]
-        %label D
-        %select{ :name => "question[question_status]" }
-            %option{:value => 1}= "defocus from file"
-            %option{:value => 2}= "set to single value" 
-            %option{:value => 3}= "set to range"
-        .defocus_checkboxes
-            %input{:type=>"checkbox"}
-            %label set defocus coefficient to 0
-            %input{:type=>"checkbox"}
-            %label force astigmatism coefficients to 0
-    
-    %br        
-    .box3 
-        %h3 Additional Inputs
-        = text_field_tag 2, @params[2]
-        %label nm; wavelength for calculation
+        
         %br
-        = text_field_tag 3, @params[3]
-        %label pixels; output image size
-        %br
-        = text_field_tag 4, @params[4]
-        %label mm; pupil field size (make bigger to enlarge the image of the point spread function)
+        .box2 
+            %h3 Defocus
+            = text_field_tag 1, @params[1]
+            %label D
+            %select{ :name => "question[question_status]" }
+                %option{:value => 1}= "defocus from file"
+                %option{:value => 2}= "set to single value" 
+                %option{:value => 3}= "set to range"
+            .defocus_checkboxes
+                %input{:type=>"checkbox"}
+                %label set defocus coefficient to 0
+                %input{:type=>"checkbox"}
+                %label force astigmatism coefficients to 0
+    
+        %br        
+        .box3 
+            %h3 Additional Inputs
+            = text_field_tag 2, @params[2]
+            %label nm; wavelength for calculation
+            %br
+            = text_field_tag 3, @params[3]
+            %label pixels; output image size
+            %br
+            = text_field_tag 4, @params[4]
+            %label mm; pupil field size (make bigger to enlarge the image of the point spread function)
 
-    %br
-    .parameters_checkboxes
         %br
+        .parameters_checkboxes
+            %br
         
-        %input{ :type=>"checkbox" }
-        %label Wavefront
+            %input{ :type=>"checkbox" }
+            %label Wavefront
         
-        %input{ :type=>"checkbox" }
-        %label PSF (point spread function)
+            %input{ :type=>"checkbox" }
+            %label PSF (point spread function)
         
-        %input{ :type=>"checkbox" }
-        %label MTF Full (modulation transfer function)
+            %input{ :type=>"checkbox" }
+            %label MTF Full (modulation transfer function)
+        
+            %br
+        
+            %input{ :type=>"checkbox" }
+            %label PTF (Phase Transfer Function)
+        
+            %input{ :type=>"checkbox" }
+            %label MTF line plots (horizontal, vertical, radial average)
+        
+            %input{ :type=>"checkbox" }
+            %label 'convolution for 20/ sized letter'
+            = text_field :zernike, 'insert 20/ here'
         
         %br
-        
-        %input{ :type=>"checkbox" }
-        %label PTF (Phase Transfer Function)
-        
-        %input{ :type=>"checkbox" }
-        %label MTF line plots (horizontal, vertical, radial average)
-        
-        %input{ :type=>"checkbox" }
-        %label 'convolution for 20/ sized letter'
-        = text_field :zernike, 'insert 20/ here'
-        
-    %br
-    .parameters_submit
-        = button_to "Compute"
+        .parameters_submit
+        = submit_tag "Compute"
         
     

@@ -2,7 +2,11 @@ class Zernike < ActiveRecord::Base
   ### Upload
   require 'open-uri'
   
-
+  def self.getparams
+    # default values for diameter, defocus, wavelength, pixels, and image size
+    default_vals = [3, 0, 550, 256, 20]
+    return default_vals
+  end 
 
   # stores to the database for the coefficients
   def self.setZernikes(zer)
