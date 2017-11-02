@@ -6,6 +6,7 @@ class ZernikesController < ApplicationController
     
     def main
         @zernikes = Zernike.zernikes
+        
     end 
     
     def manual

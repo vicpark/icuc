@@ -2,25 +2,7 @@ class Zernike < ActiveRecord::Base
   ### Upload
   require 'open-uri'
   
-  def self.zNicknames
-    n = ["Piston", "First order (prism)", "Vertical prism",
-          "Horizontal prism", "second order (defocus and astigmatism)",
-          "Astigmatism",
-                "Defocus",
-                "Astigmatism",
-                "Third order (coma-like terms)",
-                "Trefoil",
-                "Vertical coma",
-                "Horizontal coma",
-                "Trefoil",
-                "Fourth order",
-                "Quadrafoil",
-                "Secondary astig.",
-                "Spherical aberration",
-                "Secondary astig.",
-"                Quadrafoil"]
-    return n
-  end
+
   
   def self.new_zernike
     (0..65).each do |i| 
@@ -50,7 +32,7 @@ class Zernike < ActiveRecord::Base
     return @zernikes
   end
   
-  
+
   def self.random
     (0..65).each do |i| 
          instance_variable_set('@z' + i.to_s, rand(0.0...0.99))
@@ -73,6 +55,24 @@ class Zernike < ActiveRecord::Base
   #end
 
   
-  
+  def self.zNicknames
+    n = ["Piston", "First order (prism)", "Vertical prism",
+          "Horizontal prism", "second order (defocus and astigmatism)",
+          "Astigmatism",
+                "Defocus",
+                "Astigmatism",
+                "Third order (coma-like terms)",
+                "Trefoil",
+                "Vertical coma",
+                "Horizontal coma",
+                "Trefoil",
+                "Fourth order",
+                "Quadrafoil",
+                "Secondary astig.",
+                "Spherical aberration",
+                "Secondary astig.",
+                "Quadrafoil"]
+    return n
+  end
   
 end 
