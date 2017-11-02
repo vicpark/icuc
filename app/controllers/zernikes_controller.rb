@@ -39,7 +39,6 @@ class ZernikesController < ApplicationController
     end 
     
     def compute
-        flash[:notice] = params
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
