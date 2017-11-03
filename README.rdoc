@@ -10,7 +10,7 @@ Travis-CI:
 {<img src="https://travis-ci.org/vicpark/icuc.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/vicpark/icuc]
 
 
-Link to the app: http://169.229.228.246/
+Link to the app: http://169.229.228.246
 
 Link to our pivotal tracker: https://www.pivotaltracker.com/n/projects/2118168
 
