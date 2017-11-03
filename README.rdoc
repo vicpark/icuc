@@ -8,7 +8,7 @@ Travis-CI:
 {<img src="https://travis-ci.org/vicpark/icuc.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/vicpark/icuc]
 
 
-Link to our deployed heroku app: https://mysterious-plains-16674.herokuapp.com/
+Link to our deployed server app: http://169.229.228.246/
 
 Link to our pivotal tracker: https://www.pivotaltracker.com/n/projects/2118168
 
