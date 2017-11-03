@@ -33,7 +33,7 @@ class Zernike < ActiveRecord::Base
   
   def self.random
     (0..65).each do |i| 
-         instance_variable_set('@z' + i.to_s, rand(0.0...0.99))
+         instance_variable_set('@z' + i.to_s, rand(-0.999...0.999))
     end
   end
   
