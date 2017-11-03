@@ -67,6 +67,18 @@ When /^I upload a file with valid coefficients/ do
   attach_file(:zernike_attachment, File.join('./features', 'Subject1_600.zer'), visible: 'false')
   click_button "Upload"
 end
+
+When /^I upload a file with invalid coefficients/ do
+  # pending
+  attach_file(:zernike_attachment, File.join('./features', 'Subject1_600_corrupted.zer'), visible: 'false')
+  click_button "Upload"
+end
+
+When /^I upload a not .zer file type/ do
+  # pending
+  attach_file(:zernike_attachment, File.join('./features', 'compMTF_FFTbased.m'), visible: 'false')
+  click_button "Upload"
+end
                                                                                                          
 
 Then(/^I should go to input page$/) do
