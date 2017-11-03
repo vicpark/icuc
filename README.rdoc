@@ -1,6 +1,6 @@
 == README
 
-{<img src="https://codeclimate.com/github/vicpark/icuc/gpa.svg" />}[https://codeclimate.com/github/vicpark/icuc]
+{<img src="https://codeclimate.com/github/vicpark/icuc.svg" />}[https://codeclimate.com/github/vicpark/icuc]
 {<img src="https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg" />}[https://codeclimate.com/github/vicpark/icuc]
 
 Travis-CI: 
