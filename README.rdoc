@@ -1,14 +1,14 @@
 == README
 CodeClimate:
-{<img src="https://codeclimate.com/github/vicpark/icuc/badges/gpa.svg" />}[https://codeclimate.com/github/vicpark/icuc]
-{<img src="https://codeclimate.com/github/vicpark/icuc/badges/coverage.svg" />}[https://codeclimate.com/github/vicpark/icuc]
 
+{<img src="https://api.codeclimate.com/v1/badges/dbc977637e9136aa79e8/maintainability" />}[https://codeclimate.com/github/vicpark/icuc/maintainability]
+{<img src="https://api.codeclimate.com/v1/badges/dbc977637e9136aa79e8/test_coverage" />}[https://codeclimate.com/github/vicpark/icuc/test_coverage]
 Travis-CI: 
 
 {<img src="https://travis-ci.org/vicpark/icuc.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/vicpark/icuc]
 
 
-Link to our deployed heroku app: https://mysterious-plains-16674.herokuapp.com/
+Link to the app: http://169.229.228.246/
 
 Link to our pivotal tracker: https://www.pivotaltracker.com/n/projects/2118168
 
