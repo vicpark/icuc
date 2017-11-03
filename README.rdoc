@@ -12,6 +12,7 @@ Travis-CI:
 
 Link to the app: http://169.229.228.246
 
+
 Link to our pivotal tracker: https://www.pivotaltracker.com/n/projects/2118168
 
 Description of customer's business need: Our customer, Austin, wants to develop a platform that can be used to compute image quality metrics for the eye using a set of Zernike polynomials as input. He hopes to use this platform to teach his optometry students more about the imperfections of the eye. Here is the link to Austin's optometry lab's page: http://roorda.vision.berkeley.edu/
