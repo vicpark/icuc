@@ -1,7 +1,7 @@
 == README
 CodeClimate:
 
-<a href="https://codeclimate.com/github/vicpark/icuc/maintainability"><img src="https://api.codeclimate.com/v1/badges/dbc977637e9136aa79e8/maintainability" /></a>
+{<img src="https://api.codeclimate.com/v1/badges/dbc977637e9136aa79e8/maintainability" />}[https://codeclimate.com/github/vicpark/icuc/maintainability]
 
 {<img src="https://api.codeclimate.com/v1/badges/dbc977637e9136aa79e8/test_coverage" />}[https://codeclimate.com/github/vicpark/icuc/test_coverage]
 
