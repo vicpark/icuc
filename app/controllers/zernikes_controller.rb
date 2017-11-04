@@ -39,6 +39,14 @@ class ZernikesController < ApplicationController
     end 
     
     def compute
+        zernikes = Zernike.zernikes.to_s
+        parameters = []
+        (0..4).each do |i|
+            parameters << params[i.to_s]
+        end
+        system("echo #{zernikes} > zernike.txt")
+        system("echo #{parameters} >> zernike.txt")
+        @file = "zernike.txt"
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
@@ -52,12 +60,18 @@ class ZernikesController < ApplicationController
             jsonified_file = uploaded_file.as_json["tempfile"]
             extract_data = coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
             @zernike_coefficients = params[:coefficients]
-            p @zernike_coefficients.length
-            if  @zernike_coefficients.nil? or @zernike_coefficients.empty? or @zernike_coefficients.length != 66
+            #p @zernike_coefficients.length
+            if @zernike_coefficients.nil? or @zernike_coefficients.empty? or @zernike_coefficients.length != 66
                 flash[:notice] = "Unable to upload file"
             else
                 flash[:notice] = "File successfully uploaded!"
+                coef = []
+                @zernike_coefficients.each do |c|
+                    coef << c[1].to_f
+                end
+                Zernike.setZernikes(coef)
             end
+            
             redirect_to root_path 
         end
     end

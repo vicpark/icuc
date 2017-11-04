@@ -1,5 +1,10 @@
 %h1 Image output of the Zernike equation
 
+.loader-wrapper
+    .loader
+    .loader-section.section-left
+    .loader-section.section-right
+
 .output_choices
 //   = select :zernike, :output_files, ['Wavefront','PSF (1 of xx)', 'Convolution (1 of xx)', 'etc.']
 
@@ -27,5 +32,6 @@
 = button_to "copy"
 = button_to "save current as matrix"
 = button_to "save all as matrices"
+= button_to "home page", root_path, :method => :get
 // %a{:href => "Download", :download => "images/pics.png", :target => "blank"}
 // = link_to "Compute Zernike equation", new_zernike_path

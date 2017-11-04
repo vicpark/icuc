@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   root "zernikes#main"
   post "/compute", to: "zernikes#compute", as: "compute"
+  get "/compute", to: "zernikes#compute"
   post "/update", to: "zernikes#update", as: "update"
   get "/manual", to: "zernikes#manual", as: "enter_manually"
   post "/random", to: "zernikes#random", as: "random"
