@@ -6,6 +6,7 @@ class ZernikesController < ApplicationController
     
     def main
         @zernikes = Zernike.zernikes
+        @params = Zernike.getparams
     end 
     
     def manual
@@ -18,7 +19,9 @@ class ZernikesController < ApplicationController
         (0..65).each do |i|
             zer << params[i.to_s]
         end
+        #sets in database
         Zernike.setZernikes(zer)
+        #get it from the database
         @zernikes = Zernike.zernikes
         redirect_to root_path
     end
@@ -36,6 +39,14 @@ class ZernikesController < ApplicationController
     end 
     
     def compute
+        zernikes = Zernike.zernikes.to_s
+        parameters = []
+        (0..4).each do |i|
+            parameters << params[i.to_s]
+        end
+        system("echo #{zernikes} > zernike.txt")
+        system("echo #{parameters} >> zernike.txt")
+        @file = "zernike.txt"
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
@@ -47,40 +58,22 @@ class ZernikesController < ApplicationController
             uploaded_file = params[:zernike][:attachment]
             file_name = uploaded_file.original_filename
             jsonified_file = uploaded_file.as_json["tempfile"]
-            extract_data = coefficients_extractor(jsonified_file)
-            @file = extract_data
-            
-            if  @file.nil? or @file.empty?
-                flash[:warning] = "Unable to upload file"
-                # made it a "warning" instead of "notice" so we can change the colors/text
+            extract_data = coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            @zernike_coefficients = params[:coefficients]
+            #p @zernike_coefficients.length
+            if @zernike_coefficients.nil? or @zernike_coefficients.empty? or @zernike_coefficients.length != 66
+                flash[:notice] = "Unable to upload file"
             else
                 flash[:notice] = "File successfully uploaded!"
+                coef = []
+                @zernike_coefficients.each do |c|
+                    coef << c[1].to_f
+                end
+                Zernike.setZernikes(coef)
             end
             
-            redirect_to zernikes_path
+            redirect_to root_path 
         end
-      
-        # if not @file.nil?
-        #     byebug
-        # end
-        # self.content = [TEXT INSIDE test.txt]
-    #     @file = params[:file]
-    #     byebug
-    #     @zernike = Zernike.
-    #     if @zernike.save
-    #         flash[:notice] = "File successfully uploaded!"
-    #         redirect_to 
-    #     else 
-    #         flash[:notice] = "Unable to upload file"
-            
-        # byebug
-        # @file = params[:file]
-        # if @file.nil? or @file.empty?   
-        #     flash[:notice] = "File is empty!"
-        # else 
-        #     flash[:notice] = "File successfully uploaded!"
-        # end
-    
     end
     
     ###
@@ -91,14 +84,28 @@ class ZernikesController < ApplicationController
     
     private
     def coefficients_extractor(jsonified_file)
-        important_lines = /^[^#].*/i
+        important_lines = /^[^#].*/i  # extracts lines that matter, the ones with numbers
+        no_space = /(.+)\s+(.+)\s+(.+)/ # separates the numbers
+        coefficients = Hash.new(0)
         for key in jsonified_file
-            # assign variable "Z#{key[0]}_#{key[1]}" value key[3]
-            puts important_lines.match(key)
-            
+            line = important_lines.match(key)
+            if line.nil?
+                next
+            else
+                everything = no_space.match(line[0])
+                if not everything.nil?
+                    subscript = everything[1]
+                    superscript = everything[2]
+                    coefficient = everything[3]
+                    # puts no_space.match(line[0])[1]
+                    coefficients["Z#{subscript}_#{superscript}"] = coefficient
+                end
+            end
+        end
+        params[:coefficients] = coefficients
             # format printed loosely is : subscript superscript actual_coefficient
             
-        end
+        # end
         
     end
 

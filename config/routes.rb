@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   
   root "zernikes#main"
+  post "/compute", to: "zernikes#compute", as: "compute"
+  get "/compute", to: "zernikes#compute"
   post "/update", to: "zernikes#update", as: "update"
   get "/manual", to: "zernikes#manual", as: "enter_manually"
   post "/random", to: "zernikes#random", as: "random"
   get "/", to: "zernikes#main", as: "home"
-  post "/", to: "zernikes#compute", as: "compute"
+ 
   match "/zernikes/upload" => "zernikes#upload", :as => "upload_zernike", via: [:get, :post]
   
   resources :zernikes

@@ -14,12 +14,12 @@ Scenario: uploading Zernike coefficients correctly from a file
 Scenario: trying to upload an incomplete file #e.g. only 60 coefficients listed in file
     Given I am on the "home" page
     Then I press "read from file"
-    When I upload a file with valid coefficients
-    Then I should see "Fix your formatting!"
+    When I upload a file with invalid coefficients
+    Then I should see "Unable to upload file"
   
  Scenario: trying to upload a corrupt file #e.g. unreadable type 
     Given I am on the "home" page
     Then I press "read from file"
-    And I press "Upload"
+    When I upload a not .zer file type
     Then I should see "Unable to upload file"
   
