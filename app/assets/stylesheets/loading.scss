@@ -86,14 +86,23 @@ h1 {
   &.section-left {
     left: 0;
     background-image: url('images/cute.gif');
-    background-repeat: no-repeat;
-    background-size: 100%;
+    background-repeat: no-repeat fixed;
+    //background-size: 100%;.
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    
   }
   &.section-right{
     right: 0;
     background-image: url('images/cute.gif');
-    background-repeat: no-repeat;
-    background-size: 100%;
+    background-repeat: no-repeat fixed;
+    //background-size: 100%;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
   }
 }
 
