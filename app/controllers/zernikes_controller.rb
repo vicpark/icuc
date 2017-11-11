@@ -14,6 +14,16 @@ class ZernikesController < ApplicationController
         @nicknames = Zernike.zNicknames
     end
     
+    def set_all_zero
+        zer = []
+        (0..65).each do |i|
+            zer << params[0.to_s]
+        end
+        Zernike.setZernikes(zer)
+        @zernikes = Zernike.zernikes
+        redirect_to enter_manually_path
+    end
+    
     def update
         zer = []
         (0..65).each do |i|
