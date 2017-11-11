@@ -8,19 +8,23 @@
 .output_choices
 //   = select :zernike, :output_files, ['Wavefront','PSF (1 of xx)', 'Convolution (1 of xx)', 'etc.']
 
-%input{name: 'Wavefront', type: "checkbox", value: "choice1"}
+%input{name: 'Wavefront', class: "one", type: "checkbox", value: "choice1"}
 %label Wavefront
 %br
-%input{name: 'PSF', type: "checkbox", value: "choice2"}
+%input{name: 'PSF', class: "one", type: "checkbox", value: "choice2"}
 %label PSF (1 of xx)
 %br
-%input{name: 'Convolution', type: "checkbox", value: "choice3"}
+%input{name: 'Convolution', class: "one", type: "checkbox", value: "choice3"}
 %label Convolution (1 of xx)
 %br
-%input{name: 'MTF', type: "checkbox", value: "choice4"}
+%input{name: 'MTF', class: "one", type: "checkbox", value: "choice4"}
 %label MTF etc
 %br
 
+:javascript 
+    $('.one').on('change', function() {
+        $('.one').not(this).prop('checked', false);  
+    });
 
 = image_tag "pic1.png", :style=>"height: 300px; width: 300px;", :class=>"output_images"
 = image_tag "pic2.png", :style=>"height: 300px; width: 300px;", :class=>"output_images"
