@@ -1,13 +1,23 @@
-# Feature: save output from computed Zernike equation
+Feature: generating images and saving output from computed Zernike equation
  
-#   #As an optometry student
-#   #I want to be able to see the images generated from the Zernike equation
-#   #so I can study imperfections of the eye
+  As an optometry student, 
+  I want to be able to save the images outputted from the zernike equation,
+  so that I can use the images for studying later.
   
-# Scenario: save images as a zip file
-#   When I go to "the home page"
-#   And I click "save as zip file"
-#   Then I should see "Successfully downloaded zip file"
+Scenario: downloading all images outputed from zernike equation
+  Given I am on the "home" page
+  And I press "Compute"
+  And I wait for 15 seconds
+  And I press the download all images button
+  Then I should download all the images
+ 
+
+Scenario: downloading one image outputted from the zernike equation
+  Given I am on the "home" page
+  And I press "Compute"
+  And I wait for 15 seconds
+  And I press download for one specific images
+  Then I should download one image
 
 
 
