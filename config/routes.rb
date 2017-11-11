@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/compute", to: "zernikes#compute"
   post "/update", to: "zernikes#update", as: "update"
   get "/manual", to: "zernikes#manual", as: "enter_manually"
+  post "/set_all_zero", to: "zernikes#set_all_zero", as: "set_all_zero"
   post "/random", to: "zernikes#random", as: "random"
   get "/", to: "zernikes#main", as: "home"
  

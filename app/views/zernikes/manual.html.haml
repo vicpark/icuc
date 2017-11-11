@@ -1,6 +1,8 @@
 %h1 Optical Wavefront Analysis
 %h2 Edit the Zernikes
 
+= button_to "Reset to All Zeros", set_all_zero_path, :method => :post
+
 = form_tag update_path, :method => :post do
   %table{:border => 1}
     %tbody
