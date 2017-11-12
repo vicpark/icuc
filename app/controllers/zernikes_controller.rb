@@ -51,12 +51,15 @@ class ZernikesController < ApplicationController
     def compute
         zernikes = Zernike.zernikes.to_s
         parameters = []
+        
         (0..4).each do |i|
             parameters << params[i.to_s]
         end
+        @files = Matlab.compute(zernikes, parameters)
         system("echo #{zernikes} > zernike.txt")
         system("echo #{parameters} >> zernike.txt")
         @file = "zernike.txt"
+        flash[:notice] = @files
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
