@@ -18,7 +18,8 @@ module ApplicationHelper
         set_env()
         file = "result.txt"
         run = "java -classpath app/matlab:'/usr/local/MATLAB/MATLAB_Runtime/v901/toolbox/javabuilder/jar/javabuilder.jar':./WaveReq.jar wave"
-        system(run + arg + " > " + file)
+        make_log, s = Open3.capture2e(run + arg + " > " + file)
+        #system(run + arg + " > " + file)
         
         return run + arg + " > " + file #read(file)
     end
