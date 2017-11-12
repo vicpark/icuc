@@ -22,7 +22,7 @@ module ApplicationHelper
         make_log, s = Open3.capture2e(run + arg + " > " + file)
         #system(run + arg + " > " + file)
         
-        return make_log.to_s + s.to_s#read(file)
+        return make_log.to_s + s.to_s + "\n" + run + arg#read(file)
     end
     
     
