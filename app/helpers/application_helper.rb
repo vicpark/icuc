@@ -10,7 +10,7 @@ module ApplicationHelper
         parameters.each do |p|
             arg += " " + p.to_s
         end
-        arg += " 0 "
+        arg += " 0 0"
         # options
         (0...6).each do |o|
             arg += " " + 1.to_s
