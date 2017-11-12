@@ -1,5 +1,5 @@
 class ZernikesController < ApplicationController
-    
+    include ApplicationHelper  
     def zernike_params
     #    params.require(:zernike).permit(:uploaded_file)
     end
@@ -49,13 +49,15 @@ class ZernikesController < ApplicationController
     end 
     
     def compute
-        zernikes = Zernike.zernikes.to_s
+        
+        zernikes = Zernike.zernikes
         parameters = []
         
         (0..4).each do |i|
             parameters << params[i.to_s]
         end
-        @files = Matlab.compute(zernikes, parameters)
+        options = nil
+        @files = ApplicationHelper.compute(zernikes, parameters, options)
         system("echo #{zernikes} > zernike.txt")
         system("echo #{parameters} >> zernike.txt")
         @file = "zernike.txt"
