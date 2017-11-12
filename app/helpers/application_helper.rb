@@ -1,4 +1,5 @@
 module ApplicationHelper
+    require 'open3'
     def self.compute(zernikes, parameters, options)
         arg = " "
         arg += '\'' + (0...8).map { (65 + rand(26)).chr }.join + '\''
