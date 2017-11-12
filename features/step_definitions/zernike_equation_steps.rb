@@ -14,9 +14,15 @@ Given /I am on the "(.+)" page$/  do |page|
     case page
     when "home"
       visit (root_path)
-    else
-      assert 
+    when "manual"
+      visit ('/manual')
     end
+end
+
+Given(/^I should see all zeroes for the Zernike cofficients$/) do
+  @test_vals = Zernike.zernikes
+  puts @test_vals
+  assert_equal([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], @test_vals, failure_message=nil)
 end
 
 When /^(?:|I )go to "(.+)"$/  do |page_name|
@@ -89,3 +95,41 @@ Then(/^I input the following "([^"]*)" for "([^"]*)"$/) do |arg1, arg2|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
+Given /^I wait for (\d+) seconds?$/ do |n|
+  sleep(n.to_i)
+end
+
+Then /^"([^\"]*)" field contain "([^\"]*)"$/ do |field, value|
+  field_labeled(field).value.should =~ /#{value}/
+end
+
+# regex matching for generating_image feature
+Given(/^I press the download all images button$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should download all the images$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I press download for one specific images$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should download one image$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+#regex matching for compute image feature
+
+Given(/^I press the wavefront checkbox$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the wavefront image that corresponds to the default parameters$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the wavefront image that corresponds to those parameters$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
