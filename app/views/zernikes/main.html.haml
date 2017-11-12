@@ -4,7 +4,7 @@
 .zernike_pyramid
     %h2.zernikes_header Zernikes
     <div class="center">
-    - (0..@zernikes.size-1).each do |i|
+    - (0...@zernikes.size).each do |i|
         &emsp; #{"%.3g" % @zernikes[i]} &emsp;
         - if i == 0 or i == 2 or i == 5 or i == 9 or i == 14 or i == 20 or i == 27 or i == 35 or i == 44 or i == 54 
             </div><div class="center">

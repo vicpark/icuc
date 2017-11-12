@@ -10,7 +10,7 @@ class Zernike < ActiveRecord::Base
 
   # stores to the database for the coefficients
   def self.setZernikes(zer)
-    (0..65).each do |i|
+    (0...65).each do |i|
       if zer[i] != "" #and zer[i].is_a? Numeric
         instance_variable_set('@z' + i.to_s, zer[i].to_f)
       end
@@ -20,10 +20,10 @@ class Zernike < ActiveRecord::Base
   #gets from database to show in the view
   def self.zernikes
     @zernikes = []
-    (0..65).each do |i|
-      z = instance_variable_get('@z' + i.to_s)
+    (0...65).each do |i|
+      z = instance_variable_get('@z' + (i+1).to_s)
       if not z.is_a? Numeric
-        instance_variable_set('@z' + i.to_s, 0.0)
+        instance_variable_set('@z' + (i+1).to_s, 0.0)
         z = 0.0
       end
       @zernikes << z
@@ -32,8 +32,8 @@ class Zernike < ActiveRecord::Base
   end
   
   def self.random
-    (0..65).each do |i| 
-         instance_variable_set('@z' + i.to_s, rand(-0.999...0.999))
+    (0...65).each do |i| 
+         instance_variable_set('@z' + (i+1).to_s, rand(-0.999...0.999))
     end
   end
   

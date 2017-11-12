@@ -5,7 +5,7 @@ class ZernikesController < ApplicationController
     end
     
     def main
-        @zernikes = Zernike.zernikes
+        @zernikes = [0.0] + Zernike.zernikes
         @params = Zernike.getparams
     end 
     
@@ -58,10 +58,8 @@ class ZernikesController < ApplicationController
         end
         options = nil
         @files = ApplicationHelper.compute(zernikes, parameters, options)
-        system("echo #{zernikes} > zernike.txt")
-        system("echo #{parameters} >> zernike.txt")
-        @file = "zernike.txt"
-        flash[:notice] = @files
+        flash[:notice] = zernikes.length
+        #flash[:notice] = @files
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
