@@ -19,7 +19,8 @@ module ApplicationHelper
         file = "result.txt"
         run = "java -classpath app/matlab:'/usr/local/MATLAB/MATLAB_Runtime/v901/toolbox/javabuilder/jar/javabuilder.jar':./WaveReq.jar wave"
         system(run + arg + "> " + file)
-        return read(file)
+        
+        return run + arg + "> " + file #read(file)
     end
     
     
