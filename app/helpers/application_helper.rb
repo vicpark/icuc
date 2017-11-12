@@ -17,7 +17,7 @@ module ApplicationHelper
         end
         set_env()
         file = "result.txt"
-        run = "java -classpath .:'/usr/local/MATLAB/MATLAB_Runtime/v901/toolbox/javabuilder/jar/javabuilder.jar':../matlab/WaveReq.jar ../matlab/wave "
+        run = "java -classpath app/matlab:'/usr/local/MATLAB/MATLAB_Runtime/v901/toolbox/javabuilder/jar/javabuilder.jar':./WaveReq.jar wave"
         system(run + arg + "> " + file)
         return read(file)
     end
