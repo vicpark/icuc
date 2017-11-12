@@ -1,7 +1,7 @@
 module ApplicationHelper
     def self.compute(zernikes, parameters, options)
         arg = " "
-        arg += (0...8).map { (65 + rand(26)).chr }.join
+        arg += '\'' + (0...8).map { (65 + rand(26)).chr }.join + '\''
         arg += " "
         zernikes.each do |z|
             arg += " " + z.to_s
@@ -18,9 +18,9 @@ module ApplicationHelper
         set_env()
         file = "result.txt"
         run = "java -classpath app/matlab:'/usr/local/MATLAB/MATLAB_Runtime/v901/toolbox/javabuilder/jar/javabuilder.jar':./WaveReq.jar wave"
-        system(run + arg + "> " + file)
+        system(run + arg + " > " + file)
         
-        return run + arg + "> " + file #read(file)
+        return run + arg + " > " + file #read(file)
     end
     
     
