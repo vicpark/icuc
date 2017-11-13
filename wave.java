@@ -1,5 +1,5 @@
 import com.mathworks.toolbox.javabuilder.*;
-import app/matlab/WaveReq.*;
+import WaveReq.*;
 
 class wave
 {
