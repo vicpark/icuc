@@ -25,7 +25,7 @@ module ApplicationHelper
         system(path)
         system(run + arg + " > " + file)
         
-        return make_log.to_s + s.to_s #read(file)
+        return read(file)
     end
     
     
