@@ -49,10 +49,8 @@ class ZernikesController < ApplicationController
     end 
     
     def compute
-        
-        zernikes = Zernike.zernikes
+	zernikes = Zernike.zernikes
         parameters = []
-        
         (0..4).each do |i|
             parameters << params[i.to_s]
         end

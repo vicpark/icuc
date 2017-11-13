@@ -2,7 +2,8 @@ module ApplicationHelper
     require 'open3'
     def self.compute(zernikes, parameters, options)
         arg = " "
-        arg += '\'' + (0...8).map { (65 + rand(26)).chr }.join + '\''
+	name = (0...8).map { (65 + rand(26)).chr }.join
+        arg += '\'' + name + '\''
         arg += " "
         zernikes.each do |z|
             arg += " " + z.to_s
@@ -16,30 +17,24 @@ module ApplicationHelper
         (0...6).each do |o|
             arg += " " + 1.to_s
         end
-        #set_env()
         file = "result.txt"
         run = "java -classpath :'/usr/local/MATLAB/MATLAB_Runtime/v901/toolbox/javabuilder/jar/javabuilder.jar':./WaveReq.jar wave"
         path = "export LD_LIBRARY_PATH='/usr/local/MATLAB/MATLAB_Runtime/v901/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/opengl/lib/glnxa64'"
-        #make_log, s = Open3.capture2e(path)
-        #make_log, s = Open3.capture2e(run + arg + " > " + file)
-        system(path)
-        system(run + arg + " > " + file)
-        
-        return read(file)
+        make_log, s = Open3.capture2e(path + "\n" + run + arg + " > " + file)
+        system("rm images*")
+	system("mv "+ name + "* images")        
+        return read(file, name)
     end
     
     
-    def self.set_env()
-        path = "export LD_LIBRARY_PATH='/usr/local/MATLAB/MATLAB_Runtime/v901/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/opengl/lib/glnxa64'"
-        system(path) 
-    end
-    
-    def self.read(file)
-        res = ""
+    def self.read(file, name)
+        files = []
         f = File.open(file, "r")
         f.each_line do |line|
-            res += line
+	    if line =~ /^#{name}/
+                files += [line]
+	    end
         end
-        return res
+        return files
     end
 end
