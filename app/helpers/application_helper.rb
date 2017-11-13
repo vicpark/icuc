@@ -16,13 +16,15 @@ module ApplicationHelper
         (0...6).each do |o|
             arg += " " + 1.to_s
         end
-        set_env()
+        #set_env()
         file = "result.txt"
         run = "java -classpath :'/usr/local/MATLAB/MATLAB_Runtime/v901/toolbox/javabuilder/jar/javabuilder.jar':./WaveReq.jar wave"
+        path = "export LD_LIBRARY_PATH='/usr/local/MATLAB/MATLAB_Runtime/v901/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/opengl/lib/glnxa64'"
+        make_log, s = Open3.capture2e(path)
         make_log, s = Open3.capture2e(run + arg + " > " + file)
         #system(run + arg + " > " + file)
         
-        return make_log.to_s + s.to_s + "\n" + run + arg#read(file)
+        return make_log.to_s + s.to_s #read(file)
     end
     
     
