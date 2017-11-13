@@ -1,3 +1,4 @@
+<SCRIPT>  type="text/javascript" language="JavaScript" src="images.js"</SCRIPT>
 %h1 Image output of the Zernike equation
 
 .loader-wrapper
@@ -21,17 +22,16 @@
 %label MTF etc
 %br
 
-:javascript 
-    $('.one').on('change', function() {
-        $('.one').not(this).prop('checked', false);  
-    });
-
-= image_tag "pic1.png", :style=>"height: 300px; width: 300px;", :class=>"output_images"
-= image_tag "pic2.png", :style=>"height: 300px; width: 300px;", :class=>"output_images"
-<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
-
-%br/
+<div class="computed images">
+- @files.each do |image|
+    #{image}
+    =image_tag  image, :class => "image"
+-#   %img(:class=>"image", :src=>image)    
+-#<img class="image" src=image+".jpg" style="width:100%">
+    
+<button class="left" onclick="plusDivs(-1)">&#10094;</button>
+<button class="right" onclick="plusDivs(1)">&#10095;</button>
+</div>
 
 = button_to "copy"
 = button_to "save current as matrix"

@@ -56,7 +56,6 @@ class ZernikesController < ApplicationController
         end
         options = nil
         @files = ApplicationHelper.compute(zernikes, parameters, options)
-        flash[:notice] = @files
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
