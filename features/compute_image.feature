@@ -17,7 +17,7 @@ Scenario: computing images using manually entered values and selecting wavefront
   Given I am on the "home" page
   And I press "enter manually"
   Then I am on the "manual" page
-  And I fill in "4321" for "0" 
+  And I fill in "4321" for "1" 
   And I press "Save"
   Then I am on the "home" page
   And I press the wavefront checkbox

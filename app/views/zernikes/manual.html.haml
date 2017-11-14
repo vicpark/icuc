@@ -14,18 +14,18 @@
         %td Term
       %tr
         %td= 0
-        %td= ""
-        %td= ""
-        %td= @nicknames[0]
-        %td= 0.0
-      - (0...@zernikes.size).each do |i|
-        - if i == 0 or i == 2 or i == 5 or i == 9 or i == 14 or i == 20 or i == 27 or i == 35 or i == 44 or i == 54
+        %td= @nicknames[0][0]
+        %td= @nicknames[0][1]
+        %td= @nicknames[0][2]
+        %td= text_field_tag 0, @zernikes[0], disabled: true
+      - (1..65).each do |i|
+        - if i == 1 or i == 3 or i == 6 or i == 10 or i == 15 or i == 21 or i == 28 or i == 36 or i == 45 or i == 55
           %td= ""
         %tr
-          %td= i+1
-          %td= ""
-          %td= ""
-          %td= @nicknames[i+1]
+          %td= i
+          %td= @nicknames[i][0]
+          %td= @nicknames[i][1]
+          %td= @nicknames[i][2]
           %td= text_field_tag i, @zernikes[i]
     
   = submit_tag "Save"

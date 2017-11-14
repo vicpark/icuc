@@ -5,7 +5,7 @@ class ZernikesController < ApplicationController
     end
     
     def main
-        @zernikes = [0.0] + Zernike.zernikes
+        @zernikes = Zernike.zernikes
         @params = Zernike.getparams
     end 
     
@@ -91,7 +91,6 @@ class ZernikesController < ApplicationController
                 end
                 Zernike.setZernikes(coef)
             end
-            
             redirect_to root_path 
         end
     end
