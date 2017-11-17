@@ -24,9 +24,7 @@
 
 <div class="computed images">
 - @files.each do |image|
-    =image_tag  image, :class => "image"
--#   %img(:class=>"image", :src=>image)    
--#<img class="image" src=image+".jpg" style="width:100%">
+    =image_tag  image, :id => "image"
     
 <button class="left" onclick="plusDivs(-1)">&#10094;</button>
 <button class="right" onclick="plusDivs(1)">&#10095;</button>
