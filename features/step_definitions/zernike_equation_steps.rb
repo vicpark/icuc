@@ -80,6 +80,15 @@ When /^I upload a file with invalid coefficients/ do
   click_button "Upload"
 end
 
+Then /^(?:|I )should go to "(.+)"$/  do |page_name|
+  visit('/zernikes')
+end
+
+When /^(?:|I )check "(.+)"$/ do |field|
+  check(field)
+end
+
+
 When /^I upload a not .zer file type/ do
   # pending
   attach_file(:zernike_attachment, File.join('./features', 'compMTF_FFTbased.m'), visible: 'false')

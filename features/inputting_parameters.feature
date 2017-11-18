@@ -19,6 +19,7 @@ Scenario: manually inputting Zernike equation parameters, only changing z1
 
 Scenario: using default paramter values without changes
   Given I am on the "home" page
+  And I check "options[Wavefront]"
   And I press "Compute"
   And I wait for 15 seconds
   And I press "home page"

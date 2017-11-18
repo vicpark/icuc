@@ -7,6 +7,7 @@ class ZernikesController < ApplicationController
     def main
         @zernikes = Zernike.zernikes
         @params = Zernike.getparams
+        @options = Zernike.options
     end 
     
     def manual
@@ -49,24 +50,32 @@ class ZernikesController < ApplicationController
     end 
     
     def compute
+        puts params
 	zernikes = Zernike.zernikes
         parameters = []
         (0..4).each do |i|
             parameters << params[i.to_s]
-        end
-        options = ""
+        end 
+        @checked_options = params[:options] #wavefront, psf, 
+        puts @checked_options
+        
         # to run matlab code. 
         #@files = ApplicationHelper.compute(zernikes, parameters, options)
         
         system("ls app/assets/images/computed* > app/assets/list.txt")
         files = []
+        filenames = []
         f = File.open("app/assets/list.txt", "r")
+        
         f.each_line do |line|
             line =~ /(compute.*)/
-            files << $1 
+            files << $1
+            filenames << line
+
         end
         @files = files
-        flash[:notice] = zernikes.to_s + parameters.to_s + options.to_s
+        @filenames = filenames
+        flash[:notice] = zernikes.to_s + parameters.to_s #+ options.to_s
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
