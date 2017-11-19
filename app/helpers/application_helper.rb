@@ -1,6 +1,13 @@
 module ApplicationHelper
     require 'open3'
     def self.compute(zernikes, parameters, options)
+        while parameters.length != 7
+            parameters << 0
+        end
+        if zernikes.length != 65 or parameters.length != 7 or options.length != 6
+            flash[:notice] = "internal error, wrong number of parameters given"
+            return nil
+        end
         arg = " "
         zernikes.each do |z|
             arg += " " + z.to_s
@@ -9,12 +16,11 @@ module ApplicationHelper
         parameters.each do |p|
             arg += " " + p.to_s
         end
-        arg += " 0 0"
         # options
         options.each do |o|
             arg += " " + o.to_s
         end
-        resulting_images = run_matlab(arg, name)
+        resulting_images = run_matlab(arg)
         return resulting_images
     end
     
