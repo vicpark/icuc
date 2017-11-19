@@ -5,7 +5,7 @@ module ApplicationHelper
             parameters << 0
         end
         if zernikes.length != 65 or parameters.length != 7 or options.length != 6
-            flash[:notice] = "internal error, wrong number of parameters given"
+            system("result.txt << 'internal error, wrong number of parameters given'")
             return nil
         end
         arg = " "
