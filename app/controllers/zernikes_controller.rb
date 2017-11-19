@@ -50,18 +50,25 @@ class ZernikesController < ApplicationController
     end 
     
     def compute
-        puts params
-	zernikes = Zernike.zernikes
+	    zernikes = Zernike.zernikes
         parameters = []
         (0..4).each do |i|
             parameters << params[i.to_s]
         end 
-        @checked_options = params[:options] #wavefront, psf, 
-        puts @checked_options
-        flash[:notice] = zernikes.to_s + parameters.to_s #+ options.to_s
+        options = []
+        
+        Zernike.options.each do |opt|
+            if params[:options][opt] == "1"
+                options << 1
+            else
+                options << 0
+            end
+        end 
+        
+        flash[:notice] = zernikes.to_s + parameters.to_s + options.to_s
         # to run matlab code. 
         #@files = ApplicationHelper.compute(zernikes, parameters, options)
-        
+        #flash[:notice] = params
         system("ls app/assets/images/computed* > app/assets/list.txt")
         files = []
         f = File.open("app/assets/list.txt", "r")

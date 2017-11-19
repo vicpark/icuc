@@ -1,5 +1,7 @@
 * {box-sizing:border-box}
-
+.home{
+  position:relative
+}
 .image {
   width:100%;
 }
