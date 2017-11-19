@@ -55,17 +55,17 @@ class ZernikesController < ApplicationController
         (0..4).each do |i|
             parameters << params[i.to_s]
         end 
-        options = []
         
+        options = []
         Zernike.options.each do |opt|
-            if params[:options][opt] == "1"
+            if params[:options] != nil and params[:options][opt] == "1"
                 options << 1
             else
                 options << 0
             end
         end 
         
-        flash[:notice] = zernikes.to_s + parameters.to_s + options.to_s
+        #flash[:notice] = zernikes.to_s + parameters.to_s + options.to_s
         # to run matlab code. 
         #@files = ApplicationHelper.compute(zernikes, parameters, options)
         #flash[:notice] = params

@@ -11,8 +11,8 @@ module ApplicationHelper
         end
         arg += " 0 0"
         # options
-        (0...6).each do |o|
-            arg += " " + 1.to_s
+        options.each do |o|
+            arg += " " + o.to_s
         end
         resulting_images = run_matlab(arg, name)
         return resulting_images
