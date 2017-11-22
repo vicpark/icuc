@@ -9,7 +9,7 @@ Scenario: manually inputting Zernike equation parameters, only changing z1
   # And I should see all zeroes for the Zernike cofficients
   And I press "enter manually"
   Then I am on the "manual" page
-  And I fill in "4321" for "0" 
+  And I fill in "4321" for "1" 
   And I press "Save"
   Then I am on the "home" page
   And I should see "4.32e+03"
@@ -19,6 +19,7 @@ Scenario: manually inputting Zernike equation parameters, only changing z1
 
 Scenario: using default paramter values without changes
   Given I am on the "home" page
+  And I check "options[Wavefront]"
   And I press "Compute"
   And I wait for 15 seconds
   And I press "home page"

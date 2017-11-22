@@ -4,7 +4,7 @@
 .zernike_pyramid
     %h2.zernikes_header Zernikes
     <div class="center">
-    - (0..@zernikes.size-1).each do |i|
+    - (0...@zernikes.size).each do |i|
         &emsp; #{"%.3g" % @zernikes[i]} &emsp;
         - if i == 0 or i == 2 or i == 5 or i == 9 or i == 14 or i == 20 or i == 27 or i == 35 or i == 44 or i == 54 
             </div><div class="center">
@@ -65,32 +65,15 @@
             %label mm; pupil field size (make bigger to enlarge the image of the point spread function)
 
         %br
-        .parameters_checkboxes
-            %br
-        
-            %input{ :type=>"checkbox" }
-            %label Wavefront
-        
-            %input{ :type=>"checkbox" }
-            %label PSF (point spread function)
-        
-            %input{ :type=>"checkbox" }
-            %label MTF Full (modulation transfer function)
-        
-            %br
-        
-            %input{ :type=>"checkbox" }
-            %label PTF (Phase Transfer Function)
-        
-            %input{ :type=>"checkbox" }
-            %label MTF line plots (horizontal, vertical, radial average)
-        
-            %input{ :type=>"checkbox" }
-            %label 'convolution for 20/ sized letter'
-            = text_field :zernike, 'insert 20/ here'
+        %h2.parameters_checkboxes
+            %h3 Output Images 
+            - @options.each do |option|
+                = option
+                = check_box_tag "options[#{option}]", 1
         
         %br
         .parameters_submit
-        = submit_tag "Compute"
+        = submit_tag "Compute", {id: "demo"}
+        <div id="slow_warning" style="display:none" class="loader-wrapper"><div id="slower-warning" class="loader"></div></div>
         
     

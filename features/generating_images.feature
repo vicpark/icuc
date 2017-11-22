@@ -6,6 +6,7 @@ Feature: generating images and saving output from computed Zernike equation
   
 Scenario: downloading all images outputed from zernike equation
   Given I am on the "home" page
+  And I check "options[Wavefront]" 
   And I press "Compute"
   And I wait for 15 seconds
   And I press the download all images button
@@ -14,6 +15,7 @@ Scenario: downloading all images outputed from zernike equation
 
 Scenario: downloading one image outputted from the zernike equation
   Given I am on the "home" page
+  And I check "options[Wavefront]"
   And I press "Compute"
   And I wait for 15 seconds
   And I press download for one specific images

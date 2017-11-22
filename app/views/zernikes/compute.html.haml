@@ -1,37 +1,21 @@
+<SCRIPT>  type="text/javascript" language="JavaScript" src="images.js"</SCRIPT>
 %h1 Image output of the Zernike equation
 
-.loader-wrapper
-    .loader
-    .loader-section.section-left
-    .loader-section.section-right
 
+%body
 .output_choices
-//   = select :zernike, :output_files, ['Wavefront','PSF (1 of xx)', 'Convolution (1 of xx)', 'etc.']
+<div class="slideshow-container">
+<div class="computed images">
 
-%input{name: 'Wavefront', type: "radio", value: "choice1"}
-%label Wavefront
+- @files.each do |image|
+    <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    =image_tag image, :class=>"image"
+    <a href="/app/assets/images/" download=#{image}, class="text">Download #{image}<img src="/app/assets/images/"></a>
+    </div>
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>    
+<SCRIPT> showSlides(slideIndex);</SCRIPT>
 %br
-%input{name: 'PSF', type: "radio", value: "choice2"}
-%label PSF (1 of xx)
-%br
-%input{name: 'Convolution', type: "radio", value: "choice3"}
-%label Convolution (1 of xx)
-%br
-%input{name: 'MTF', type: "radio", value: "choice4"}
-%label MTF etc
-%br
-
-
-= image_tag "pic1.png", :style=>"height: 300px; width: 300px;", :class=>"output_images"
-= image_tag "pic2.png", :style=>"height: 300px; width: 300px;", :class=>"output_images"
-<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
-
-%br/
-
-= button_to "copy"
-= button_to "save current as matrix"
-= button_to "save all as matrices"
-= button_to "home page", root_path, :method => :get
-// %a{:href => "Download", :download => "images/pics.png", :target => "blank"}
-// = link_to "Compute Zernike equation", new_zernike_path
+= button_to "home page", root_path, :method => :get, :class => "home"

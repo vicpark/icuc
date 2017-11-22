@@ -1,6 +1,8 @@
 %h1 Optical Wavefront Analysis
 %h2 Edit the Zernikes
 
+= button_to "Reset to All Zeros", set_all_zero_path, :method => :post
+
 = form_tag update_path, :method => :post do
   %table{:border => 1}
     %tbody
@@ -10,15 +12,20 @@
         %td m &emsp;
         %td Term nickname
         %td Term
-      - (0..@zernikes.size-1).each do |i|
+      %tr
+        %td= 0
+        %td= @nicknames[0][0]
+        %td= @nicknames[0][1]
+        %td= @nicknames[0][2]
+        %td= text_field_tag 0, @zernikes[0], disabled: true
+      - (1..65).each do |i|
         - if i == 1 or i == 3 or i == 6 or i == 10 or i == 15 or i == 21 or i == 28 or i == 36 or i == 45 or i == 55
           %td= ""
-        
         %tr
           %td= i
-          %td= ""
-          %td= ""
-          %td= @nicknames[i]
+          %td= @nicknames[i][0]
+          %td= @nicknames[i][1]
+          %td= @nicknames[i][2]
           %td= text_field_tag i, @zernikes[i]
     
   = submit_tag "Save"

@@ -48,7 +48,7 @@ h1 {
   border-top-color: #3498db;
   border-radius: 50%;
   z-index: 1001;
-  @include animation(1.5s);
+  @include animation(0);
   &:before, &:after {
     content: '';
     position: absolute;

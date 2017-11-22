@@ -1,5 +1,5 @@
 class ZernikesController < ApplicationController
-    
+    include ApplicationHelper  
     def zernike_params
     #    params.require(:zernike).permit(:uploaded_file)
     end
@@ -7,11 +7,22 @@ class ZernikesController < ApplicationController
     def main
         @zernikes = Zernike.zernikes
         @params = Zernike.getparams
+        @options = Zernike.options
     end 
     
     def manual
         @zernikes = Zernike.zernikes
         @nicknames = Zernike.zNicknames
+    end
+    
+    def set_all_zero
+        zer = []
+        (0..65).each do |i|
+            zer << params[0.to_s]
+        end
+        Zernike.setZernikes(zer)
+        @zernikes = Zernike.zernikes
+        redirect_to enter_manually_path
     end
     
     def update
@@ -32,21 +43,38 @@ class ZernikesController < ApplicationController
         redirect_to root_path 
     end
     
-    def create
-        @zernike = Zernike.create!(zernike_params)
-        flash[:notice] = "Zernike equation successfully computed!"
-        redirect_to get_image_path
-    end 
-    
     def compute
-        zernikes = Zernike.zernikes.to_s
+	    zernikes = Zernike.zernikes[1,65]
         parameters = []
         (0..4).each do |i|
             parameters << params[i.to_s]
+        end 
+        
+        options = []
+        Zernike.options.each do |opt|
+            if params[:options] != nil and params[:options][opt] == "1"
+                options << 1
+            else
+                options << 0
+            end
+        end 
+        
+        #flash[:notice] = zernikes.to_s + parameters.to_s + options.to_s
+        # to run matlab code. 
+        #@files = ApplicationHelper.compute(zernikes, parameters, options)
+        
+        #flash[:notice] =  zernikes.length.to_s + " " +parameters.length.to_s + " " + options.length.to_s 
+        system("ls app/assets/images/computed* > app/assets/list.txt")
+        files = []
+        f = File.open("app/assets/list.txt", "r")
+        
+        f.each_line do |line|
+            line =~ /(compute.*jpg)/
+            if $1 != nil
+                files << $1
+            end
         end
-        system("echo #{zernikes} > zernike.txt")
-        system("echo #{parameters} >> zernike.txt")
-        @file = "zernike.txt"
+        @files = files
     end
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
@@ -71,7 +99,6 @@ class ZernikesController < ApplicationController
                 end
                 Zernike.setZernikes(coef)
             end
-            
             redirect_to root_path 
         end
     end
