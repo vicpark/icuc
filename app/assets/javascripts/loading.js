@@ -7,8 +7,6 @@ $(document).ready(function() {
     $('#demo').click(function() {
         document.getElementById("demo").value = "Loading..."; 
         $('#slow_warning').show();
-        $('body').addClass('loaded');
-        $('h1').css('color', '#222');
 //         $('#slower_warning').show();
 //         var iDiv = document.createElement('div');
 //         iDiv.id = 'block';
