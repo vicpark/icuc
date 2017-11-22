@@ -8,7 +8,7 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'capybara', '2.4.4'
   gem 'selenium-webdriver'
-
+  gem "minitest-rails-capybara"
 
   gem 'rspec-autotest', '1.0.0'
 
