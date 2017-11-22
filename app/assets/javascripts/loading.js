@@ -7,9 +7,9 @@ $(document).ready(function() {
     $('#demo').click(function() {
         $('#slow_warning').show();
         //$('#slower_warning').show();
-        setTimeout(function(){
-        $('body').addClass('loaded');
-        $('h1').css('color', '#222');
-        }, 5000);
+//         setTimeout(function(){
+//         $('body').addClass('loaded');
+//         $('h1').css('color', '#222');
+//         }, 5000);
     });
 })
