@@ -3,12 +3,12 @@ class Zernike < ActiveRecord::Base
   require 'open-uri'
   
   def self.options
-    return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line", "convolution for 20 sized letter"]
+    return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line", "Convolution for 20 sized letter"]
   end
 
   def self.getparams
     # default values for diameter, defocus, wavelength, pixels, and image size
-    default_vals = [3, 0, 550, 256, 20]
+    default_vals = [6, 0, 550, 256, 20, 20]
     return default_vals
   end 
 

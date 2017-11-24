@@ -1,8 +1,40 @@
-%h1 Optical Wavefront Analysis
+<body>
+<header>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+$('#demo').click(function() {
+checked = $("input[type=checkbox]:checked").length;
+if(!checked) {
+alert("You must check at least one checkbox.");
+return false;}
+});
+});
+
+</script>
+
+<div class = "container">
+<h1><span class="h1color">i</span><span class="h1color2">c</span class="h1color"><span class="h1color">u</span><span class="h1color2">c</span></h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+</nav>
+<header>
+// %h1 Optical Wavefront Analysis
+
+// <div class = "container">
 
 //where the pyramid is
 .zernike_pyramid
-    %h2.zernikes_header Zernikes
+    %h2.zernikes_header Zernike Coefficients
+    %h5 To compute the wavefront analysis, read the coefficients from a file,
+    %h5 or input the coefficients manually, or randomly generate them
     <div class="center">
     - (0...@zernikes.size).each do |i|
         &emsp; #{"%.3g" % @zernikes[i]} &emsp;
@@ -13,47 +45,80 @@
     // buttons to choose input method
     <div class="center">
     .input_coefficients
-        = button_to "read from file", upload_zernike_path, :method => :get
-        = button_to "enter manually", enter_manually_path, :method => :get
-        = button_to "randomly generate", random_path, :method => :post
+        = button_to "Read from File", upload_zernike_path, :method => :get, class: "btn btn-default"
+        = button_to "Enter Manually", enter_manually_path, :method => :get, class: "btn btn-default"
+        = button_to "Randomly Generate", random_path, :method => :post, class: "btn btn-default"
     </div>
 // the input boxes
 .parameters_div
-    %h2.parameters_header Parameters
+    %h2.parameters_header Zernike Parameters
+    %h5 Update the parameters for the Zernike equation
     = form_tag compute_path, :method => :post do
         .box1 
         %h3 Pupil Diameter
-        = text_field_tag 0, @params[0]
-        %label mm; pupil diameter from file, OR set to a single value 
-        = text_field :input_pupil, 'pupil_value'
-        %label mm
+        .radio 
+        %label
+        %input{name: "pupil_diamter", type: "radio", value: "pupil diameter value"}
+        pupil diameter from file
+        = text_field :input_pupil, 'file_value'
+        // %label mm; pupil diameter from file, OR set to a single value 
+        // = text_field :input_pupil, 'pupil_value'
+        // %label mm
         
         %br
-        OR set to a range 
-        = text_field :input_pupil, 'pupil_range_min'
+        .radio
+        %label
+        %input{name: "pupil_diameter", type: "radio", value: "single"}
+        set to single value
+        = text_field_tag 0, @params[0]
+        (must be less than or equal to value from file)
+        
+        %br
+        .radio
+        %label
+        %input{name:"pupil_diameter", type:"radio", value:"min"}
+        set to a range
+        = text_field :input_pupil, "pupil_range_min"
         min
-        = text_field :input_pupil, 'pupil_range_max'
+        = text_field :input_pupil, "pupil_range_max"
         max
-        = text_field :input_pupil, 'pupil_range_step'
-        step
+        = text_field :input_pupil, "pupil_range_step"
+        step (max cannot be greater than value from file)
         
         %br
         .box2 
-            %h3 Defocus
-            = text_field_tag 1, @params[1]
-            %label D
-            %select{ :name => "question[question_status]" }
-                %option{:value => 1}= "defocus from file"
-                %option{:value => 2}= "set to single value" 
-                %option{:value => 3}= "set to range"
-            .defocus_checkboxes
-                %input{:type=>"checkbox"}
-                %label set defocus coefficient to 0
-                %input{:type=>"checkbox"}
-                %label force astigmatism coefficients to 0
+        %br
+        %h3 Defocus
+        .radio 
+        %label
+        %input{name: "defocus", type: "radio", value: "pupil diameter value"}
+        pupil defocus from file
+        = text_field :input_pupil, 'file_defocus_value'
+        
+        %br
+        .radio
+        %label
+        %input{name: "defocus", type: "radio", value: "single_defocus"}
+        set to single value
+        = text_field_tag 1, @params[1]
+        (must be less than 5)
+        
+        %br
+        .radio
+        %label
+        %input{name:"defocus", type:"radio", value:"min_defocus"}
+        set to a range
+        = text_field :input_pupil, "pupil_range_defocus_min"
+        min
+        = text_field :input_pupil, "pupil_range_defocus_max"
+        max
+        = text_field :input_pupil, "pupil_range_defocus_step"
+        step
+
     
         %br        
         .box3 
+            %br
             %h3 Additional Inputs
             = text_field_tag 2, @params[2]
             %label nm; wavelength for calculation
@@ -67,13 +132,17 @@
         %br
         %h2.parameters_checkboxes
             %h3 Output Images 
+            %h5 Select the types of calculations you want to compute
             - @options.each do |option|
                 = option
-                = check_box_tag "options[#{option}]", 1
-        
-        %br
+                = check_box_tag "options[#{option}]", 1 
+                %br
+        = text_field_tag 5, @params[5]
+        %label Convolution for 20 sized letter
         .parameters_submit
-        = submit_tag "Compute", {id: "demo"}
+        %br
+        = submit_tag "Compute!", {id: "demo"}
         <div id="slow_warning" style="display:none" class="loader-wrapper"><div id="slower-warning" class="loader"></div></div>
-        
+</div>
+</body>
     

@@ -4,6 +4,12 @@ class ZernikesController < ApplicationController
     #    params.require(:zernike).permit(:uploaded_file)
     end
     
+    def about
+    end
+    
+    def contact
+    end
+    
     def main
         @zernikes = Zernike.zernikes
         @params = Zernike.getparams
