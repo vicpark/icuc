@@ -86,9 +86,10 @@ class ZernikesController < ApplicationController
             uploaded_file = params[:zernike][:attachment]
             file_name = uploaded_file.original_filename
             jsonified_file = uploaded_file.as_json["tempfile"]
-            extract_data = coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            rfit_extractor(jsonified_file)
+            coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
             @zernike_coefficients = params[:coefficients]
-            #p @zernike_coefficients.length
+            # p @zernike_coefficients.length
             if @zernike_coefficients.nil? or @zernike_coefficients.empty? or @zernike_coefficients.length != 66
                 flash[:notice] = "Unable to upload file"
             else
@@ -97,6 +98,7 @@ class ZernikesController < ApplicationController
                 @zernike_coefficients.each do |c|
                     coef << c[1].to_f
                 end
+            # byebug
                 Zernike.setZernikes(coef)
             end
             redirect_to root_path 
@@ -131,9 +133,22 @@ class ZernikesController < ApplicationController
         end
         params[:coefficients] = coefficients
             # format printed loosely is : subscript superscript actual_coefficient
-            
-        # end
-        
     end
+    
+    def rfit_extractor(jsonified_file)
+        find_rfit = /^#RFIT (.*)\r/i #extracts the RFIT value from the .zer file
+        for key in jsonified_file
+            line = find_rfit.match(key)
+            if line.nil?
+                next
+            else
+                rfit = line[1]
+                params[:rfit] = rfit
+                p rfit
+                return
+            end
+        end
+    end
+                 
 
 end
