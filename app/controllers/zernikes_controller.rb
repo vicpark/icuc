@@ -51,10 +51,11 @@ class ZernikesController < ApplicationController
              zernikes[3] = 0 # zeros out the first coeff
              zernikes[5] = 0 # zeros out the last coeff
         end
-        # hello to whoever did this, can we change the "0..4" to parameters name so everyone knows what these values are?
+        # hello to whoever implemented what is written below, can we change the "0..4" to parameters name so everyone knows what these values are?
         # currently, these are either manually set on the main page OR filled in with Zernike.getdefault
         # 0 : pupil diameter from file, 1: pupil defocus from file, 
-        # and under "Additional Inputs" 2: wavelength for calculation, 3: output image size, 4: pupil field size 
+        # and under "Additional Inputs" 2: wavelength for calculation, 3: output image size, 4: pupil field size
+        # I was thinking of changing these numbers to what they actually map to --VP
         (0..4).each do |i|
             parameters << params[i.to_s]
         end 
