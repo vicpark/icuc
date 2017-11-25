@@ -23,19 +23,29 @@
     = form_tag compute_path, :method => :post do
         .box1 
         %h3 Pupil Diameter
-        = text_field_tag 0, @params[0] 
-        %label mm; pupil diameter from file, OR set to a single value 
-        = text_field :input_pupil, 'pupil_value'
-        %label mm
-        
-        %br
-        OR set to a range 
-        = text_field :input_pupil, 'pupil_range_min'
-        min
-        = text_field :input_pupil, 'pupil_range_max'
-        max
-        = text_field :input_pupil, 'pupil_range_step'
-        step
+        .radio
+        %ul
+        %li
+            %label 
+                %input{name: "pupil from file", type: "radio", value: "pupil from file"}
+                pupil diameter from file
+                = text_field :pupil_file, @params[0]
+                mm
+        %li
+            %label
+                %input{name: "pupil single", type: "radio", value: "pupil single"}
+                set to a single value
+                = text_field :input_pupil, 'pupil_value'
+        %li  
+            %label 
+                %input{name: "pupil range", type: "radio", value: "pupil range"}
+                set to a range
+                = text_field :input_pupil, 'pupil_range_min'
+                min
+                = text_field :input_pupil, 'pupil_range_max'
+                max
+                = text_field :input_pupil, 'pupil_range_step'
+                step
         
         %br
         .box2 
