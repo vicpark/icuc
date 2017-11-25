@@ -87,7 +87,9 @@ class ZernikesController < ApplicationController
             file_name = uploaded_file.original_filename
             jsonified_file = uploaded_file.as_json["tempfile"]
             rfit_extractor(jsonified_file)
+            
             coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            Zernike.getpupdiam(params[:rfit])
             @zernike_coefficients = params[:coefficients]
             # p @zernike_coefficients.length
             if @zernike_coefficients.nil? or @zernike_coefficients.empty? or @zernike_coefficients.length != 66
@@ -98,7 +100,6 @@ class ZernikesController < ApplicationController
                 @zernike_coefficients.each do |c|
                     coef << c[1].to_f
                 end
-            # byebug
                 Zernike.setZernikes(coef)
             end
             redirect_to root_path 

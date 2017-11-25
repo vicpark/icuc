@@ -5,10 +5,15 @@ class Zernike < ActiveRecord::Base
   def self.options
     return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line", "convolution for 20 sized letter"]
   end
-
+  
+  def self.getpupdiam(rfit)
+    @pupil_diameter = rfit.to_i * 2
+  end
+    
   def self.getparams
     # default values for diameter, defocus, wavelength, pixels, and image size
-    default_vals = [3, 0, 550, 256, 20]
+    default_vals = [@pupil_diameter, 0, 550, 256, 20]
+    # default_vals[0] = @pupil_diameter
     return default_vals
   end 
 

@@ -23,7 +23,7 @@
     = form_tag compute_path, :method => :post do
         .box1 
         %h3 Pupil Diameter
-        = text_field_tag 0, @params[0]
+        = text_field_tag 0, @params[0] 
         %label mm; pupil diameter from file, OR set to a single value 
         = text_field :input_pupil, 'pupil_value'
         %label mm
