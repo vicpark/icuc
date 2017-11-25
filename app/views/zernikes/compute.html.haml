@@ -13,12 +13,21 @@
 <ul>
 <li><a href="/">Home</a></li>
 <li><a href="/about">About</a></li>
-<li><a href="/compute">Contact</a></li>
 </ul>
 </nav>
 <header>
 %h2 Output Images of the Zernike Equation
 %body
+%br
+%h3 Select which type of image to display
+= form_tag compute_path, :method => :post do
+    - @checked_options.each do |option|
+        = radio_button_tag :radio_option, option[0]
+        %label
+        = option[0]
+        %br
+    = submit_tag "Reload!", :action => "/compute"
+%br
 .output_choices
 <div class="slideshow-container">
 <div class="computed images">

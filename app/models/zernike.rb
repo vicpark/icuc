@@ -1,6 +1,9 @@
 class Zernike < ActiveRecord::Base
   ### Upload
   require 'open-uri'
+  def self.image_types
+    return {"Convolution for 20 sized letter" => "CONV", "MTL Full" => "MTF", "MTF line" => "MTFL", "PSF" => "PSF", "PTF"=> "PTF", "Wavefront"=>"WF"}
+  end
   
   def self.options
     return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line", "Convolution for 20 sized letter"]

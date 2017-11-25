@@ -7,8 +7,6 @@ class ZernikesController < ApplicationController
     def about
     end
     
-    def contact
-    end
     
     def main
         @zernikes = Zernike.zernikes
@@ -50,6 +48,20 @@ class ZernikesController < ApplicationController
     end
     
     def compute
+        if params["options"]
+            session["options"] = params["options"]
+            @checked_options = session["options"]
+            # puts "checked options", @checked_options
+            radio_type = @checked_options.keys[0]
+            # puts "radio_type", radio_type
+        elsif session["options"]
+            @checked_options = session["options"]
+            # puts "checked options in ses", @checked_options
+            # puts "in session!!!!!"
+            # puts params["radio_option"]
+            radio_type = params["radio_option"]
+            # puts "radio type session", radio_type
+        end
 	    zernikes = Zernike.zernikes[1,65]
         parameters = []
         (0..4).each do |i|
@@ -73,15 +85,40 @@ class ZernikesController < ApplicationController
         system("ls app/assets/images/computed* > app/assets/list.txt")
         files = []
         f = File.open("app/assets/list.txt", "r")
-        
+        # puts "radio type again", radio_type
+        # mappings = Zernike.image_types
+        # puts mappings
+        # puts "again mapping", mappings.values_at(radio_type)
+        value = Zernike.image_types.values_at(radio_type)
+        # mapping = Zernike.image_types[radio_type.to_s]
+        # puts "mapping is", mapping
+        # value = value.to_s
+        # puts value.class
+
         f.each_line do |line|
             line =~ /(compute.*jpg)/
-            if $1 != nil
+            # puts line
+            temp = get_file_image_type(line, radio_type)
+            # puts temp
+            if temp == value[0]
+                puts "hello", $1
+            end
+            if $1 != nil and temp == value[0]
+                # puts "entered if"
                 files << $1
             end
         end
         @files = files
+        # puts "files!!!", files
+        # need to remove unique id for this files eventually
     end
+    
+    def get_file_image_type(file, radio_type)
+        image_type_pat = /.*-(.*)\..*$/ 
+        file =~ image_type_pat
+        return $1
+    end
+        
     
     #Upload action ensures that submitted file is uploaded if it meets the requirements
     def upload
