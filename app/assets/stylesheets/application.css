@@ -86,6 +86,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', end
     text-align: center;
 }
 
+.form-group {
+  display: inline-block;
+}
+
 .center
 {
   text-align: center;

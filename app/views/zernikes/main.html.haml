@@ -77,14 +77,15 @@
        
             .defocus_checkboxes
                 %label 
-                    = check_box_tag 'astigmatismTo0[]', "astigTo0"
+                    = check_box_tag 'astigmatismTo0[]', 1
                     force astigmatism coefficients to 0
     
         %br        
         .box3 
             %h3 Additional Inputs
-            = text_field_tag 2, @default[2]
-            %label nm; wavelength for calculation
+            %label
+                = text_field_tag 2, @default[2]
+                nm; wavelength for calculation
             %br
             = text_field_tag 3, @default[3]
             %label pixels; output image size
@@ -95,9 +96,19 @@
         %br
         %h2.parameters_checkboxes
             %h3 Output Images 
-            - @options.each do |option|
-                = option
-                = check_box_tag "options[#{option}]", 1
+            %ul
+                - @options.each do |option|
+                    %li
+                        %label
+                            = check_box_tag "options[#{option}]", 1
+                            = option
+                .form_group
+                %li
+                    %label
+                        = check_box_tag "convolution", 1
+                        convolution for 20 / 
+                        = text_field_tag :convolution, 20
+                        
         
         %br
         .parameters_submit

@@ -3,7 +3,7 @@ class Zernike < ActiveRecord::Base
   require 'open-uri'
   
   def self.options
-    return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line", "convolution for 20 sized letter"]
+    return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line"]
   end
   
   def self.getpupdiam(rfit)
