@@ -10,9 +10,10 @@ class Zernike < ActiveRecord::Base
     @pupil_diameter = rfit.to_i * 2
   end
     
-  def self.getparams
+  def self.getdefault
     # default values for diameter, defocus, wavelength, pixels, and image size
-    default_vals = [@pupil_diameter, 0, 550, 256, 20]
+    # default value for pupil diameter is rfit*2 if we uploaded file, else I just put 0 --Victoria
+    default_vals = [@pupil_diameter || 0, 0, 550, 256, 20]
     return default_vals
   end 
 

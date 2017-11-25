@@ -21,63 +21,75 @@
 .parameters_div
     %h2.parameters_header Parameters
     = form_tag compute_path, :method => :post do
-        .box1 
-        %h3 Pupil Diameter
-        .radio
-        // %radio_button_tag{:pupil, "file"}
-        %label_tag{:pupil_file, 'pupil diameter from file'}
-        %ul
-        %li
         
-
-            
-            %label 
-                %input{name: "pupil from file", type: "radio", value: "pupil from file"}
-                
-                pupil diameter from file
-                = text_field :pupil_file, @params[0]
-                mm
-        %li
-            %label
-                %input{name: "pupil single", type: "radio", value: "pupil single"}
-                set to a single value
-                = text_field :input_pupil, 'pupil_value'
-        %li  
-            %label 
-                %input{name: "pupil range", type: "radio", value: "pupil range"}
-                set to a range
-                = text_field :input_pupil, 'pupil_range_min'
-                min
-                = text_field :input_pupil, 'pupil_range_max'
-                max
-                = text_field :input_pupil, 'pupil_range_step'
-                step
+        .box1 
+            %h3 Pupil Diameter 
+            .radio
+                %ul
+                %li
+                    %label 
+                        %input{name: "pupil_diameter", type: "radio", checked: !@default[0].nil?, value: "from file"}
+                        pupil diameter from file
+                        = text_field_tag :pupil_file_diam, @default[0]
+                        mm
+                %li
+                    %label
+                        %input{name: "pupil_diameter", type: "radio", value: "single"}
+                        set to a single value (must be equal to or less than value from file)
+                        = text_field :input_pupil, 'pupil_value'
+                %li  
+                    %label 
+                        %input{name: "pupil_diameter", type: "radio", value: "range"}
+                        set to a range
+                        = text_field :input_pupil, 'pupil_range_min'
+                        min
+                        = text_field :input_pupil, 'pupil_range_max'
+                        max (must be < value from file)
+                        = text_field :input_pupil, 'pupil_range_step'
+                        step
         
         %br
         .box2 
             %h3 Defocus
-            = text_field_tag 1, @params[1]
-            %label D
-            %select{ :name => "question[question_status]" }
-                %option{:value => 1}= "defocus from file"
-                %option{:value => 2}= "set to single value" 
-                %option{:value => 3}= "set to range"
+            .radio
+                %ul
+                %li
+                    %label 
+                        %input{name: "pupil_defocus", type: "radio", value: "from file"}
+                        pupil defocus from file
+                        = text_field_tag :pupil_file_def, @default[1]
+                        D
+                %li
+                    %label
+                        %input{name: "pupil_defocus", type: "radio", value: "single"}
+                        set to a single value (must be less than 5)
+                        = text_field :input_pupil, 'pupil_value'
+                %li  
+                    %label 
+                        %input{name: "pupil_defocus", type: "radio", value: "range"}
+                        set to a range
+                        = text_field :input_pupil, 'pupil_range_min'
+                        min
+                        = text_field :input_pupil, 'pupil_range_max'
+                        max
+                        = text_field :input_pupil, 'pupil_range_step'
+                        step
+       
             .defocus_checkboxes
-                %input{:type=>"checkbox"}
-                %label set defocus coefficient to 0
-                %input{:type=>"checkbox"}
-                %label force astigmatism coefficients to 0
+                %label 
+                    = check_box_tag 'astigmatismTo0[]', "astigTo0"
+                    force astigmatism coefficients to 0
     
         %br        
         .box3 
             %h3 Additional Inputs
-            = text_field_tag 2, @params[2]
+            = text_field_tag 2, @default[2]
             %label nm; wavelength for calculation
             %br
-            = text_field_tag 3, @params[3]
+            = text_field_tag 3, @default[3]
             %label pixels; output image size
             %br
-            = text_field_tag 4, @params[4]
+            = text_field_tag 4, @default[4]
             %label mm; pupil field size (make bigger to enlarge the image of the point spread function)
 
         %br

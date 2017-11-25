@@ -6,7 +6,7 @@ class ZernikesController < ApplicationController
     
     def main
         @zernikes = Zernike.zernikes
-        @params = Zernike.getparams
+        @default = Zernike.getdefault # changed name from @params to @default (also from getparams to getdefault) because '@params' is a confusing instance variable name --VP
         @options = Zernike.options
     end 
     
@@ -46,9 +46,19 @@ class ZernikesController < ApplicationController
     def compute
 	    zernikes = Zernike.zernikes[1,65]
         parameters = []
+        if params[:astigmatismTo0]
+             # in third row of pyramid,
+             zernikes[3] = 0 # zeros out the first coeff
+             zernikes[5] = 0 # zeros out the last coeff
+        end
+        # hello to whoever did this, can we change the "0..4" to parameters name so everyone knows what these values are?
+        # currently, these are either manually set on the main page OR filled in with Zernike.getdefault
+        # 0 : pupil diameter from file, 1: pupil defocus from file, 
+        # and under "Additional Inputs" 2: wavelength for calculation, 3: output image size, 4: pupil field size 
         (0..4).each do |i|
             parameters << params[i.to_s]
         end 
+        
         
         options = []
         Zernike.options.each do |opt|
