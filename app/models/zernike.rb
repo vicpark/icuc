@@ -13,7 +13,6 @@ class Zernike < ActiveRecord::Base
   def self.getparams
     # default values for diameter, defocus, wavelength, pixels, and image size
     default_vals = [@pupil_diameter, 0, 550, 256, 20]
-    # default_vals[0] = @pupil_diameter
     return default_vals
   end 
 
