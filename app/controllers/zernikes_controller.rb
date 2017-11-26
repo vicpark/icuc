@@ -65,9 +65,20 @@ class ZernikesController < ApplicationController
              zernikes[5] = 0 # zeros out the last coeff
         end
         parameters = []
+        if params[:astigmatismTo0]
+             # in third row of pyramid,
+             zernikes[3] = 0 # zeros out the first coeff
+             zernikes[5] = 0 # zeros out the last coeff
+        end
+        # hello to whoever implemented what is written below, can we change the "0..4" to parameters name so everyone knows what these values are?
+        # currently, these are either manually set on the main page OR filled in with Zernike.getdefault
+        # 0 : pupil diameter from file, 1: pupil defocus from file, 
+        # and under "Additional Inputs" 2: wavelength for calculation, 3: output image size, 4: pupil field size
+        # I was thinking of changing these numbers to what they actually map to --VP
         (0..4).each do |i|
             parameters << params[i.to_s]
         end 
+        
         
         options = []
         Zernike.options.each do |opt|
@@ -160,9 +171,6 @@ class ZernikesController < ApplicationController
         end
         params[:coefficients] = coefficients
             # format printed loosely is : subscript superscript actual_coefficient
-            
-        # end
-        
     end
     
     def rfit_extractor(jsonified_file)

@@ -17,11 +17,11 @@ Scenario: manually inputting Zernike equation parameters, only changing z1
 
 
 
-Scenario: using default paramter values without changes
+Scenario: using default parameter values without changes
   Given I am on the "home" page
   And I check "options[Wavefront]"
   And I press "Compute"
   And I wait for 5 seconds
   And I click "Home"
   Then I am on the "home" page
-  And "0" field contain "0"
+  And "pupil_file_diam" field contain "0"

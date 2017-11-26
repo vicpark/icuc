@@ -85,6 +85,10 @@ h1 .h1color {
     text-align: center;
 }
 
+.form-group {
+  display: inline-block;
+}
+
 .center
 {
   text-align: center;
