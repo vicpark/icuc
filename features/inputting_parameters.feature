@@ -22,6 +22,6 @@ Scenario: using default paramter values without changes
   And I check "options[Wavefront]"
   And I press "Compute"
   And I wait for 5 seconds
-  And I press "home page"
+  And I click "Home"
   Then I am on the "home" page
-  And "0" field contain "3"
+  And "0" field contain "6"
