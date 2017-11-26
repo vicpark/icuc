@@ -22,7 +22,10 @@
 %h3 Select which type of image to display
 = form_tag compute_path, :method => :post do
     - @checked_options.each do |option|
-        = radio_button_tag :radio_option, option[0]
+        - if option[0] == @radio_type
+            = radio_button_tag :radio_option, option[0], true
+        - else
+            = radio_button_tag :radio_option, option[0]
         %label
         = option[0]
         %br

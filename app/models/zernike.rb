@@ -2,16 +2,22 @@ class Zernike < ActiveRecord::Base
   ### Upload
   require 'open-uri'
   def self.image_types
-    return {"Convolution for 20 sized letter" => "CONV", "MTL Full" => "MTF", "MTF line" => "MTFL", "PSF" => "PSF", "PTF"=> "PTF", "Wavefront"=>"WF"}
+    return {"Convolution for 20 sized letter" => "CONV", "MTF Full" => "MTF", "MTF line" => "MTFL", "PSF" => "PSF", "PTF"=> "PTF", "Wavefront"=>"WF"}
   end
   
   def self.options
     return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line", "Convolution for 20 sized letter"]
   end
+  
+  def self.getpupdiam(rfit)
+    @pupil_diameter = rfit.to_i * 2
+  end
 
-  def self.getparams
+
+  def self.getdefault
     # default values for diameter, defocus, wavelength, pixels, and image size
-    default_vals = [6, 0, 550, 256, 20, 20]
+    # default value for pupil diameter is rfit*2 if we uploaded file, else I just put 0 --Victoria
+    default_vals = [@pupil_diameter || 0, 0, 550, 256, 20, 20]
     return default_vals
   end 
 

@@ -69,7 +69,7 @@ return false;}
         %label
         %input{name: "pupil_diameter", type: "radio", value: "single"}
         set to single value
-        = text_field_tag 0, @params[0]
+        = text_field_tag 0, @default[0]
         (must be less than or equal to value from file)
         
         %br
@@ -99,7 +99,7 @@ return false;}
         %label
         %input{name: "defocus", type: "radio", value: "single_defocus"}
         set to single value
-        = text_field_tag 1, @params[1]
+        = text_field_tag 1, @default[1]
         (must be less than 5)
         
         %br
@@ -113,31 +113,33 @@ return false;}
         max
         = text_field :input_pupil, "pupil_range_defocus_step"
         step
-
+        %br
+        = check_box_tag 'astigmatismTo0[]', 1
+        force astigmatism coefficients to 0
     
         %br        
         .box3 
             %br
             %h3 Additional Inputs
-            = text_field_tag 2, @params[2]
-            %label nm; wavelength for calculation
+            = text_field_tag 2, @default[2]
+            nm; wavelength for calculation
             %br
-            = text_field_tag 3, @params[3]
-            %label pixels; output image size
+            = text_field_tag 3, @default[3]
+            pixels; output image size
             %br
-            = text_field_tag 4, @params[4]
-            %label mm; pupil field size (make bigger to enlarge the image of the point spread function)
+            = text_field_tag 4, @default[4]
+            mm; pupil field size (make bigger to enlarge the image of the point spread function)
 
         %br
         %h2.parameters_checkboxes
             %h3 Output Images 
             %h5 Select the types of calculations you want to compute
             - @options.each do |option|
-                = option
                 = check_box_tag "options[#{option}]", 1 
+                = option
                 %br
-        = text_field_tag 5, @params[5]
-        %label Convolution for 20 sized letter
+        = text_field_tag 5, @default[5]
+        Convolution for 20 sized letter
         .parameters_submit
         %br
         = submit_tag "Compute!", {id: "demo"}

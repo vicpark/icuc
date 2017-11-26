@@ -10,7 +10,7 @@ class ZernikesController < ApplicationController
     
     def main
         @zernikes = Zernike.zernikes
-        @params = Zernike.getparams
+        @default = Zernike.getdefault # changed name from @params to @default (also from getparams to getdefault) because '@params' is a confusing instance variable name --VP
         @options = Zernike.options
     end 
     
@@ -51,18 +51,19 @@ class ZernikesController < ApplicationController
         if params["options"]
             session["options"] = params["options"]
             @checked_options = session["options"]
-            # puts "checked options", @checked_options
-            radio_type = @checked_options.keys[0]
-            # puts "radio_type", radio_type
+            @radio_type = @checked_options.keys[0]
+            puts "radio_type", @radio_type
         elsif session["options"]
             @checked_options = session["options"]
-            # puts "checked options in ses", @checked_options
-            # puts "in session!!!!!"
-            # puts params["radio_option"]
-            radio_type = params["radio_option"]
-            # puts "radio type session", radio_type
+            @radio_type = params["radio_option"]
+            puts "radio type session", @radio_type
         end
 	    zernikes = Zernike.zernikes[1,65]
+	    if params[:astigmatismTo0]
+             # in third row of pyramid,
+             zernikes[3] = 0 # zeros out the first coeff
+             zernikes[5] = 0 # zeros out the last coeff
+        end
         parameters = []
         (0..4).each do |i|
             parameters << params[i.to_s]
@@ -77,39 +78,22 @@ class ZernikesController < ApplicationController
             end
         end 
         
-        #flash[:notice] = zernikes.to_s + parameters.to_s + options.to_s
-        # to run matlab code. 
-        #@files = ApplicationHelper.compute(zernikes, parameters, options)
-        
-        #flash[:notice] =  zernikes.length.to_s + " " +parameters.length.to_s + " " + options.length.to_s 
         system("ls app/assets/images/computed* > app/assets/list.txt")
         files = []
         f = File.open("app/assets/list.txt", "r")
-        # puts "radio type again", radio_type
-        # mappings = Zernike.image_types
-        # puts mappings
-        # puts "again mapping", mappings.values_at(radio_type)
-        value = Zernike.image_types.values_at(radio_type)
-        # mapping = Zernike.image_types[radio_type.to_s]
-        # puts "mapping is", mapping
-        # value = value.to_s
-        # puts value.class
+
+        value = Zernike.image_types.values_at(@radio_type)
+        puts value
 
         f.each_line do |line|
             line =~ /(compute.*jpg)/
-            # puts line
-            temp = get_file_image_type(line, radio_type)
-            # puts temp
-            if temp == value[0]
-                puts "hello", $1
-            end
+            temp = get_file_image_type(line, @radio_type)
             if $1 != nil and temp == value[0]
-                # puts "entered if"
+                puts "entered if", line
                 files << $1
             end
         end
         @files = files
-        # puts "files!!!", files
         # need to remove unique id for this files eventually
     end
     
@@ -119,7 +103,6 @@ class ZernikesController < ApplicationController
         return $1
     end
         
-    
     #Upload action ensures that submitted file is uploaded if it meets the requirements
     def upload
        # connected to upload.html.haml form
@@ -129,9 +112,12 @@ class ZernikesController < ApplicationController
             uploaded_file = params[:zernike][:attachment]
             file_name = uploaded_file.original_filename
             jsonified_file = uploaded_file.as_json["tempfile"]
-            extract_data = coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            rfit_extractor(jsonified_file)
+            
+            coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            Zernike.getpupdiam(params[:rfit])
             @zernike_coefficients = params[:coefficients]
-            #p @zernike_coefficients.length
+            # p @zernike_coefficients.length
             if @zernike_coefficients.nil? or @zernike_coefficients.empty? or @zernike_coefficients.length != 66
                 flash[:notice] = "Unable to upload file"
             else
@@ -177,6 +163,21 @@ class ZernikesController < ApplicationController
             
         # end
         
+    end
+    
+    def rfit_extractor(jsonified_file)
+        find_rfit = /^#RFIT (.*)\r/i #extracts the RFIT value from the .zer file
+        for key in jsonified_file
+            line = find_rfit.match(key)
+            if line.nil?
+                next
+            else
+                rfit = line[1]
+                params[:rfit] = rfit
+                p rfit
+                return
+            end
+        end
     end
 
 end

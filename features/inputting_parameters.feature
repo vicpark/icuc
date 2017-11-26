@@ -24,4 +24,4 @@ Scenario: using default paramter values without changes
   And I wait for 5 seconds
   And I click "Home"
   Then I am on the "home" page
-  And "0" field contain "6"
+  And "0" field contain "0"
