@@ -59,7 +59,7 @@ return false;}
         %label
         = radio_button_tag 'diameter_option', 'file_value', true
         pupil diameter from file
-        = text_field_tag :diameter_from_file, 'file_value', disabled: true
+        = text_field_tag :diameter_from_file, @params_from_file[0], disabled: true
         // %label mm; pupil diameter from file, OR set to a single value 
         // = text_field :input_pupil, 'pupil_value'
         // %label mm
@@ -92,7 +92,7 @@ return false;}
         %label
         = radio_button_tag 'defocus_option', 'file_value', true
         pupil defocus from file
-        = text_field_tag :defocus_from_file, 'file_defocus_value', disabled: true
+        = text_field_tag :defocus_from_file, @params_from_file[1], disabled: true
         
         %br
         .radio

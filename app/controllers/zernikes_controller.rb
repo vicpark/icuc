@@ -12,6 +12,7 @@ class ZernikesController < ApplicationController
         @zernikes = Zernike.zernikes
         @default = Zernike.getdefault # changed name from @params to @default (also from getparams to getdefault) because '@params' is a confusing instance variable name --VP
         @options = Zernike.options
+        @params_from_file = self.file_params 
     end 
     
     def manual
@@ -90,15 +91,16 @@ class ZernikesController < ApplicationController
     
     def get_parameters
         parameters = []
-        parameters << params[:diameter_from_file]
-        if params[:diameter_option] == :file_value
-            parameters << params[:diameter_from_file]
+        file_p = self.file_params
+        parameters << file_p[0]
+        if params[:diameter_option] == "file_value"
+            parameters << file_p[0]
         else
             parameters << params[:diameter_single_value]
         end
-        parameters << params[:defocus_from_file]
-        if params[:defocus_option] == :file_value
-            parameters << params[:defocus_from_file]
+        parameters << file_p[1]
+        if params[:defocus_option] == "file_value"
+            parameters << file_p[1]
         else
             parameters << params[:defocus_single_value]
         end
@@ -149,6 +151,17 @@ class ZernikesController < ApplicationController
         params.require(:document).permit(:file)
     end
     
+    def file_params
+        parameters = []
+        if session[:rfit] != nil
+            parameters << session[:rfit].to_f * 2
+        else 
+            parameters << 0
+        end
+        parameters << 0
+        return parameters
+    end
+    
     private
     def coefficients_extractor(jsonified_file)
         important_lines = /^[^#].*/i  # extracts lines that matter, the ones with numbers
@@ -181,7 +194,7 @@ class ZernikesController < ApplicationController
                 next
             else
                 rfit = line[1]
-                params[:rfit] = rfit
+                session[:rfit] = rfit
                 p rfit
                 return
             end
