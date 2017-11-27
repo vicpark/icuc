@@ -84,7 +84,8 @@ class ZernikesController < ApplicationController
         
         # to run matlab code. 
         @files = ApplicationHelper.compute(zernikes, parameters, options)
-        flash[:notice]  = parameters
+#        flash[:notice]  = parameters
+#	flash[:notice] = zernikes.to_s + parameters.to_s +  options.to_s
         #@files = ApplicationHelper.mock_compute
         # need to remove unique id for this files eventually
     end
@@ -96,17 +97,17 @@ class ZernikesController < ApplicationController
         if params[:diameter_option] == "file_value"
             parameters << file_p[0]
         else
-            parameters << params[:diameter_single_value]
+            parameters << params[:diameter_single_value].to_f
         end
         parameters << file_p[1]
         if params[:defocus_option] == "file_value"
             parameters << file_p[1]
         else
-            parameters << params[:defocus_single_value]
+            parameters << params[:defocus_single_value].to_f
         end
-        parameters << params[:wavelength]
-        parameters << params[:image_size]
-        parameters << params[:field_size]
+        parameters << params[:wavelength].to_f
+        parameters << params[:image_size].to_f
+        parameters << params[:field_size].to_f
         return parameters
     end
     
