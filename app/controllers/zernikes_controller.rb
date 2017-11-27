@@ -83,9 +83,9 @@ class ZernikesController < ApplicationController
         end 
         
         # to run matlab code. 
-        #@files = ApplicationHelper.compute(zernikes, parameters, options)
+        @files = ApplicationHelper.compute(zernikes, parameters, options)
         flash[:notice]  = parameters
-        @files = ApplicationHelper.mock_compute
+        #@files = ApplicationHelper.mock_compute
         # need to remove unique id for this files eventually
     end
     
