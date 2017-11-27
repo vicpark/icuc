@@ -6,6 +6,7 @@
 
 <div class = "container">
 <h1><span class="h1color">i</span><span class="h1color2">c</span class="h1color"><span class="h1color">u</span><span class="h1color2">c</span></h1>
+// <img src = "icuc3.gif">
 <nav>
 <ul>
 <li><a href="/">Home</a></li>
@@ -13,13 +14,14 @@
 </ul>
 </nav>
 <header>
-%h2 Read Zernike Coefficients from a File
-= form_for 'zernike', :multipart=>true  do |f|
-  = f.label :attachment
-  = f.file_field :attachment, :accept => "text/zer"
 
-  = f.submit "Upload", class: "btn btn-primary",:id =>"upload_button", class: "btn btn-default"
+%h3 About ICUC
+%p ICUC is a ruby on rails application that computes the image quality metrics for an eye using a set of Zernike polynomials as input. 
 
-  // significant help from "http://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm"
+The goal is to use this application to teach optometry students about the imperfections of the eye. 
+%br
+%br
+%p A team of Fall 2017 CS 169 students built this 'greenfield' application for UC Berkeley Professor of Optometry Austin Roorda.
+
 </div>
 </body>

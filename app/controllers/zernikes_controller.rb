@@ -4,9 +4,13 @@ class ZernikesController < ApplicationController
     #    params.require(:zernike).permit(:uploaded_file)
     end
     
+    def about
+    end
+    
+    
     def main
         @zernikes = Zernike.zernikes
-        @params = Zernike.getparams
+        @default = Zernike.getdefault # changed name from @params to @default (also from getparams to getdefault) because '@params' is a confusing instance variable name --VP
         @options = Zernike.options
     end 
     
@@ -44,11 +48,37 @@ class ZernikesController < ApplicationController
     end
     
     def compute
+        if params["options"]
+            session["options"] = params["options"]
+            @checked_options = session["options"]
+            @radio_type = @checked_options.keys[0]
+            puts "radio_type", @radio_type
+        elsif session["options"]
+            @checked_options = session["options"]
+            @radio_type = params["radio_option"]
+            puts "radio type session", @radio_type
+        end
 	    zernikes = Zernike.zernikes[1,65]
+	    if params[:astigmatismTo0]
+             # in third row of pyramid,
+             zernikes[3] = 0 # zeros out the first coeff
+             zernikes[5] = 0 # zeros out the last coeff
+        end
         parameters = []
+        if params[:astigmatismTo0]
+             # in third row of pyramid,
+             zernikes[3] = 0 # zeros out the first coeff
+             zernikes[5] = 0 # zeros out the last coeff
+        end
+        # hello to whoever implemented what is written below, can we change the "0..4" to parameters name so everyone knows what these values are?
+        # currently, these are either manually set on the main page OR filled in with Zernike.getdefault
+        # 0 : pupil diameter from file, 1: pupil defocus from file, 
+        # and under "Additional Inputs" 2: wavelength for calculation, 3: output image size, 4: pupil field size
+        # I was thinking of changing these numbers to what they actually map to --VP
         (0..4).each do |i|
             parameters << params[i.to_s]
         end 
+        
         
         options = []
         Zernike.options.each do |opt|
@@ -62,21 +92,15 @@ class ZernikesController < ApplicationController
         #flash[:notice] = zernikes.to_s + parameters.to_s + options.to_s
         # to run matlab code. 
         @files = ApplicationHelper.compute(zernikes, parameters, options)
-        
-        #flash[:notice] =  zernikes.length.to_s + " " +parameters.length.to_s + " " + options.length.to_s 
-        #system("ls app/assets/images/computed* > app/assets/list.txt")
-        #iles = []
-        #f = File.open("app/assets/list.txt", "r")
-        
-        #f.each_line do |line|
-        #    line =~ /(compute.*jpg)/
-        #    if $1 != nil
-        #        files << $1
-        #    end
-        #end
-        #@files = files
+        # need to remove unique id for this files eventually
     end
     
+    def get_file_image_type(file, radio_type)
+        image_type_pat = /.*-(.*)\..*$/ 
+        file =~ image_type_pat
+        return $1
+    end
+        
     #Upload action ensures that submitted file is uploaded if it meets the requirements
     def upload
        # connected to upload.html.haml form
@@ -86,9 +110,12 @@ class ZernikesController < ApplicationController
             uploaded_file = params[:zernike][:attachment]
             file_name = uploaded_file.original_filename
             jsonified_file = uploaded_file.as_json["tempfile"]
-            extract_data = coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            rfit_extractor(jsonified_file)
+            
+            coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            Zernike.getpupdiam(params[:rfit])
             @zernike_coefficients = params[:coefficients]
-            #p @zernike_coefficients.length
+            # p @zernike_coefficients.length
             if @zernike_coefficients.nil? or @zernike_coefficients.empty? or @zernike_coefficients.length != 66
                 flash[:notice] = "Unable to upload file"
             else
@@ -131,9 +158,21 @@ class ZernikesController < ApplicationController
         end
         params[:coefficients] = coefficients
             # format printed loosely is : subscript superscript actual_coefficient
-            
-        # end
-        
+    end
+    
+    def rfit_extractor(jsonified_file)
+        find_rfit = /^#RFIT (.*)\r/i #extracts the RFIT value from the .zer file
+        for key in jsonified_file
+            line = find_rfit.match(key)
+            if line.nil?
+                next
+            else
+                rfit = line[1]
+                params[:rfit] = rfit
+                p rfit
+                return
+            end
+        end
     end
 
 end

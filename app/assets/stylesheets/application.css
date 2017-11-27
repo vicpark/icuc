@@ -15,18 +15,10 @@
  */
  
 body {
-    /*background-image: url(glasses.jpg);*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*display: block;*/
-    /*background-opacity: 0.5;*/
- 
-    /*background-size: cover;*/
-    /*background-repeat: no-repeat;*/
-    /*background-color: silver;*/
+    font-family: "Avenir Next" !important;
+    color: #2E647E;
+    margin: 25px;
+    /*display:flex;*/
 }
 
 .input_coefficients .button_to{
@@ -35,9 +27,9 @@ body {
 }
 
 .parameters_header, .zernikes_header {
-    background-color: black;
-    color: white;
-    text-align: center;
+    /*background-color: #2E647E;*/
+    color: #17355D;
+    text-align: left;
 }
 
 .zernike_pyramid {
@@ -53,36 +45,98 @@ body {
     /*text-align: center;*/
 }
 
-h1{
-    border:1px solid #a3a3a3;
-	position:relative;
-	background: #f9f9f9;
-	border-radius:2px;
-	padding:13px 13px 13px 20px;
-	background: (top,  #f9f9f9 0%, #f9f9f9 51%, #f9f9f9 52%, #f2f2f2 52%, #f2f2f2 100%);
-background: -webkit-linear-gradient(top,  #f9f9f9 0%,#f9f9f9 51%,#f9f9f9 52%,#f2f2f2 52%,#f2f2f2 100%);
-background: linear-gradient(to bottom,  #f9f9f9 0%,#f9f9f9 51%,#f9f9f9 52%,#f2f2f2 52%,#f2f2f2 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#f2f2f2',GradientType=0 );
-
-	&:before{
-    content:'';
-	display:inline-block;
-    position: absolute;
-    top:0;
-    bottom:0;
-    left:7px;
-    right:auto;
-	width:6px;
-	height:60%;
-	margin:auto;
-	background:#5db243;	
-	}
+h1 {
+    display:inline-block;
 }
+
+h1 .h1color2 {
+    color:#F2A900;
+}
+
+h1 .h1color {
+    color: #17355D;
+}
+/*h1{*/
+/*    border:1px solid #a3a3a3;*/
+/*	position:relative;*/
+/*	background: #f9f9f9;*/
+/*	border-radius:2px;*/
+/*	padding:13px 13px 13px 20px;*/
+/*	background: (top,  #f9f9f9 0%, #f9f9f9 51%, #f9f9f9 52%, #f2f2f2 52%, #f2f2f2 100%);*/
+/*background: -webkit-linear-gradient(top,  #f9f9f9 0%,#f9f9f9 51%,#f9f9f9 52%,#f2f2f2 52%,#f2f2f2 100%);*/
+/*background: linear-gradient(to bottom,  #f9f9f9 0%,#f9f9f9 51%,#f9f9f9 52%,#f2f2f2 52%,#f2f2f2 100%);*/
+/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#f2f2f2',GradientType=0 );*/
+
+/*	&:before{*/
+/*    content:'';*/
+/*	display:inline-block;*/
+/*    position: absolute;*/
+/*    top:0;*/
+/*    bottom:0;*/
+/*    left:7px;*/
+/*    right:auto;*/
+/*	width:6px;*/
+/*	height:60%;*/
+/*	margin:auto;*/
+/*	background:#5db243;	*/
+/*	}*/
+/*}*/
 #input_zernikes {
     text-align: center;
+}
+
+.form-group {
+  display: inline-block;
 }
 
 .center
 {
   text-align: center;
+}
+
+/*header{*/
+/*background-color: #FFF;*/
+/*margin:0;*/
+/*padding:0;*/
+/*width: 100%;*/
+/*}*/
+
+nav{
+    display:inline;
+    float:right;
+}
+
+nav ul{
+    list-style:none;
+    padding: 0;
+    margin: 0;
+}
+
+
+nav ul li{
+    display:inline-block;
+    font-family: 'Avenir Next' !important;
+    font-size: 1.2em;
+    line-height: 70px;
+    height: 70px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+nav a {
+  color: #17355D;
+  text-decoration: none;
+
+}
+
+.btn {
+    font-family: "Avenir Next" !important
+}
+
+.container {
+    padding: 15px;
+}
+
+label {
+    font-weight: 100;
 }
