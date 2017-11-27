@@ -57,9 +57,9 @@ return false;}
         %h3 Pupil Diameter
         .radio 
         %label
-        %input{name: "pupil_diamter", type: "radio", value: "pupil diameter value"}
+        = radio_button_tag 'diameter_option', 'file_value', true
         pupil diameter from file
-        = text_field :input_pupil, 'file_value'
+        = text_field_tag :diameter_from_file, 'file_value', disabled: true
         // %label mm; pupil diameter from file, OR set to a single value 
         // = text_field :input_pupil, 'pupil_value'
         // %label mm
@@ -67,15 +67,15 @@ return false;}
         %br
         .radio
         %label
-        %input{name: "pupil_diameter", type: "radio", value: "single"}
+        = radio_button_tag 'diameter_option', 'single'
         set to single value
-        = text_field_tag :pupil_file_diam, @default[0]
+        = text_field_tag :diameter_single_value, @default[0]
         (must be less than or equal to value from file)
         
         %br
         .radio
         %label
-        %input{name:"pupil_diameter", type:"radio", value:"min"}
+        = radio_button_tag 'diameter_option', 'range'
         set to a range
         = text_field :input_pupil, "pupil_range_min"
         min
@@ -90,22 +90,22 @@ return false;}
         %h3 Defocus
         .radio 
         %label
-        %input{name: "defocus", type: "radio", value: "pupil diameter value"}
+        = radio_button_tag 'defocus_option', 'file_value', true
         pupil defocus from file
-        = text_field :input_pupil, 'file_defocus_value'
+        = text_field_tag :defocus_from_file, 'file_defocus_value', disabled: true
         
         %br
         .radio
         %label
-        %input{name: "defocus", type: "radio", value: "single_defocus"}
+        = radio_button_tag 'defocus_option', 'single'
         set to single value
-        = text_field_tag 1, @default[1]
+        = text_field_tag :defocus_single_value, @default[1]
         (must be less than 5)
         
         %br
         .radio
         %label
-        %input{name:"defocus", type:"radio", value:"min_defocus"}
+        = radio_button_tag 'defocus_option', 'range'
         set to a range
         = text_field :input_pupil, "pupil_range_defocus_min"
         min
@@ -121,13 +121,13 @@ return false;}
         .box3 
             %br
             %h3 Additional Inputs
-            = text_field_tag 2, @default[2]
+            = text_field_tag :wavelength, @default[2]
             nm; wavelength for calculation
             %br
-            = text_field_tag 3, @default[3]
+            = text_field_tag :image_size, @default[3]
             pixels; output image size
             %br
-            = text_field_tag 4, @default[4]
+            = text_field_tag :field_size, @default[4]
             mm; pupil field size (make bigger to enlarge the image of the point spread function)
 
         %br

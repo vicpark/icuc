@@ -70,16 +70,8 @@ class ZernikesController < ApplicationController
              zernikes[3] = 0 # zeros out the first coeff
              zernikes[5] = 0 # zeros out the last coeff
         end
-        # hello to whoever implemented what is written below, can we change the "0..4" to parameters name so everyone knows what these values are?
-        # currently, these are either manually set on the main page OR filled in with Zernike.getdefault
-        # 0 : pupil diameter from file, 1: pupil defocus from file, 
-        # and under "Additional Inputs" 2: wavelength for calculation, 3: output image size, 4: pupil field size
-        # I was thinking of changing these numbers to what they actually map to --VP
-        (0..4).each do |i|
-            parameters << params[i.to_s]
-        end 
-        
-        
+        parameters = self.get_parameters
+
         options = []
         Zernike.options.each do |opt|
             if params[:options] != nil and params[:options][opt] == "1"
@@ -91,9 +83,29 @@ class ZernikesController < ApplicationController
         
         # to run matlab code. 
         #@files = ApplicationHelper.compute(zernikes, parameters, options)
-        
+        flash[:notice]  = parameters
         @files = ApplicationHelper.mock_compute
         # need to remove unique id for this files eventually
+    end
+    
+    def get_parameters
+        parameters = []
+        parameters << params[:diameter_from_file]
+        if params[:diameter_option] == :file_value
+            parameters << params[:diameter_from_file]
+        else
+            parameters << params[:diameter_single_value]
+        end
+        parameters << params[:defocus_from_file]
+        if params[:defocus_option] == :file_value
+            parameters << params[:defocus_from_file]
+        else
+            parameters << params[:defocus_single_value]
+        end
+        parameters << params[:wavelength]
+        parameters << params[:image_size]
+        parameters << params[:field_size]
+        return parameters
     end
     
     def get_file_image_type(file, radio_type)
