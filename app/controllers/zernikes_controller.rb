@@ -158,7 +158,12 @@ class ZernikesController < ApplicationController
         else 
             parameters << 0
         end
-        parameters << 0
+        if session[:defoc] != nil
+            parameters << session[:defoc].to_f 
+        else 
+            parameters << 0
+        end
+
         return parameters
     end
     
@@ -188,16 +193,19 @@ class ZernikesController < ApplicationController
     
     def rfit_extractor(jsonified_file)
         find_rfit = /^#RFIT (.*)\r/i #extracts the RFIT value from the .zer file
+        find_defoc = /^#Refraction\(Entrance Pupil\)  ([0-9,\.]*) .*/
         for key in jsonified_file
             line = find_rfit.match(key)
-            if line.nil?
-                next
-            else
+            if not line.nil?
                 rfit = line[1]
                 session[:rfit] = rfit
-                p rfit
-                return
             end
+            line = find_defoc.match(key)
+            if not line.nil?
+                defoc = line[1]
+                session[:defoc] = defoc
+            end
+            
         end
     end
 
