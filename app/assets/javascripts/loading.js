@@ -3,7 +3,7 @@
 //   $('h1').css('color', '#222');
 // }, 100);
 
-$(document).ready(function() {
+$(document).on('page:change', function() {
     $('#demo').click(function() {
         document.getElementById("demo").value = "Loading..."; 
         $('#slow_warning').show();
@@ -22,4 +22,4 @@ $(document).ready(function() {
 //         $('h1').css('color', '#222');
 //         }, 5000);
     });
-})
+});
