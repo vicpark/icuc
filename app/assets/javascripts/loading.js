@@ -3,7 +3,7 @@
 //   $('h1').css('color', '#222');
 // }, 100);
 
-$(document).on('page:change', function() {
+$(document).on('turbolinks:load', function() {
     $('#demo').click(function() {
         document.getElementById("demo").value = "Loading..."; 
         $('#slow_warning').show();
