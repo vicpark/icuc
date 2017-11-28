@@ -5,6 +5,12 @@
 
 $(document).on('turbolinks:load', function() {
     $('#demo').click(function() {
+        checked = $("input[type=checkbox]:checked").length;
+        if(!checked) {
+        alert("You must check at least one checkbox.");
+        location.reload();
+        return false;
+        }
         document.getElementById("demo").value = "Loading..."; 
         $('#slow_warning').show();
 //         $('#slower_warning').show();
