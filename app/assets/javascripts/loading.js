@@ -1,8 +1,3 @@
-// setTimeout(function(){
-//   $('body').addClass('loaded');
-//   $('h1').css('color', '#222');
-// }, 100);
-
 $(document).on('turbolinks:load', function() {
     $('#demo').click(function() {
         checked = $("input[type=checkbox]:checked").length;
