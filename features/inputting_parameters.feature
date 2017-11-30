@@ -25,3 +25,12 @@ Scenario: using default parameter values without changes
   And I click "Home"
   Then I am on the "home" page
   And "diameter_single_value" field contain "0"
+
+Scenario: optometry students wants to reset all zernike coefficients to zero
+  Given I am on the "home" page
+  And I press "Enter Manually"
+  Then I am on the "manual" page
+  And I press "Reset to all zeros"
+  And I press "Save"
+  Then I am on the "home" page
+  And I should see "0"

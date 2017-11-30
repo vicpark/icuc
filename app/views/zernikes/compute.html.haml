@@ -18,19 +18,19 @@
 <header>
 %h2 Output Images of the Zernike Equation
 %body
-%br
-%h3 Select which type of image to display
-= form_tag compute_path, :method => :post do
-    - @checked_options.each do |option|
-        - if option[0] == @radio_type
-            = radio_button_tag :radio_option, option[0], true
-        - else
-            = radio_button_tag :radio_option, option[0]
-        %label
-        = option[0]
-        %br
-    = submit_tag "Reload!", :action => "/compute"
-%br
+// %br
+// %h3 Select which type of image to display
+// = form_tag compute_path, :method => :post do
+//     - @checked_options.each do |option|
+//         - if option[0] == @radio_type
+//             = radio_button_tag :radio_option, option[0], true
+//         - else
+//             = radio_button_tag :radio_option, option[0]
+//         %label
+//         = option[0]
+//         %br
+//     = submit_tag "Reload!", :action => "/compute"
+// %br
 .output_choices
 <div class="slideshow-container">
 <div class="computed images">

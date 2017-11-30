@@ -42,23 +42,23 @@ class ZernikesController < ApplicationController
         redirect_to root_path
     end
     
-    def random
-        Zernike.random
-        @zernikes = Zernike.zernikes
-        redirect_to root_path 
-    end
+    # def random
+    #     Zernike.random
+    #     @zernikes = Zernike.zernikes
+    #     redirect_to root_path 
+    # end
     
     def compute
-        if params["options"]
-            session["options"] = params["options"]
-            @checked_options = session["options"]
-            @radio_type = @checked_options.keys[0]
-            puts "radio_type", @radio_type
-        elsif session["options"]
-            @checked_options = session["options"]
-            @radio_type = params["radio_option"]
-            puts "radio type session", @radio_type
-        end
+        # if params["options"]
+        #     session["options"] = params["options"]
+        #     @checked_options = session["options"]
+        #     @radio_type = @checked_options.keys[0]
+        #     puts "radio_type", @radio_type
+        # elsif session["options"]
+        #     @checked_options = session["options"]
+        #     @radio_type = params["radio_option"]
+        #     puts "radio type session", @radio_type
+        # end
 	    zernikes = Zernike.zernikes[1,65]
 	    if params[:astigmatismTo0]
              # in third row of pyramid,
@@ -120,11 +120,11 @@ class ZernikesController < ApplicationController
         return parameters
     end
     
-    def get_file_image_type(file, radio_type)
-        image_type_pat = /.*-(.*)\..*$/ 
-        file =~ image_type_pat
-        return $1
-    end
+    # def get_file_image_type(file, radio_type)
+    #     image_type_pat = /.*-(.*)\..*$/ 
+    #     file =~ image_type_pat
+    #     return $1
+    # end
         
     #Upload action ensures that submitted file is uploaded if it meets the requirements
     def upload

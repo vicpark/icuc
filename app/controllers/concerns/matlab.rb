@@ -47,16 +47,16 @@ class Matlab < ZernikesController
         return files
     end
     
-    def self.mock_compute
-        system("ls app/assets/images/computed* > app/assets/list.txt")
-        files = []
-        f = File.open("app/assets/list.txt", "r")
-        f.each_line do |line|
-            line =~ /(compute.*jpg)/
-            if $1 != nil
-                files << $1
-            end
-        end
-        return files
-    end
+    # def self.mock_compute
+    #     system("ls app/assets/images/computed* > app/assets/list.txt")
+    #     files = []
+    #     f = File.open("app/assets/list.txt", "r")
+    #     f.each_line do |line|
+    #         line =~ /(compute.*jpg)/
+    #         if $1 != nil
+    #             files << $1
+    #         end
+    #     end
+    #     return files
+    # end
 end
