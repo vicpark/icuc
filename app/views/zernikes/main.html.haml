@@ -47,7 +47,7 @@ $(document).ready(function () {
     .input_coefficients
         = button_to "Read from File", upload_zernike_path, :method => :get, class: "btn btn-default"
         = button_to "Enter Manually", enter_manually_path, :method => :get, class: "btn btn-default"
-        = button_to "Randomly Generate", random_path, :method => :post, class: "btn btn-default"
+        = button_to "Randomly Generate", random_path, :method => :post, class: "btn btn-default", disabled: true
     </div>
 // the input boxes
 .parameters_div
