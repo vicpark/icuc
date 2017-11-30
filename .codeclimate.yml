@@ -1,0 +1,3 @@
+exclude_patterns:
+- "wave.java"
+- "db/migrate/20171020200936_create_zernikes.rb"

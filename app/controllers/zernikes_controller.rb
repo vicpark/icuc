@@ -72,7 +72,17 @@ class ZernikesController < ApplicationController
              zernikes[5] = 0 # zeros out the last coeff
         end
         parameters = self.get_parameters
-
+        options = self.get_options
+        
+        # to run matlab code. 
+        @files = Matlab.compute(zernikes, parameters, options)
+        #flash[:notice]  = parameters
+        #flash[:notice] = zernikes.to_s + parameters.to_s +  options.to_s
+        #@files = Matlab.mock_compute
+        # need to remove unique id for this files eventually
+    end
+    
+    def get_options
         options = []
         Zernike.options.each do |opt|
             if params[:options] != nil and params[:options][opt] == "1"
@@ -81,14 +91,7 @@ class ZernikesController < ApplicationController
                 options << 0
             end
         end 
-        
-        # to run matlab code. 
-        @files = ApplicationHelper.compute(zernikes, parameters, options)
-        #flash[:notice]  = parameters
-        #flash[:notice] = zernikes.to_s + parameters.to_s +  options.to_s
-        #@files = ApplicationHelper.mock_compute
-        # need to remove unique id for this files eventually
-    end
+    end 
     
     def get_parameters
         parameters = []
