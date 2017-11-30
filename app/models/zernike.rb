@@ -1,14 +1,23 @@
 class Zernike < ActiveRecord::Base
   ### Upload
   require 'open-uri'
+  def self.image_types
+    return {"Convolution for 20 sized letter" => "CONV", "MTF Full" => "MTF", "MTF line" => "MTFL", "PSF" => "PSF", "PTF"=> "PTF", "Wavefront"=>"WF"}
+  end
   
   def self.options
-    return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line", "convolution for 20 sized letter"]
+    return ['Wavefront', 'PSF', 'MTF Full', "PTF", "MTF line", "Convolution for 20 sized letter"]
+  end
+  
+  def self.getpupdiam(rfit)
+    @pupil_diameter = rfit.to_i * 2
   end
 
-  def self.getparams
+
+  def self.getdefault
     # default values for diameter, defocus, wavelength, pixels, and image size
-    default_vals = [3, 0, 550, 256, 20]
+    # default value for pupil diameter is rfit*2 if we uploaded file, else I just put 0 --Victoria
+    default_vals = [@pupil_diameter || 0, 0, 550, 256, 20, 20]
     return default_vals
   end 
 
@@ -74,57 +83,12 @@ class Zernike < ActiveRecord::Base
 [4,	0,  "Spherical aberration"],
 [4,	2, "Secondary astig."],
 [4,	4, "Quadrafoil"],
-[5,	-5, ""],
-[5,	-3, ""],
-[5,	-1, ""],
-[5,	1, ""],
-[5,	3, ""],
-[5,	5, ""],
-[6,	-6, ""],
-[6,	-4, ""],
-[6,	-2, ""],
-[6,	0, ""],
-[6,	2, ""],
-[6,	4, ""],
-[6,	6, ""],
-[7,	-7, ""],
-[7,	-5, ""],
-[7,	-3, ""],
-[7,	-1, ""],
-[7,	1, ""],
-[7,	3, ""],
-[7,	5, ""],
-[7,	7, ""],
-[8,	-8, ""],
-[8,	-6, ""],
-[8,	-4, ""],
-[8,	-2, ""],
-[8,	0, ""],
-[8,	2, ""],
-[8,	4, ""],
-[8,	6, ""],
-[8,	8, ""],
-[9,	-9, ""],
-[9,	-7, ""],
-[9,	-5, ""],
-[9,	-3, ""],
-[9,	-1, ""],
-[9,	1, ""],
-[9,	3, ""],
-[9,	5, ""],
-[9,	7, ""],
-[9,	9, ""],
-[10,	-10, ""],
-[10,	-8, ""],
-[10,	-6, ""],
-[10,	-4, ""],
-[10,	-2, ""],
-[10,	0, ""],
-[10,	2, ""],
-[10,	4, ""],
-[10,	6, ""],
-[10,	8, ""],
-[10,	10, ""]]
+[5,	-5, ""],[5,	-3, ""],[5,	-1, ""],[5,	1, ""],[5,	3, ""],[5,	5, ""],
+[6,	-6, ""],[6,	-4, ""],[6,	-2, ""],[6,	0, ""],[6,	2, ""],[6,	4, ""],[6,	6, ""],
+[7,	-7, ""],[7,	-5, ""],[7,	-3, ""],[7,	-1, ""],[7,	1, ""],[7,	3, ""],[7,	5, ""],[7,	7, ""],
+[8,	-8, ""],[8,	-6, ""],[8,	-4, ""],[8,	-2, ""],[8,	0, ""],[8,	2, ""],[8,	4, ""],[8,	6, ""],[8,	8, ""],
+[9,	-9, ""],[9,	-7, ""],[9,	-5, ""],[9,	-3, ""],[9,	-1, ""],[9,	1, ""],[9,	3, ""],[9,	5, ""],[9,	7, ""],[9,	9, ""],
+[10,	-10, ""],[10,	-8, ""],[10,	-6, ""],[10,	-4, ""],[10,	-2, ""],[10,	0, ""],[10,	2, ""],[10,	4, ""],[10,	6, ""],[10,	8, ""],[10,	10, ""]]
     return n
   end
   

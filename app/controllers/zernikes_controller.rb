@@ -4,10 +4,15 @@ class ZernikesController < ApplicationController
     #    params.require(:zernike).permit(:uploaded_file)
     end
     
+    def about
+    end
+    
+    
     def main
         @zernikes = Zernike.zernikes
-        @params = Zernike.getparams
+        @default = Zernike.getdefault # changed name from @params to @default (also from getparams to getdefault) because '@params' is a confusing instance variable name --VP
         @options = Zernike.options
+        @params_from_file = self.file_params 
     end 
     
     def manual
@@ -44,12 +49,40 @@ class ZernikesController < ApplicationController
     end
     
     def compute
+        if params["options"]
+            session["options"] = params["options"]
+            @checked_options = session["options"]
+            @radio_type = @checked_options.keys[0]
+            puts "radio_type", @radio_type
+        elsif session["options"]
+            @checked_options = session["options"]
+            @radio_type = params["radio_option"]
+            puts "radio type session", @radio_type
+        end
 	    zernikes = Zernike.zernikes[1,65]
+	    if params[:astigmatismTo0]
+             # in third row of pyramid,
+             zernikes[3] = 0 # zeros out the first coeff
+             zernikes[5] = 0 # zeros out the last coeff
+        end
         parameters = []
-        (0..4).each do |i|
-            parameters << params[i.to_s]
-        end 
+        if params[:astigmatismTo0]
+             # in third row of pyramid,
+             zernikes[3] = 0 # zeros out the first coeff
+             zernikes[5] = 0 # zeros out the last coeff
+        end
+        parameters = self.get_parameters
+        options = self.get_options
         
+        # to run matlab code. 
+        @files = Matlab.compute(zernikes, parameters, options)
+        #flash[:notice]  = parameters
+        #flash[:notice] = zernikes.to_s + parameters.to_s +  options.to_s
+        #@files = Matlab.mock_compute
+        # need to remove unique id for this files eventually
+    end
+    
+    def get_options
         options = []
         Zernike.options.each do |opt|
             if params[:options] != nil and params[:options][opt] == "1"
@@ -58,25 +91,36 @@ class ZernikesController < ApplicationController
                 options << 0
             end
         end 
-        
-        #flash[:notice] = zernikes.to_s + parameters.to_s + options.to_s
-        # to run matlab code. 
-        #@files = ApplicationHelper.compute(zernikes, parameters, options)
-        
-        #flash[:notice] =  zernikes.length.to_s + " " +parameters.length.to_s + " " + options.length.to_s 
-        system("ls app/assets/images/computed* > app/assets/list.txt")
-        files = []
-        f = File.open("app/assets/list.txt", "r")
-        
-        f.each_line do |line|
-            line =~ /(compute.*jpg)/
-            if $1 != nil
-                files << $1
-            end
+        return options
+    end 
+    
+    def get_parameters
+        parameters = []
+        file_p = self.file_params
+        parameters << file_p[0]
+        if params[:diameter_option] == "file_value"
+            parameters << file_p[0]
+        else
+            parameters << params[:diameter_single_value].to_f
         end
-        @files = files
+        parameters << file_p[1]
+        if params[:defocus_option] == "file_value"
+            parameters << file_p[1]
+        else
+            parameters << params[:defocus_single_value].to_f
+        end
+        parameters << params[:wavelength].to_f
+        parameters << params[:image_size].to_f
+        parameters << params[:field_size].to_f
+        return parameters
     end
     
+    def get_file_image_type(file, radio_type)
+        image_type_pat = /.*-(.*)\..*$/ 
+        file =~ image_type_pat
+        return $1
+    end
+        
     #Upload action ensures that submitted file is uploaded if it meets the requirements
     def upload
        # connected to upload.html.haml form
@@ -86,9 +130,12 @@ class ZernikesController < ApplicationController
             uploaded_file = params[:zernike][:attachment]
             file_name = uploaded_file.original_filename
             jsonified_file = uploaded_file.as_json["tempfile"]
-            extract_data = coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            rfit_extractor(jsonified_file)
+            
+            coefficients_extractor(jsonified_file) # puts coefficients in a hash, params[:coefficients]
+            Zernike.getpupdiam(params[:rfit])
             @zernike_coefficients = params[:coefficients]
-            #p @zernike_coefficients.length
+            # p @zernike_coefficients.length
             if @zernike_coefficients.nil? or @zernike_coefficients.empty? or @zernike_coefficients.length != 66
                 flash[:notice] = "Unable to upload file"
             else
@@ -107,6 +154,22 @@ class ZernikesController < ApplicationController
     # app/controllers/documents_controller.rb
     def document_params
         params.require(:document).permit(:file)
+    end
+    
+    def file_params
+        parameters = []
+        if session[:rfit] != nil
+            parameters << session[:rfit].to_f * 2
+        else 
+            parameters << 0
+        end
+        if session[:defoc] != nil
+            parameters << session[:defoc].to_f 
+        else 
+            parameters << 0
+        end
+
+        return parameters
     end
     
     private
@@ -131,9 +194,24 @@ class ZernikesController < ApplicationController
         end
         params[:coefficients] = coefficients
             # format printed loosely is : subscript superscript actual_coefficient
+    end
+    
+    def rfit_extractor(jsonified_file)
+        find_rfit = /^#RFIT (.*)\r/i #extracts the RFIT value from the .zer file
+        find_defoc = /^#Refraction\(Entrance Pupil\)  ([0-9,\.]*) .*/
+        for key in jsonified_file
+            line = find_rfit.match(key)
+            if not line.nil?
+                rfit = line[1]
+                session[:rfit] = rfit
+            end
+            line = find_defoc.match(key)
+            if not line.nil?
+                defoc = line[1]
+                session[:defoc] = defoc
+            end
             
-        # end
-        
+        end
     end
 
 end

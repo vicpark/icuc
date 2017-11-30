@@ -1,10 +1,25 @@
-%h1 Upload Coefficients from a File
+<body>
+<header>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class = "container">
+<h1><span class="h1color">i</span><span class="h1color2">c</span class="h1color"><span class="h1color">u</span><span class="h1color2">c</span></h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/about">About</a></li>
+</ul>
+</nav>
+<header>
+%h2 Read Zernike Coefficients from a File
 = form_for 'zernike', :multipart=>true  do |f|
   = f.label :attachment
   = f.file_field :attachment, :accept => "text/zer"
 
-  // = file_field_tag 'uploaded_file', multiple: true, :id =>"upload_button", :accept => "text/html"
-  = f.submit "Upload", class: "btn btn-primary",:id =>"upload_button"
-  // = submit_tag "Upload"
-  
+  = f.submit "Upload", class: "btn btn-primary",:id =>"upload_button", class: "btn btn-default"
+
   // significant help from "http://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm"
+</div>
+</body>
