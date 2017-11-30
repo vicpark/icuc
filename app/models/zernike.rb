@@ -83,7 +83,7 @@ class Zernike < ActiveRecord::Base
 [4,	0,  "Spherical aberration"],
 [4,	2, "Secondary astig."],
 [4,	4, "Quadrafoil"],
-[5,	-5, ""],[5,	-3, ""],[5,	-1, ""],[5,	1, ""],[5,	3, ""],[5,	5, ""],
+[5,	-5, "Vertical Pentafoil"],[5,	-3, "Secondary Vertical Trefoil"],[5,	-1, "Secondary Vertical Coma"],[5,	1, "Secondary Horizontal Coma"],[5,	3, "Secondary Horizontal Trefoil"],[5,	5, "Horizontal Pentafoil"],
 [6,	-6, ""],[6,	-4, ""],[6,	-2, ""],[6,	0, ""],[6,	2, ""],[6,	4, ""],[6,	6, ""],
 [7,	-7, ""],[7,	-5, ""],[7,	-3, ""],[7,	-1, ""],[7,	1, ""],[7,	3, ""],[7,	5, ""],[7,	7, ""],
 [8,	-8, ""],[8,	-6, ""],[8,	-4, ""],[8,	-2, ""],[8,	0, ""],[8,	2, ""],[8,	4, ""],[8,	6, ""],[8,	8, ""],
