@@ -91,6 +91,7 @@ class ZernikesController < ApplicationController
                 options << 0
             end
         end 
+        return options
     end 
     
     def get_parameters
