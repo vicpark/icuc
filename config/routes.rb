@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   match "/compute" => "zernikes#compute", :as => "compute", via: [:get, :post]
   resources :zernikes
   
+  get "/download" => "zernikes#download", :as => "download"
+  
   get "/zernikes/image", to: "zernikes#get_image", as: "get_image"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
