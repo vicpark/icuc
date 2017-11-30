@@ -122,6 +122,7 @@ nav ul li{
     height: 70px;
     padding: 10px;
     text-transform: uppercase;
+   
 }
 
 nav a {
@@ -148,3 +149,15 @@ label {
 
 	
 }
+
+
+/*.top_bar {*/
+/*    position: fixed;*/
+/*    display:inline-block;*/
+/*    font-family: 'Avenir Next' !important;*/
+/*    font-size: 1.2em;*/
+/*    line-height: 70px;*/
+/*    height: 70px;*/
+/*    padding: 10px;*/
+/*    text-transform: uppercase;*/
+/*}*/
