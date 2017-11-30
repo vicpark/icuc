@@ -75,10 +75,10 @@ class ZernikesController < ApplicationController
         options = self.get_options
         
         # to run matlab code. 
-        #@files = Matlab.compute(zernikes, parameters, options)
+        @files = Matlab.compute(zernikes, parameters, options)
         #flash[:notice]  = parameters
         #flash[:notice] = zernikes.to_s + parameters.to_s +  options.to_s
-        @files = Matlab.mock_compute
+        #@files = Matlab.mock_compute
         # need to remove unique id for this files eventually
     end
     
@@ -91,6 +91,7 @@ class ZernikesController < ApplicationController
                 options << 0
             end
         end 
+        return options
     end 
     
     def get_parameters
