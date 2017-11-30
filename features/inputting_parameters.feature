@@ -24,4 +24,4 @@ Scenario: using default parameter values without changes
   And I wait for 5 seconds
   And I click "Home"
   Then I am on the "home" page
-  And "pupil_file_diam" field contain "0"
+  And "diameter_single_value" field contain "0"
