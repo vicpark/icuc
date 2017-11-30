@@ -82,6 +82,11 @@ class ZernikesController < ApplicationController
         # need to remove unique id for this files eventually
     end
     
+    def download
+        selected = params[:current]
+        send_file "app/assets/images/#{selected}", :type => 'image/jpeg', :disposition => 'attachment'
+    end	
+	
     def get_options
         options = []
         Zernike.options.each do |opt|
