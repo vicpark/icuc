@@ -10,7 +10,7 @@ Travis-CI:
 {<img src="https://travis-ci.org/vicpark/icuc.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/vicpark/icuc]
 
 
-Instructions to run the app locally: <br />
+Instructions to run the app locally:__
 bundle install --without production <br />
 rake db:migrate <br />
 rails s -p $PORT -b $IP (to run the app locally) <br />
