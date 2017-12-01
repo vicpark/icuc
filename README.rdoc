@@ -12,6 +12,7 @@ Travis-CI:
 
 Instructions to run the app locally:
 <br> bundle install --without production <br />
+<br></br>
 rake db:migrate <br />
 rails s -p $PORT -b $IP (to run the app locally) <br />
 
