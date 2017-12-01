@@ -128,6 +128,12 @@
             mm; pupil field size (make bigger to enlarge the image of the point spread function)
 
         %br
+        <script>
+        var chk1 = $("input[type='checkbox'][name = 'options[Convolution for 20 sized letter]']");
+        var chk2 = $("input[type='checkbox'][name='options[PSF]']");
+        chk1.on('change', function(){
+        chk2.prop('checked',this.checked);});
+        </script>
         %h2.parameters_checkboxes
             %h3 Output Images 
             %h5 Select the types of calculations you want to compute
