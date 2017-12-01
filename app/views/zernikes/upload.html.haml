@@ -6,18 +6,21 @@
 
 
 <div class = "container">
-<div class = "top_bar">
+<nav class="fixed-nav-bar">
 <h1>
 =image_tag "icuc_logo_ss.png", :class => "icuc_logo"
 </h1>
-<nav>
+
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/about">About</a></li>
+<li><a href="/">Home &nbsp </a>
+
+
+<a href="/about">About</a></li>
 </ul>
 </nav>
 </div>
 <header>
+<div class = "page_body">
 %h2 Read Zernike Coefficients from a File
 = form_for 'zernike', :multipart=>true  do |f|
   = f.label :attachment
@@ -26,5 +29,6 @@
   = f.submit "Upload", class: "btn btn-primary",:id =>"upload_button", class: "btn btn-default"
 
   // significant help from "http://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm"
+</div>
 </div>
 </body>

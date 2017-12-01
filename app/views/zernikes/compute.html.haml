@@ -7,18 +7,22 @@
 
 
 <div class = "container">
-<div class = "top_bar">
+<nav class="fixed-nav-bar">
 <h1>
 =image_tag "icuc_logo_ss.png", :class => "icuc_logo"
 </h1>
-<nav>
+
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/about">About</a></li>
+<li><a href="/">Home &nbsp </a>
+
+
+<a href="/about">About</a></li>
 </ul>
 </nav>
 </div>
+
 <header>
+<div class = "page_body">
 %h2 Output Images of the Zernike Equation
 %body
 // %br
@@ -47,6 +51,7 @@
     </div>
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
 </div>    
 <SCRIPT> showSlides(slideIndex);</SCRIPT>
 %br

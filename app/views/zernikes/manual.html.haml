@@ -7,19 +7,21 @@
 
 
 <div class = "container">
-<div class = "top_bar">
+<nav class="fixed-nav-bar">
 <h1>
 =image_tag "icuc_logo_ss.png", :class => "icuc_logo"
 </h1>
-<nav>
+
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/about">About</a></li>
+<li><a href="/">Home &nbsp </a>
+
+
+<a href="/about">About</a></li>
 </ul>
 </nav>
-</div>
 
 <header>
+<div class = "page_body">
 // %h1 Optical Wavefront Analysis
 %h2 Edit the Zernike Coefficients
 
@@ -51,5 +53,6 @@
           %td= text_field_tag i, @zernikes[i]
     
   = submit_tag "Save"
+</div>
 </div>
 </body>

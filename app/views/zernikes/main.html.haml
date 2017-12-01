@@ -18,20 +18,24 @@ $(document).ready(function () {
 </script>
 
 <div class = "container">
+<nav class="fixed-nav-bar">
 <h1>
 =image_tag "icuc_logo_ss.png", :class => "icuc_logo"
 </h1>
-<nav>
+
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/about">About</a></li>
+<li><a href="/">Home &nbsp </a>
+
+
+<a href="/about">About</a></li>
 </ul>
 </nav>
-<header>
+
+<header >
 // %h1 Optical Wavefront Analysis
 
 // <div class = "container">
-
+<div class = "page_body">
 //where the pyramid is
 .zernike_pyramid
     %h2.zernikes_header Zernike Coefficients
@@ -147,6 +151,7 @@ $(document).ready(function () {
         %br
         = submit_tag "Compute!", {id: "demo"}
         <div id="slow_warning" style="display:none" class="loader-wrapper"><div id="slower-warning" class="loader"></div></div>
+        </div>
 </div>
 </body>
     

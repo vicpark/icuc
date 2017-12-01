@@ -5,21 +5,23 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <div class = "container">
-<div class = "top_bar">
+<nav class="fixed-nav-bar">
 <h1>
 =image_tag "icuc_logo_ss.png", :class => "icuc_logo"
 </h1>
-<nav>
 
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="/about">About</a></li>
+<li><a href="/">Home &nbsp </a>
+
+
+<a href="/about">About</a></li>
 </ul>
 </nav>
-</div>
+
+
 
 <header>
-
+<div class = "page_body">
 %h3 About ICUC
 %p ICUC is a ruby on rails application that computes the image quality metrics for an eye using a set of Zernike polynomials as input. 
 
@@ -31,6 +33,6 @@ The goal is to use this application to teach optometry students about the imperf
 =image_tag "Roorda_Austin.jpg"
 
 
-
+</div>
 </div>
 </body>
