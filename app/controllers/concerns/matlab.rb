@@ -1,8 +1,8 @@
 class Matlab < ZernikesController
     def self.compute(zernikes, parameters, options)
-        while parameters.length < 7
-            parameters << 0
-        end
+#         while parameters.length < 7
+#             parameters << 0
+#         end
         if zernikes.length != 65 or parameters.length != 7 or options.length != 6
             system("result.txt << 'internal error, wrong number of parameters given'")
             return nil
