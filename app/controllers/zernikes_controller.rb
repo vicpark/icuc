@@ -108,7 +108,7 @@ class ZernikesController < ApplicationController
         else
             parameters << params[:diameter_single_value].to_f
         end
-        parameters << file_p[1]
+        #parameters << file_p[1]
         if params[:defocus_option] == "file_value"
             parameters << file_p[1]
         else
