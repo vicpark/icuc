@@ -117,6 +117,7 @@ class ZernikesController < ApplicationController
         parameters << params[:wavelength].to_f
         parameters << params[:image_size].to_f
         parameters << params[:field_size].to_f
+	parameters << params[:letter_size].to_f
         return parameters
     end
     
