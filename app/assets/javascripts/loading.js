@@ -23,4 +23,7 @@ $(document).on('turbolinks:load', function() {
 //         $('h1').css('color', '#222');
 //         }, 5000);
     });
+    $('#options_Convolution_for_20_sized_letter').click( function(){
+        document.getElementById("options_PSF").click();
+    });
 });
