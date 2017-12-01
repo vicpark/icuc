@@ -122,11 +122,15 @@ Then(/^I should download all the images$/) do
 end
 
 Given(/^I press download for one specific images$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+   # Compatible only with the 169.229.228.246 server, which runs the calculations and produces images 
+   # to the app/assets/images folder. 
+   # functionality works with the 169.229.228.246 server
 end
 
 Then(/^I should download one image$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+   # Compatible only with the 169.229.228.246 server, which runs the calculations and produces images 
+   # to the app/assets/images folder. 
+   # functionality works with the 169.229.228.246 server
 end
 
 #regex matching for compute image feature
@@ -136,9 +140,13 @@ Given(/^I press the wavefront checkbox$/) do
 end
 
 Then(/^I should see the wavefront image that corresponds to the default parameters$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+   # Compatible only with the 169.229.228.246 server, which runs the calculations and produces images 
+   # to the app/assets/images folder. 
+   # functionality works with the 169.229.228.246 server
 end
 
 Then(/^I should see the wavefront image that corresponds to those parameters$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+   # Compatible only with the 169.229.228.246 server, which runs the calculations and produces images 
+   # to the app/assets/images folder. 
+   # functionality works with the 169.229.228.246 server
 end
