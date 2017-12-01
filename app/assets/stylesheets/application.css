@@ -159,7 +159,7 @@ label {
 }
 
 .page_body {
-    padding-top: 50px;
+    padding-top: 60px;
 }
 
 .fixed-nav-bar {
@@ -168,8 +168,8 @@ label {
     left: 0;
     z-index: 9999;
     width: 100%;
-    height: 70px;
-    background-color: #ffffff;
+    height: 80px;
+    background-color: #eaecef;
     padding-left: 25px;
     padding-right: 25px;
     
