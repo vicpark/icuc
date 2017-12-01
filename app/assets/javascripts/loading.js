@@ -24,6 +24,25 @@ $(document).on('turbolinks:load', function() {
 //         }, 5000);
     });
     $('#options_Convolution_for_20_sized_letter').click( function(){
-        document.getElementById("options_PSF").click();
+        var psf = document.getElementById("options_PSF").checked;
+        var conv = document.getElementById("options_Convolution_for_20_sized_letter").checked;
+        //making sure PSF is always checked when CONV is checked
+        if (conv) {
+            if (!psf) {
+                document.getElementById("options_PSF").click();
+            }
+            else {
+                return;
+            }
+        }
+        //document.getElementById("options_PSF").click();
+    });
+    $('#options_PSF').click( function(){
+        var psf = document.getElementById("options_PSF").checked;
+        var conv = document.getElementById("options_Convolution_for_20_sized_letter").checked;
+        //making sure PSF is always checked when CONV is checkd
+        if (conv) {
+            document.getElementById("options_PSF").click();
+        }
     });
 });
