@@ -10,17 +10,17 @@ Travis-CI:
 {<img src="https://travis-ci.org/vicpark/icuc.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/vicpark/icuc]
 
 
-Instructions to run the app locally:
-bundle install --without production
-rake db:migrate
-rails s -p $PORT -b $IP (to run the app locally)
+Instructions to run the app locally: <br />
+bundle install --without production <br />
+rake db:migrate <br />
+rails s -p $PORT -b $IP (to run the app locally) <br />
 
-If you want to update the app on the Optometry lab server:
-ssh webdesign@169.229.228.246
-pwd: (Contact aroorda@berkeley.edu)
-cd icuc
-Then to pull new code:
-git pull origin master
+If you want to update the app on the Optometry lab server: <br />
+ssh webdesign@169.229.228.246 <br />
+pwd: (Contact aroorda@berkeley.edu) <br />
+cd icuc <br />
+Then to pull new code: <br />
+git pull origin master <br />
 
 Link to the live app: http://169.229.228.246
 
