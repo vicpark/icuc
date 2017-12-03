@@ -11,17 +11,17 @@ Travis-CI:
 
 
 Instructions to run the app locally:
-*bundle install --without production 
+* bundle install --without production 
 
-*rake db:setup
-*rails s -p $PORT -b $IP (to run the app locally on cloud) 
-*rails server (to run app locally in terminal)
+* rake db:setup
+* rails s -p $PORT -b $IP (to run the app locally on cloud) 
+* rails server (to run app locally in terminal)
 
 If you want to update the app on the Optometry lab server: 
-*ssh webdesign@169.229.228.246 
-*pwd: (Contact aroorda@berkeley.edu) 
-*cd icuc 
-*To pull new code: 
+* ssh webdesign@169.229.228.246 
+* pwd: (Contact aroorda@berkeley.edu) 
+* cd icuc 
+* To pull new code: 
 1. git pull origin master 
 
 Link to the live app: http://169.229.228.246
