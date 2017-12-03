@@ -11,9 +11,8 @@ Travis-CI:
 
 
 === Instructions to run the app locally:
-* +bundle install --without production+ 
-
-* +rake db:setup+
+* +bundle+ install --without production
+* +rake+ +db:setup+
 * +rails s -p $PORT -b $IP+ (to run the app locally on cloud) 
 * +rails server+ (to run app locally in terminal)
 
