@@ -18,7 +18,7 @@ Travis-CI:
 
 === Instructions to update the app on the Optometry lab's server: 
 * ssh webdesign@169.229.228.246
-* pwd: ___ (Please contact aroorda@berkeley.edu for password information)
+* pwd: (Please contact aroorda@berkeley.edu for password information)
 * cd icuc
 * To pull new code: 
 1. git pull origin master
