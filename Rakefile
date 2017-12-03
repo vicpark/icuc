@@ -9,7 +9,8 @@ Cucumber::Rake::Task.new
 
 require 'rake'
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:rspec) 
+RSpec::Core::RakeTask.new(:rspec)
+RSpec::Core::RakeTask.new(:spec)
 
 Rails.application.load_tasks
 
