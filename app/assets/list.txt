@@ -1,2 +1,12 @@
-app/assets/images/computed.jpg
-app/assets/images/computed.png
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-CONV.csv
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-CONV.jpg
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-MTF.csv
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-MTF.jpg
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-MTFL.csv
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-MTFL.jpg
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-PSF.csv
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-PSF.jpg
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-PTF.csv
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-PTF.jpg
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-WF.csv
+app/assets/images/computedQTTOXXBR-5500-astig-axis-0-WF.jpg

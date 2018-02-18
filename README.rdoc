@@ -1,36 +1,28 @@
 == README
-CodeClimate:
 
-{<img src="https://api.codeclimate.com/v1/badges/dbc977637e9136aa79e8/maintainability" />}[https://codeclimate.com/github/vicpark/icuc/maintainability]
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-{<img src="https://api.codeclimate.com/v1/badges/dbc977637e9136aa79e8/test_coverage" />}[https://codeclimate.com/github/vicpark/icuc/test_coverage]
+Things you may want to cover:
 
-Travis-CI: 
+* Ruby version
 
-{<img src="https://travis-ci.org/vicpark/icuc.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/vicpark/icuc]
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
 
 
-=== Instructions to run the app locally:
-* bundle install --without production
-* rake db:setup
-* rails s -p $PORT -b $IP (to run app locally on cloud9 ide) 
-* rails server (to run app locally in terminal)
-
-=== Instructions to update the app on the Optometry lab's server: 
-* ssh webdesign@169.229.228.246
-* pwd: (Please contact aroorda@berkeley.edu for password information)
-* cd icuc
-* To pull new code: 
-1. git pull origin master
-
-=== Link to live app: 
-http://169.229.228.246
-
-=== Link to final demo video:
-https://youtu.be/GgrXwowaL3M
-
-=== Link to pivotal tracker: 
-https://www.pivotaltracker.com/n/projects/2118168
-
-=== Description of customer's business need: 
-* Our customer, Austin, wants to develop a platform that can be used to compute image quality metrics for the eye using a set of Zernike polynomials as input. He hopes to use this platform to teach his optometry students more about the imperfections of the eye. Here is the link to Austin's optometry lab's page: http://roorda.vision.berkeley.edu/
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

@@ -1,59 +1,21 @@
-// <SCRIPT>  type="text/javascript" language="JavaScript" src="images.js"</SCRIPT>
-<header>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <SCRIPT>  type="text/javascript" language="JavaScript" src="images.js"</SCRIPT>
+%h1 Image output of the Zernike equation
 
 
-<div class = "container">
-<nav class="fixed-nav-bar">
-<h1>
-=image_tag "icuc_logo_gray.png", :class => "icuc_logo"
-</h1>
-
-<ul>
-<li>
-<a href="/about">About</a></li>
-</ul>
-<ul>
-<li><a href="/">Home</a></li>
-</ul>
-</nav>
-</div>
-
-<header>
-<div class = "page_body">
-%h2 Output Images of the Zernike Equation
 %body
-// %br
-// %h3 Select which type of image to display
-// = form_tag compute_path, :method => :post do
-//     - @checked_options.each do |option|
-//         - if option[0] == @radio_type
-//             = radio_button_tag :radio_option, option[0], true
-//         - else
-//             = radio_button_tag :radio_option, option[0]
-//         %label
-//         = option[0]
-//         %br
-//     = submit_tag "Reload!", :action => "/compute"
-// %br
 .output_choices
 <div class="slideshow-container">
 <div class="computed images">
 
 - @files.each do |image|
-    <div class="mySlides">
+    <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
     =image_tag image, :class=>"image"
-    //<a href="/app/assets/images/" download=#{image}, class="text">Download #{image}<img src="/app/assets/images/"></a>
-    = link_to "Download #{image}", download_path(:current => image) ,data: {turbolinks: false}
+    <a href="/app/assets/images/" download=#{image}, class="text">Download #{image}<img src="/app/assets/images/"></a>
     </div>
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
 </div>    
 <SCRIPT> showSlides(slideIndex);</SCRIPT>
 %br
-// = button_to "Home", root_path, :method => :get, :class => "btn btn-default"
+= button_to "home page", root_path, :method => :get, :class => "home"

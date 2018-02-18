@@ -1,40 +1,15 @@
-<body>
-<header>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+%h1 Optical Wavefront Analysis
+%h2 Edit the Zernikes
 
-
-
-<div class = "container">
-<nav class="fixed-nav-bar">
-<h1>
-=image_tag "icuc_logo_gray.png", :class => "icuc_logo"
-</h1>
-
-<ul>
-<li>
-<a href="/about">About</a></li>
-</ul>
-<ul>
-<li><a href="/">Home</a></li>
-</ul>
-</nav>
-
-<header>
-<div class = "page_body">
-// %h1 Optical Wavefront Analysis
-%h2 Edit the Zernike Coefficients
-
-= button_to "Reset to all zeros", set_all_zero_path, :method => :post, class: "btn btn-default"
+= button_to "Reset to All Zeros", set_all_zero_path, :method => :post
 
 = form_tag update_path, :method => :post do
   %table{:border => 1}
     %tbody
       %tr
-        %td i: Index 
-        %td n &emsp; 
-        %td m &emsp; 
+        %td i: Index
+        %td n &emsp;
+        %td m &emsp;
         %td Term nickname
         %td Term
       %tr
@@ -54,6 +29,3 @@
           %td= text_field_tag i, @zernikes[i]
     
   = submit_tag "Save"
-</div>
-</div>
-</body>
