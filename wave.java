@@ -32,12 +32,21 @@ class wave
         float pupilfieldsize = Float.parseFloat(args[71]);
         float lettersize = Float.parseFloat(args[72]); 
         
-        // testing defocus range
-        float defocusRange[] = new float[3];
-        defocusRange[0] = Float.parseFloat("1");
-        defocusRange[1] = Float.parseFloat("2");
-        defocusRange[2] = 5.0;
-        MWNumericArray defocusRanges = new MWNumericArray(defocusRange, MWClassID.DOUBLE);
+        // TESTING DEFOCUS RANGE
+            // if single value
+        float defocus = Float.parseFloat(args[68]); 
+            // else need to parse each individually
+            // would like to see format of args[68]
+        // String[] defocusFromInput = new String[20];
+        String defFromInput = args[68]; 
+        // str2num('1:0.5:3') works
+        //float defocusRange[] = new float[3];
+        
+        // defocusRange[0] = Float.parseFloat(defFromInput[0]);
+        // defocusRange[1] = Float.parseFloat(defFromInput[0]);
+        // defocusRange[2] = 5.0;
+        // MWNumericArray defocusRanges = new MWNumericArray(defocusRange, MWClassID.DOUBLE);
+        
         
         // choice of graphs
         int WF = Integer.parseInt(args[73]);
@@ -48,7 +57,7 @@ class wave
         int CONV = Integer.parseInt(args[78]);
         
         // result fits
-        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusRanges, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
         System.out.println(result);
       }
       catch (Exception e)
