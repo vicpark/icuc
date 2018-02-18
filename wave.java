@@ -35,7 +35,7 @@ class wave
         // testing defocus range
         float defocusRange[] = new float[3];
         defocusRange[0] = Float.parseFloat("1");
-        defocusRange[1] = 2.0;
+        defocusRange[1] = Float.parseFloat("2");
         defocusRange[2] = 5.0;
         MWNumericArray defocusRanges = new MWNumericArray(defocusRange, MWClassID.DOUBLE);
         
