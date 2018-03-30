@@ -49,16 +49,6 @@ class ZernikesController < ApplicationController
     # end
     
     def compute
-        # if params["options"]
-        #     session["options"] = params["options"]
-        #     @checked_options = session["options"]
-        #     @radio_type = @checked_options.keys[0]
-        #     puts "radio_type", @radio_type
-        # elsif session["options"]
-        #     @checked_options = session["options"]
-        #     @radio_type = params["radio_option"]
-        #     puts "radio type session", @radio_type
-        # end
 	    zernikes = Zernike.zernikes[1,65]
 	    if params[:astigmatismTo0]
              # in third row of pyramid,
@@ -110,14 +100,24 @@ class ZernikesController < ApplicationController
         end
         #parameters << file_p[1]
         if params[:defocus_option] == "file_value"
+            puts "IN PARAMES METHOD"
+            puts file_p[1].class
             parameters << file_p[1]
-        else
+        elsif params[:defocus_option] == "single"
             parameters << params[:defocus_single_value].to_f
+        else
+            puts (params[:input_pupil][:pupil_range_defocus_min] + ":" + params[:input_pupil][:pupil_range_defocus_step] + ":" + params[:input_pupil][:pupil_range_defocus_max])
+            parameters << (params[:input_pupil][:pupil_range_defocus_min] + ":" + params[:input_pupil][:pupil_range_defocus_step] + ":" + params[:input_pupil][:pupil_range_defocus_max])
+            # parameters << params[:input_pupil][:pupil_range_defocus_min].to_f
+            # parameters << params[:input_pupil][:pupil_range_defocus_max].to_f
+            # parameters << params[:input_pupil][:pupil_range_defocus_step].to_f
         end
         parameters << params[:wavelength].to_f
         parameters << params[:image_size].to_f
         parameters << params[:field_size].to_f
-	parameters << params[:letter_size].to_f
+	    parameters << params[:letter_size].to_f
+	    puts "IN GETPARAMETERS METHOD"
+	    puts parameters
         return parameters
     end
     

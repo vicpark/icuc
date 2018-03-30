@@ -10,7 +10,7 @@ class wave
       if (args.length != (65 + 14))
       {
         System.out.println("Error: you provided " + args.length + " arguments, must be 1+65+13");
-        return;
+        // return;
       }
   
       try
@@ -26,7 +26,7 @@ class wave
         // other parameters
         float pupilfit = Float.parseFloat(args[66]);
         float pupilcalc = Float.parseFloat(args[67]);
-        float defocus = Float.parseFloat(args[68]);
+        // float defocus = Float.parseFloat(args[68]);
         float wavelength = Float.parseFloat(args[69]);
         float pixels = Float.parseFloat(args[70]);
         float pupilfieldsize = Float.parseFloat(args[71]);
