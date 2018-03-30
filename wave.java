@@ -34,7 +34,8 @@ class wave
         
         // TESTING DEFOCUS RANGE
             // if single value
-        float defocus = Float.parseFloat(args[68]); 
+        
+        float defocus = 1.0;//Float.parseFloat(args[68]); 
             // else need to parse each individually
             // would like to see format of args[68]
         // String[] defocusFromInput = new String[20];

@@ -116,8 +116,6 @@ class ZernikesController < ApplicationController
         parameters << params[:image_size].to_f
         parameters << params[:field_size].to_f
 	    parameters << params[:letter_size].to_f
-	    puts "IN GETPARAMETERS METHOD"
-	    puts parameters
         return parameters
     end
     

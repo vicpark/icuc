@@ -28,12 +28,14 @@ class Matlab < ZernikesController
     def self.run_matlab(arguments)
         name = "computed" + (0...8).map { (65 + rand(26)).chr }.join
         arguments = ' \'' + name + '\' ' + arguments
+        
         result_file = "result.txt"
         run_command = "java -classpath :'/usr/local/MATLAB/MATLAB_Runtime/v901/toolbox/javabuilder/jar/javabuilder.jar':./WaveReq.jar wave"
         path = "export LD_LIBRARY_PATH='/usr/local/MATLAB/MATLAB_Runtime/v901/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/opengl/lib/glnxa64'"
         make_log, s = Open3.capture2e(path + "\n" + run_command + arguments + " > " + result_file)
         system("rm app/assets/images/computed*")
 	    system("mv "+ name + "* app/assets/images")  
+	    
 	    return read_result_file(result_file, name)
     end
     
