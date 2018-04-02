@@ -92,26 +92,27 @@ class ZernikesController < ApplicationController
     def get_parameters
         parameters = []
         file_p = self.file_params
-        parameters << file_p[0]
+        rfit = file_p[0]
+        diam = rfit * 2
+        
+        parameters << diam
+        
         if params[:diameter_option] == "file_value"
-            parameters << file_p[0]
-        else
+            parameters << diam
+        elsif params[:diameter_option] == "single"
             parameters << params[:diameter_single_value].to_f
+        else
+            parameters << (params[:input_pupil][:pupil_range_min] + ":" + params[:input_pupil][:pupil_range_step] + ":" + params[:input_pupil][:pupil_range_max])
         end
-        #parameters << file_p[1]
+    
         if params[:defocus_option] == "file_value"
-            puts "IN PARAMES METHOD"
-            puts file_p[1].class
             parameters << file_p[1]
         elsif params[:defocus_option] == "single"
             parameters << params[:defocus_single_value].to_f
         else
-            puts (params[:input_pupil][:pupil_range_defocus_min] + ":" + params[:input_pupil][:pupil_range_defocus_step] + ":" + params[:input_pupil][:pupil_range_defocus_max])
             parameters << (params[:input_pupil][:pupil_range_defocus_min] + ":" + params[:input_pupil][:pupil_range_defocus_step] + ":" + params[:input_pupil][:pupil_range_defocus_max])
-            # parameters << params[:input_pupil][:pupil_range_defocus_min].to_f
-            # parameters << params[:input_pupil][:pupil_range_defocus_max].to_f
-            # parameters << params[:input_pupil][:pupil_range_defocus_step].to_f
         end
+        
         parameters << params[:wavelength].to_f
         parameters << params[:image_size].to_f
         parameters << params[:field_size].to_f
@@ -163,7 +164,7 @@ class ZernikesController < ApplicationController
     def file_params
         parameters = []
         if session[:rfit] != nil
-            parameters << session[:rfit].to_f * 2
+            parameters << session[:rfit].to_f
         else 
             parameters << 0
         end

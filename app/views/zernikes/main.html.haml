@@ -72,12 +72,12 @@
         %br
         .radio
         %label
-        = radio_button_tag 'diameter_option', 'range', false, disabled: true
+        = radio_button_tag 'diameter_option', 'range', false, disabled: false
         set to a range
         = text_field :input_pupil, "pupil_range_min"
-        min
+        min &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp
         = text_field :input_pupil, "pupil_range_max"
-        max
+        max &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
         = text_field :input_pupil, "pupil_range_step"
         step (max cannot be greater than value from file)
         
@@ -105,9 +105,9 @@
         = radio_button_tag 'defocus_option', 'range', false, disabled: false
         set to a range
         = text_field :input_pupil, "pupil_range_defocus_min"
-        min
+        min &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
         = text_field :input_pupil, "pupil_range_defocus_max"
-        max
+        max &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
         = text_field :input_pupil, "pupil_range_defocus_step"
         step
         %br
