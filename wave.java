@@ -33,12 +33,15 @@ class wave
         float lettersize = Float.parseFloat(args[72]); 
         
         // TESTING DEFOCUS RANGE
-            // if single value
-        float defocus = Float.parseFloat(args[68]); 
+        String defFromInput = args[68];
+	System.out.println("defFromIn");
+	System.out.println(defFromInput);
+	    // if single value
+//        float defocus = Float.parseFloat(args[68]); 
             // else need to parse each individually
             // would like to see format of args[68]
         // String[] defocusFromInput = new String[20];
-        String defFromInput = args[68]; 
+        System.out.println("after parsefloat"); 
         // str2num('1:0.5:3') works
         //float defocusRange[] = new float[3];
         
@@ -57,12 +60,13 @@ class wave
         int CONV = Integer.parseInt(args[78]);
         
         // result fits
-        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defFromInput, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
         System.out.println(result);
       }
       catch (Exception e)
       {
         System.out.println("Exception: " + e.toString());
+	System.out.println("IN WAVE.JAVA FILE");
       }
       finally
       {
