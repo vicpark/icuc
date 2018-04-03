@@ -24,8 +24,8 @@ class wave
         MWNumericArray coeffs = new MWNumericArray(zernikes, MWClassID.DOUBLE);
         
         // other parameters
-        String pupilfit = args[66];
-        String pupilcalc = args[67];
+        float pupilfit = Float.parseFloat(args[66]);
+        float pupilcalc = Float.parseFloat(args[67]);
         String defocus = args[68];
         float wavelength = Float.parseFloat(args[69]);
         float pixels = Float.parseFloat(args[70]);
@@ -41,7 +41,7 @@ class wave
         int CONV = Integer.parseInt(args[78]);
         
         // result fits
-        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defFromInput, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
         System.out.println(result);
       }
       catch (Exception e)

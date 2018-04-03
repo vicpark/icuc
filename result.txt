@@ -1,0 +1,126 @@
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-WF
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-PSF
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-MTF
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-PTF
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-MTFL
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-WF
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-PSF
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-MTF
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-PTF
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-MTFL
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-WF
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-PSF
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-MTF
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-PTF
+
+
+name =
+
+computedBBCZZGOO-490-astig-axis-60-MTFL
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-WF
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-PSF
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-MTF
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-PTF
+
+
+name =
+
+computedBBCZZGOO-580-astig-axis-60-MTFL
+
+
+name =
+
+computedBBCZZGOO-500-astig-axis-60-WF
+
+
+name =
+
+computedBBCZZGOO-500-astig-axis-60-PSF
+
+
+name =
+
+computedBBCZZGOO-500-astig-axis-60-MTF
+
+
+name =
+
+computedBBCZZGOO-500-astig-axis-60-PTF
+
+
+name =
+
+computedBBCZZGOO-500-astig-axis-60-MTFL
+
+[Ljava.lang.Object;@48be6f21
