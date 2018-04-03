@@ -51,72 +51,71 @@
     %h5 Update the parameters for the Zernike equation
     = form_tag compute_path, :method => :post do
         .box1 
-        %h3 Pupil Diameter
-        .radio 
-        %label
-        = radio_button_tag 'diameter_option', 'file_value', true
-        pupil diameter from file
-        = text_field_tag :diameter_from_file, @params_from_file[0], disabled: true
-        // %label mm; pupil diameter from file, OR set to a single value 
-        // = text_field :input_pupil, 'pupil_value'
-        // %label mm
-        
-        %br
-        .radio
-        %label
-        = radio_button_tag 'diameter_option', 'single'
-        set to single value
-        = text_field_tag :diameter_single_value, @default[0]
-        (must be less than or equal to value from file)
-        
-        %br
-        .radio
-        %label
-        = radio_button_tag 'diameter_option', 'range', false, disabled: false
-        set to a range
-        = text_field :input_pupil, "pupil_range_min"
-        min &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp
-        = text_field :input_pupil, "pupil_range_max"
-        max &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-        = text_field :input_pupil, "pupil_range_step"
-        step (max cannot be greater than value from file)
-        
+            %h3 Pupil Diameter
+            .radio 
+            %label
+            = radio_button_tag 'diameter_option', 'file_value', true
+            pupil diameter from file
+            = text_field_tag :diameter_from_file, @params_from_file[0], disabled: true
+            // %label mm; pupil diameter from file, OR set to a single value 
+            // = text_field :input_pupil, 'pupil_value'
+            // %label mm
+            
+            %br
+            .radio
+            %label
+            = radio_button_tag 'diameter_option', 'single'
+            set to single value
+            = text_field_tag :diameter_single_value, @default[0]
+            (must be less than or equal to value from file)
+            
+            %br
+            .radio
+            %label
+            = radio_button_tag 'diameter_option', 'range', false, disabled: false
+            set to a range
+            = text_field :input_pupil, "pupil_range_min"
+            min &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp
+            = text_field :input_pupil, "pupil_range_max"
+            max &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            = text_field :input_pupil, "pupil_range_step"
+            step (max cannot be greater than value from file)
+            
         %br
         .box2 
-        %br
-        %h3 Defocus
-        .radio 
-        %label
-        = radio_button_tag 'defocus_option', 'file_value', true
-        pupil defocus from file
-        = text_field_tag :defocus_from_file, @params_from_file[1], disabled: true
         
-        %br
-        .radio
-        %label
-        = radio_button_tag 'defocus_option', 'single'
-        set to single value
-        = text_field_tag :defocus_single_value, @default[1]
-        (must be less than 5)
-        
-        %br
-        .radio
-        %label
-        = radio_button_tag 'defocus_option', 'range', false, disabled: false
-        set to a range
-        = text_field :input_pupil, "pupil_range_defocus_min"
-        min &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-        = text_field :input_pupil, "pupil_range_defocus_max"
-        max &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-        = text_field :input_pupil, "pupil_range_defocus_step"
-        step
-        %br
-        = check_box_tag 'astigmatismTo0[]', 1
-        force astigmatism coefficients to 0
+            %h3 Defocus
+            .radio 
+            %label
+            = radio_button_tag 'defocus_option', 'file_value', true
+            pupil defocus from file
+            = text_field_tag :defocus_from_file, @params_from_file[1], disabled: true
+            
+            %br
+            .radio
+            %label
+            = radio_button_tag 'defocus_option', 'single'
+            set to single value
+            = text_field_tag :defocus_single_value, @default[1]
+            (must be less than 5)
+            
+            %br
+            .radio
+            %label
+            = radio_button_tag 'defocus_option', 'range', false, disabled: false
+            set to a range
+            = text_field :input_pupil, "pupil_range_defocus_min"
+            min &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            = text_field :input_pupil, "pupil_range_defocus_max"
+            max &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            = text_field :input_pupil, "pupil_range_defocus_step"
+            step
+            %br
+            = check_box_tag 'astigmatismTo0[]', 1
+            force astigmatism coefficients to 0
     
         %br        
         .box3 
-            %br
             %h3 Additional Inputs
             = text_field_tag :wavelength, @default[2]
             nm; wavelength for calculation
@@ -126,24 +125,26 @@
             %br
             = text_field_tag :field_size, @default[4]
             mm; pupil field size (make bigger to enlarge the image of the point spread function)
-
         %br
-        %h2.parameters_checkboxes
-            %h3 Output Images 
-            %h5 Select the types of calculations you want to compute
-            - @options.each do |option|
-                = check_box_tag "options[#{option}]", 1 
-                = option
-                %br
-        = text_field_tag :letter_size, @default[5]
-        Convolution for 20 sized letter
+        
+        .parameters_checkboxes
+            %h2
+                %h3 Output Images 
+                %h5 Select the types of calculations you want to compute
+                - @options.each do |option|
+                    = check_box_tag "options[#{option}]", 1 
+                    = option
+                    %br
+            = text_field_tag :letter_size, @default[5]
+            Convolution for 20 sized letter
+            %br
+            Note: Convolution image is produced with PSF image.
         %br
-        Note: Convolution image is produced with PSF image.
+        
         .parameters_submit
-        %br
-        = submit_tag "Compute!", {id: "demo"}
-        <div id="slow_warning" style="display:none" class="loader-wrapper"><div id="slower-warning" class="loader"></div></div>
-        </div>
+            = submit_tag "Compute!", {id: "demo"}
+            <div id="slow_warning" style="display:none" class="loader-wrapper"><div id="slower-warning" class="loader"></div></div>
+            </div>
 </div>
 </body>
     
