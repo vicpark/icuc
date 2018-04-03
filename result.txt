@@ -1,126 +1,151 @@
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-WF
+computedLTUGUKDM-480-astig-axis-500-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-PSF
+computedLTUGUKDM-480-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-MTF
+computedLTUGUKDM-480-astig-axis-490-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-PTF
+computedLTUGUKDM-480-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-MTFL
+computedLTUGUKDM-480-astig-axis-510-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-WF
+computedLTUGUKDM-460-astig-axis-500-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-PSF
+computedLTUGUKDM-460-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-MTF
+computedLTUGUKDM-460-astig-axis-490-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-PTF
+computedLTUGUKDM-460-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-MTFL
+computedLTUGUKDM-460-astig-axis-510-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-WF
+computedLTUGUKDM-540-astig-axis-500-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-PSF
+computedLTUGUKDM-540-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-MTF
+computedLTUGUKDM-540-astig-axis-490-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-PTF
+computedLTUGUKDM-540-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-490-astig-axis-60-MTFL
+computedLTUGUKDM-540-astig-axis-510-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-WF
+computedLTUGUKDM-490-astig-axis-500-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-PSF
+computedLTUGUKDM-490-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-MTF
+computedLTUGUKDM-490-astig-axis-490-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-PTF
+computedLTUGUKDM-490-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-580-astig-axis-60-MTFL
+computedLTUGUKDM-490-astig-axis-510-PSF
 
 
 name =
 
-computedBBCZZGOO-500-astig-axis-60-WF
+computedLTUGUKDM-520-astig-axis-500-PSF
 
 
 name =
 
-computedBBCZZGOO-500-astig-axis-60-PSF
+computedLTUGUKDM-520-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-500-astig-axis-60-MTF
+computedLTUGUKDM-520-astig-axis-490-PSF
 
 
 name =
 
-computedBBCZZGOO-500-astig-axis-60-PTF
+computedLTUGUKDM-520-astig-axis-580-PSF
 
 
 name =
 
-computedBBCZZGOO-500-astig-axis-60-MTFL
+computedLTUGUKDM-520-astig-axis-510-PSF
 
-[Ljava.lang.Object;@48be6f21
+
+name =
+
+computedLTUGUKDM-490-astig-axis-500-PSF
+
+
+name =
+
+computedLTUGUKDM-490-astig-axis-580-PSF
+
+
+name =
+
+computedLTUGUKDM-490-astig-axis-490-PSF
+
+
+name =
+
+computedLTUGUKDM-490-astig-axis-580-PSF
+
+
+name =
+
+computedLTUGUKDM-490-astig-axis-510-PSF
+
+[Ljava.lang.Object;@449ac668
