@@ -13,7 +13,6 @@ class Matlab < ZernikesController
         end
         # parameters
         puts parameters
-        # byebug
         parameters.each do |p|
             arg += " " + p.to_s
         end
@@ -22,6 +21,7 @@ class Matlab < ZernikesController
             arg += " " + o.to_s
         end
         resulting_images = run_matlab(arg)
+        puts arg
         return resulting_images
     end
     
