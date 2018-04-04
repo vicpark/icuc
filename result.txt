@@ -1,31 +1,25 @@
 
 name =
 
-computedFSHZQUGT-480-astig-axis-60-WF
+computedEJKQLTKG-480-astig-axis-60-MTF
 
 
 name =
 
-computedFSHZQUGT-460-astig-axis-60-WF
+computedEJKQLTKG-580-astig-axis-60-MTF
 
 
 name =
 
-computedFSHZQUGT-540-astig-axis-60-WF
+computedEJKQLTKG-500-astig-axis-60-MTF
 
 
 name =
 
-computedFSHZQUGT-490-astig-axis-60-WF
+computedEJKQLTKG-580-astig-axis-60-MTF
 
 
 name =
 
-computedFSHZQUGT-520-astig-axis-60-WF
+computedEJKQLTKG-530-astig-axis-60-MTF
 
-
-name =
-
-computedFSHZQUGT-490-astig-axis-60-WF
-
-[Ljava.lang.Object;@28e67ed2
