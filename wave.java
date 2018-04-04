@@ -25,7 +25,7 @@ class wave
         
         // other parameters
         float pupilfit = Float.parseFloat(args[66]);
-        String pupilcalc = (args[67]);
+        float pupilcalc = Float.parseFloat(args[67]);
         String defocus = args[68];
         float wavelength = Float.parseFloat(args[69]);
         float pixels = Float.parseFloat(args[70]);
