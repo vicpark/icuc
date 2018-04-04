@@ -10,7 +10,7 @@ class wave
       if (args.length != (65 + 14))
       {
         System.out.println("Error: you provided " + args.length + " arguments, must be 1+65+13");
-        // return;
+        return;
       }
   
       try
@@ -42,7 +42,7 @@ class wave
         
         // result fits
         result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
-        System.out.println(result);
+        // System.out.println(result);
       }
       catch (Exception e)
       {

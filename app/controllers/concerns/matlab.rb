@@ -5,14 +5,13 @@ class Matlab < ZernikesController
 #         end
         if zernikes.length != 65 or parameters.length != 7 or options.length != 6
             system("result.txt << 'internal error, wrong number of parameters given'")
-            # return nil
+            return nil
         end
         arg = " "
         zernikes.each do |z|
             arg += " " + z.to_s
         end
         # parameters
-        puts parameters
         parameters.each do |p|
             arg += " " + p.to_s
         end
@@ -21,7 +20,6 @@ class Matlab < ZernikesController
             arg += " " + o.to_s
         end
         resulting_images = run_matlab(arg)
-        puts arg
         return resulting_images
     end
     
