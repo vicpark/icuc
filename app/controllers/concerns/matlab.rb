@@ -41,6 +41,7 @@ class Matlab < ZernikesController
         f = File.open(file, "r")
         f.each_line do |line|
 	        if line =~ /^#{name}/
+	            puts line
                 files += [line[0,line.length-1] + ".jpg"]
 	        end
         end
