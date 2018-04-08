@@ -45,7 +45,7 @@ class wave
     	  float b = Float.parseFloat(defocusRanges[2]); 
     	  float step = Float.parseFloat(defocusRanges[1]);
     	  float start = a;
-	  int i = 0;
+	      int i = 0;
     	  while (start <= b) {
     	      defFloatArr[i] = start;
     	      list.add(start);
@@ -58,6 +58,14 @@ class wave
         }
         Float [] array = list.toArray(new Float[list.size()]);
     	MWNumericArray defocusArray = new MWNumericArray(array, MWClassID.DOUBLE);
+    	
+    	
+    	///test
+    	float darr[] = new float[3];
+    	for (int j = 0; j < 2; j++)
+            darr[j] = j;
+        defocusArray = new MWNumericArray(darr, MWClassID.DOUBLE);
+    	///test
     	float wavelength = Float.parseFloat(args[69]);
         float pixels = Float.parseFloat(args[70]);
         float pupilfieldsize = Float.parseFloat(args[71]);
@@ -72,12 +80,13 @@ class wave
         int CONV = Integer.parseInt(args[78]);
         
         // result fits
-        if (defocusArg.contains(":")) {
-            result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
-        // System.out.println(result);
-        } else {
-            result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
-        }
+        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        // if (defocusArg.contains(":")) {
+        //     result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        // // System.out.println(result);
+        // } else {
+        //     result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        // }
       }
       catch (Exception e)
       {
