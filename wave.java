@@ -1,5 +1,7 @@
 import com.mathworks.toolbox.javabuilder.*;
 import WaveReq.*;
+import java.util.List;
+import java.util.ArrayList;
 
 class wave
 {
