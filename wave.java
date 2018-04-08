@@ -30,8 +30,8 @@ class wave
         // DEFOCUS // RANGE
         String defocusArg = args[68];
         
-        float defocus;
-        float defFloatArr[] = new float[10];
+        float defocus = 0;
+        float defFloatArr[] = new float[25];
         
     	// if string has ':' then make array
     	if (defocusArg.contains(":")) {
@@ -41,10 +41,11 @@ class wave
     	  float b = Float.parseFloat(defocusRanges[2]); 
     	  float step = Float.parseFloat(defocusRanges[1]);
     	  float start = a;
-
-    	  while start <= b {
+	  int i = 0;
+    	  while (start <= b) {
     	      defFloatArr[i] = start;
     	      start = start + (step);
+	      i = i + 1;
     	  }
     	// else is a float
     	} else {
@@ -65,8 +66,13 @@ class wave
         int CONV = Integer.parseInt(args[78]);
         
         // result fits
-        
-        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+  	if (defocusArg.contains(":")) {
+            result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        // System.out.println(result);
+        } else {
+            result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        }      
+//        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
         // System.out.println(result);
       }
       catch (Exception e)
