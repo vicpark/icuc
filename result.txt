@@ -1,25 +1,30 @@
 
 name =
 
-computedEJKQLTKG-480-astig-axis-60-MTF
+computedYWTPGBOC-490-astig-axis-60.0308-WF
 
 
 name =
 
-computedEJKQLTKG-580-astig-axis-60-MTF
+computedYWTPGBOC-460-astig-axis-60.0308-WF
 
 
 name =
 
-computedEJKQLTKG-500-astig-axis-60-MTF
+computedYWTPGBOC-490-astig-axis-60.0308-WF
 
 
 name =
 
-computedEJKQLTKG-580-astig-axis-60-MTF
+computedYWTPGBOC-540-astig-axis-60.0308-WF
 
 
 name =
 
-computedEJKQLTKG-530-astig-axis-60-MTF
+computedYWTPGBOC-550-astig-axis-60.0308-WF
+
+
+name =
+
+computedYWTPGBOC-500-astig-axis-60.0308-WF
 
