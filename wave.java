@@ -63,7 +63,7 @@ class wave
     	///test
     	float darr[] = new float[3];
     	for (int j = 0; j < 3; j++)
-            darr[j] = j;
+            darr[j] = (float) (((double) j) / 10);
         defocusArray = new MWNumericArray(darr, MWClassID.DOUBLE);
     	///test
     	float wavelength = Float.parseFloat(args[69]);
