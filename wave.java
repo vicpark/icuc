@@ -26,26 +26,32 @@ class wave
         // other parameters
         float pupilfit = Float.parseFloat(args[66]);
         float pupilcalc = Float.parseFloat(args[67]);
+        
+        // DEFOCUS // RANGE
         String defocusArg = args[68];
-	float ans[] = new float[10];
-	//MWNumericArray defocus = new MWNumericArray(ans, MWClassID.DOUBLE);
-	// if string has ':' then make array
-	if (defocusArg.contains(":")) {
-	  String defocusArray[] = defocusArg.split(":");
-	  float a = Float.parseFloat(defocusArray[0]);
-	  float b = Float.parseFloat(defocusArray[2]); 
-	  float step = Float.parseFloat(defocusArray[1]);
-	  //float ans[] = new float[10];
-	  for (int i = 0 ; i < 10; i++)
-	    ans[i] = a + (step*i);
-	  //MWNumericArray defocus = new MWNumericArray(ans, MWClassID.DOUBLE); 
-	// else is a float
-	} else {
-	  
-	  float defocus1 = Float.parseFloat(args[68]);
+        
+        float defocus;
+        float defFloatArr[] = new float[10];
+        
+    	// if string has ':' then make array
+    	if (defocusArg.contains(":")) {
+    	  // string defocusArg will be of format "a:step:b"
+    	  String defocusRanges[] = defocusArg.split(":");
+    	  float a = Float.parseFloat(defocusRanges[0]);
+    	  float b = Float.parseFloat(defocusRanges[2]); 
+    	  float step = Float.parseFloat(defocusRanges[1]);
+    	  float start = a;
+
+    	  while start <= b {
+    	      defFloatArr[i] = start;
+    	      start = start + (step);
+    	  }
+    	// else is a float
+    	} else {
+    	  defocus = Float.parseFloat(args[68]);
         }
-	MWNumericArray defocus = new MWNumericArray(ans, MWClassID.DOUBLE);
-	float wavelength = Float.parseFloat(args[69]);
+    	MWNumericArray defocusArray = new MWNumericArray(defFloatArr, MWClassID.DOUBLE);
+    	float wavelength = Float.parseFloat(args[69]);
         float pixels = Float.parseFloat(args[70]);
         float pupilfieldsize = Float.parseFloat(args[71]);
         float lettersize = Float.parseFloat(args[72]); 
@@ -59,7 +65,8 @@ class wave
         int CONV = Integer.parseInt(args[78]);
         
         // result fits
-        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
+        
+        result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
         // System.out.println(result);
       }
       catch (Exception e)
