@@ -31,9 +31,9 @@ class wave
         String defocusArg = args[68];
         
         float defocus = 0;
-        float defFloatArr[] = new float[10];
-        List<Float> list = new ArrayList<Float>();
         
+        float defFloatArr[] = new float[25];
+        List<Float> list = new ArrayList<Float>();
         
     	// if string has ':' then make array
     	if (defocusArg.contains(":")) {
@@ -43,11 +43,12 @@ class wave
     	  float b = Float.parseFloat(defocusRanges[2]); 
     	  float step = Float.parseFloat(defocusRanges[1]);
     	  float start = a;
-
-    	  while start <= b {
+	  int i = 0;
+    	  while (start <= b) {
     	      defFloatArr[i] = start;
     	      list.add(start);
     	      start = start + (step);
+	      i = i + 1;
     	  }
     	// else is a float
     	} else {
