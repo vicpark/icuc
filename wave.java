@@ -26,9 +26,26 @@ class wave
         // other parameters
         float pupilfit = Float.parseFloat(args[66]);
         float pupilcalc = Float.parseFloat(args[67]);
-        String defocus = args[68];
-	//float defocus = Float.parseFloat(args[68]);
-        float wavelength = Float.parseFloat(args[69]);
+        String defocusArg = args[68];
+	float ans[] = new float[10];
+	//MWNumericArray defocus = new MWNumericArray(ans, MWClassID.DOUBLE);
+	// if string has ':' then make array
+	if (defocusArg.contains(":")) {
+	  String defocusArray[] = defocusArg.split(":");
+	  float a = Float.parseFloat(defocusArray[0]);
+	  float b = Float.parseFloat(defocusArray[2]); 
+	  float step = Float.parseFloat(defocusArray[1]);
+	  //float ans[] = new float[10];
+	  for (int i = 0 ; i < 10; i++)
+	    ans[i] = a + (step*i);
+	  //MWNumericArray defocus = new MWNumericArray(ans, MWClassID.DOUBLE); 
+	// else is a float
+	} else {
+	  
+	  float defocus1 = Float.parseFloat(args[68]);
+        }
+	MWNumericArray defocus = new MWNumericArray(ans, MWClassID.DOUBLE);
+	float wavelength = Float.parseFloat(args[69]);
         float pixels = Float.parseFloat(args[70]);
         float pupilfieldsize = Float.parseFloat(args[71]);
         float lettersize = Float.parseFloat(args[72]); 
