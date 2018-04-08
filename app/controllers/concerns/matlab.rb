@@ -24,6 +24,7 @@ class Matlab < ZernikesController
     end
     
     def self.run_matlab(arguments)
+        puts "HERE"
         name = "computed" + (0...8).map { (65 + rand(26)).chr }.join
         arguments = ' \'' + name + '\' ' + arguments
         result_file = "result.txt"
