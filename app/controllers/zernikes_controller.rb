@@ -42,36 +42,16 @@ class ZernikesController < ApplicationController
         redirect_to root_path
     end
     
-    # def random
-    #     Zernike.random
-    #     @zernikes = Zernike.zernikes
-    #     redirect_to root_path 
-    # end
-    
+    ## MAIN COMPUTE FUNCTION ##
     def compute
-        # if params["options"]
-        #     session["options"] = params["options"]
-        #     @checked_options = session["options"]
-        #     @radio_type = @checked_options.keys[0]
-        #     puts "radio_type", @radio_type
-        # elsif session["options"]
-        #     @checked_options = session["options"]
-        #     @radio_type = params["radio_option"]
-        #     puts "radio type session", @radio_type
-        # end
 	    zernikes = Zernike.zernikes[1,65]
-	    if params[:astigmatismTo0]
-             # in third row of pyramid,
+	    if params[:astigmatismTo0] # in third row of pyramid,
              zernikes[3] = 0 # zeros out the first coeff
              zernikes[5] = 0 # zeros out the last coeff
         end
-        parameters = []
-        if params[:astigmatismTo0]
-             # in third row of pyramid,
-             zernikes[3] = 0 # zeros out the first coeff
-             zernikes[5] = 0 # zeros out the last coeff
-        end
+        # parameters is an Array [pupilfit, pupildiam, defocus, ..., lettersize]
         parameters = self.get_parameters
+        # options is an Array [WF, PSF, ..., CONV]
         options = self.get_options
         
         # to run matlab code. 
@@ -102,22 +82,59 @@ class ZernikesController < ApplicationController
     def get_parameters
         parameters = []
         file_p = self.file_params
+<<<<<<< HEAD
+        rfit = file_p[0]
+        diam = rfit * 2
+        
+        parameters << diam
+        
+=======
+        # is this Pupil fit?
         parameters << file_p[0]
+        # DIAMETER
+>>>>>>> 0b89539a62f42d08d30a57db9b23bf1d75dd47b6
         if params[:diameter_option] == "file_value"
-            parameters << file_p[0]
-        else
+            parameters << diam
+        elsif params[:diameter_option] == "single"
             parameters << params[:diameter_single_value].to_f
+        else
+            parameters << (params[:input_pupil][:pupil_range_min] + ":" + params[:input_pupil][:pupil_range_step] + ":" + params[:input_pupil][:pupil_range_max])
         end
-        #parameters << file_p[1]
+<<<<<<< HEAD
+    
         if params[:defocus_option] == "file_value"
             parameters << file_p[1]
+        elsif params[:defocus_option] == "single"
+=======
+        
+        # DEFOCUS
+        if params[:defocus_option] == "file_value"
+            parameters << file_p[1]
+        elsif (params[:defocus_option] == "range")
+            parameters << [params[:input_pupil][:pupil_range_defocus_min].to_f,params[:input_pupil][:pupil_range_defocus_max].to_f, params[:input_pupil][:pupil_range_defocus_step].to_f] 
         else
+>>>>>>> 0b89539a62f42d08d30a57db9b23bf1d75dd47b6
             parameters << params[:defocus_single_value].to_f
+        else
+            parameters << (params[:input_pupil][:pupil_range_defocus_min] + ":" + params[:input_pupil][:pupil_range_defocus_step] + ":" + params[:input_pupil][:pupil_range_defocus_max])
         end
+        
+<<<<<<< HEAD
+=======
+        # WAVELENGTH
+>>>>>>> 0b89539a62f42d08d30a57db9b23bf1d75dd47b6
         parameters << params[:wavelength].to_f
+        # PIXELS?
         parameters << params[:image_size].to_f
+        # PUPILFIELDSIZE
         parameters << params[:field_size].to_f
-	parameters << params[:letter_size].to_f
+<<<<<<< HEAD
+	    parameters << params[:letter_size].to_f
+=======
+        # LETTERSIZE
+	    parameters << params[:letter_size].to_f
+	    
+>>>>>>> 0b89539a62f42d08d30a57db9b23bf1d75dd47b6
         return parameters
     end
     
@@ -165,7 +182,7 @@ class ZernikesController < ApplicationController
     def file_params
         parameters = []
         if session[:rfit] != nil
-            parameters << session[:rfit].to_f * 2
+            parameters << session[:rfit].to_f
         else 
             parameters << 0
         end
