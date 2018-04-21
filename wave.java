@@ -41,7 +41,8 @@ class wave
         // String[] defocusFromInput = new String[20];
         String defFromInput = args[68]; 
         // str2num('1:0.5:3') works
-        //float defocusRange[] = new float[3];
+        float defocusRange[] = new float[3];
+        System.out.println(defFromInput);
         
         // defocusRange[0] = Float.parseFloat(defFromInput[0]);
         // defocusRange[1] = Float.parseFloat(defFromInput[0]);
@@ -64,6 +65,7 @@ class wave
       catch (Exception e)
       {
         System.out.println("Exception: " + e.toString());
+        System.out.println("IN WAVE.JAVA");
       }
       finally
       {
