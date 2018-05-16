@@ -1,0 +1,4 @@
+Error: you provided 80 arguments, must be 1+65+13
+6.0
+Exception: java.lang.NumberFormatException: For input string: "20.0"
+IN WAVE.JAVA

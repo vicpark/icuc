@@ -51,7 +51,7 @@ class wave
         // defocusRange[1] = Float.parseFloat(defFromInput[0]);
         // defocusRange[2] = 5.0;
         // MWNumericArray defocusRanges = new MWNumericArray(defocusRange, MWClassID.DOUBLE);
-        
+        //defocus = Float.parseFloat("3");
         
         // choice of graphs
         int WF = Integer.parseInt(args[73]);
