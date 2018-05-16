@@ -61,10 +61,10 @@ class wave
     	
     	
     	///test
-    	float darr[] = new float[3];
-    	for (int j = 0; j < 3; j++)
-            darr[j] = j;
-        defocusArray = new MWNumericArray(darr, MWClassID.DOUBLE);
+    // 	float darr[] = new float[3];
+    // 	for (int j = 0; j < 3; j++)
+    //         darr[j] = j;
+    //     defocusArray = new MWNumericArray(darr, MWClassID.DOUBLE);
     	///test
     	float wavelength = Float.parseFloat(args[69]);
         float pixels = Float.parseFloat(args[70]);
@@ -83,7 +83,7 @@ class wave
         result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
         // if (defocusArg.contains(":")) {
         //     result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocusArray, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
-        System.out.println(result);
+        // System.out.println(result);
         // } else {
         //     result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
         // }
