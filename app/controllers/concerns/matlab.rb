@@ -24,7 +24,6 @@ class Matlab < ZernikesController
     end
     
     def self.run_matlab(arguments)
-        puts "HERE"
         name = "computed" + (0...8).map { (65 + rand(26)).chr }.join
         arguments = ' \'' + name + '\' ' + arguments
         result_file = "result.txt"
@@ -32,8 +31,8 @@ class Matlab < ZernikesController
         path = "export LD_LIBRARY_PATH='/usr/local/MATLAB/MATLAB_Runtime/v901/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v901/sys/opengl/lib/glnxa64'"
         make_log, s = Open3.capture2e(path + "\n" + run_command + arguments + " > " + result_file)
         system("rm app/assets/images/computed*")
-	    system("mv "+ name + "* app/assets/images")  
-	    return read_result_file(result_file, name)
+            system("mv "+ name + "* app/assets/images")  
+            return read_result_file(result_file, name)
     end
     
     # returns list of files created.
@@ -41,10 +40,9 @@ class Matlab < ZernikesController
         files = []
         f = File.open(file, "r")
         f.each_line do |line|
-	        if line =~ /^#{name}/
-	            puts line
-                files += [line[0,line.length-1] + ".jpg"]
-	        end
+            # if line =~ /^#{name}/
+            files += [line[0,line.length-1] +name.to_s + ".jpg"]
+            # end
         end
         return files
     end

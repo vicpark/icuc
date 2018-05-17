@@ -1,2 +1,0 @@
-app/assets/images/computed.jpg
-app/assets/images/computed.png

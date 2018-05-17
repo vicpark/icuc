@@ -56,11 +56,6 @@ class ZernikesController < ApplicationController
              zernikes[5] = 0 # zeros out the last coeff
         end
         parameters = []
-        if params[:astigmatismTo0]
-             # in third row of pyramid,
-             zernikes[3] = 0 # zeros out the first coeff
-             zernikes[5] = 0 # zeros out the last coeff
-        end
         parameters = self.get_parameters
         options = self.get_options
         
@@ -101,7 +96,7 @@ class ZernikesController < ApplicationController
             parameters << diam
         elsif params[:diameter_option] == "single"
             parameters << params[:diameter_single_value].to_f
-        else
+        elsif params[:diameter_option] == "range"
             parameters << (params[:input_pupil][:pupil_range_min] + ":" + params[:input_pupil][:pupil_range_step] + ":" + params[:input_pupil][:pupil_range_max])
         end
     
@@ -109,7 +104,7 @@ class ZernikesController < ApplicationController
             parameters << file_p[1]
         elsif params[:defocus_option] == "single"
             parameters << params[:defocus_single_value].to_f
-        else
+        elsif params[:defocus_option] == "range"
             parameters << (params[:input_pupil][:pupil_range_defocus_min] + ":" + params[:input_pupil][:pupil_range_defocus_step] + ":" + params[:input_pupil][:pupil_range_defocus_max])
         end
         

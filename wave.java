@@ -18,7 +18,7 @@ class wave
       try
       {
         wave = new wavreq();
-        String fileid = args[0];
+        String fileid = args[1];
         // ZERNIKE COEFFICIENTS
         float zernikes[] = new float[65];
         for (int i = 0; i < 65; i++)
@@ -32,7 +32,7 @@ class wave
         // DEFOCUS // RANGE
         String defocusArg = args[68];
         
-        float defocus = 0;
+        float defocus = Float.parseFloat(defocusArg);
         
         float defFloatArr[] = new float[25];
         List<Float> list = new ArrayList<Float>();
@@ -66,7 +66,7 @@ class wave
         float darr[] = new float[3];
         for (int j = 0; j < 3; j++)
               darr[j] = j;
-          defocusArray = new MWNumericArray(darr, MWClassID.DOUBLE);
+        defocusArray = new MWNumericArray(darr, MWClassID.DOUBLE);
         ///test
         float wavelength = Float.parseFloat(args[69]);
         float pixels = Float.parseFloat(args[70]);
@@ -88,8 +88,10 @@ class wave
         for (int k = 0; k < args.length; k++) {
           System.out.println(args[k]);
         }
+        System.out.println(wave.getClass().getName());
+        System.out.println("RESULT starts");
         for (int o = 0; o < result.length; o++) 
-          System.out.println(result);
+          System.out.println(result[o]);
         // } else {
         //     result = wave.WaveReq(2, fileid, coeffs, pupilfit, pupilcalc, defocus, wavelength, pixels, pupilfieldsize, lettersize, WF, PSF, MTF, PTF, MTFL, CONV);
         // }
